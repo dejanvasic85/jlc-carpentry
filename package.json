@@ -1,0 +1,21 @@
+{
+  "name": "jlc-carpentry",
+  "version": "1.0.0",
+  "description": "Nextjs website for JLC Carpentry",
+  "main": "index.js",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dejanvasic85/jlc-carpentry.git"
+  },
+  "keywords": [],
+  "author": "Dejan Vasic",
+  "license": "ISC",
+  "homepage": "https://github.com/dejanvasic85/jlc-carpentry#readme"
+}
