@@ -7,8 +7,8 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "npm run dev -w jlc-carpentry",
-    "build": "npm run build"
+    "dev": "turbo run dev --filter jlc-carpentry",
+    "build": "turbo run build"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,9 @@
   "homepage": "https://github.com/dejanvasic85/jlc-carpentry#readme",
   "volta": {
     "node": "22.17.1"
-  }
+  },
+  "dependencies": {
+    "turbo": "2.5.5"
+  },
+  "packageManager": "npm@10.9.2"
 }
