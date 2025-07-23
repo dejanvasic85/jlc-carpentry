@@ -8,7 +8,9 @@
   ],
   "scripts": {
     "dev": "turbo run dev --filter jlc-carpentry",
-    "build": "turbo run build"
+    "build": "turbo run build",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,9 @@
   },
   "dependencies": {
     "turbo": "2.5.5"
+  },
+  "devDependencies": {
+    "prettier": "3.6.2"
   },
   "packageManager": "npm@10.9.2"
 }

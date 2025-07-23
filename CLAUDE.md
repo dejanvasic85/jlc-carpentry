@@ -1,5 +1,6 @@
 # Commands
 - npm run type:check: Run the typechecker
+- npm run format: Run the formatter
 
 # Code style
 - Use ES modules (import/export) syntax, not CommonJS (require)
@@ -7,6 +8,7 @@
 
 # Workflow
 - Be sure to typecheck when you’re done making a series of code changes
+- Use `npm run format` whenever the format is not correct
 - Prefer running single tests, and not the whole test suite, for performance
 
 # Dependency management
