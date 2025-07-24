@@ -1,7 +1,12 @@
 # Commands
 
-- npm run type:check: Run the typechecker
-- npm run format: Run the formatter
+This is a monorepo with multiple apps so each command should target specific workspace.
+E.g. `npm run build -w <workspace-name>`.
+
+Here are some common commands you can use:
+- npm run type:check: Runs TypeScript type checking without building
+- npm run format: Uses Prettier to format the code
+- npm run lint: Runs ESLint check
 
 # Code style
 
