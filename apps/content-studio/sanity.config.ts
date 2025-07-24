@@ -5,8 +5,7 @@ import {schemaTypes} from './schemaTypes'
 
 export default defineConfig({
   name: 'default',
-  title: 'jlc',
-
+  title: 'jlc-carpentry',
   projectId: '365wnpgg',
   dataset: 'production',
 
