@@ -4,9 +4,11 @@ This is a monorepo with multiple apps so each command should target specific wor
 E.g. `npm run build -w <workspace-name>`.
 
 Here are some common commands you can use:
+
 - npm run type:check: Runs TypeScript type checking without building
 - npm run format: Uses Prettier to format the code
 - npm run lint: Runs ESLint check
+- npm run dev: Starts the development server for the main website but you will need to run it in the background otherwise it will block the terminal
 
 # Code style
 
@@ -31,4 +33,4 @@ Here are some common commands you can use:
 
 Yeah keen to proceed with the website, the primary colours would be light blue and black/white.
 Company name is JLC Carpentry & building services pty ltd. Location would be Alphington but serving all areas of melbourne.
-Social media links are @Jlcbuilding and facebook JLC carpentry & Building services. https://g.co/kgs/ZxMwn9o is my google business link. Basic services are Decks, pergolas, walls, doors, cladding, general renovations (bathroom and kitchen renos). 
+Social media links are @Jlcbuilding and facebook JLC carpentry & Building services. https://g.co/kgs/ZxMwn9o is my google business link. Basic services are Decks, pergolas, walls, doors, cladding, general renovations (bathroom and kitchen renos).
