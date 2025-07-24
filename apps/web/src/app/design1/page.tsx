@@ -19,16 +19,16 @@ export default function Design1() {
               height={32}
               className="rounded-lg md:w-10 md:h-10"
             />
-            <span className="text-lg md:text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+            <span className="text-lg md:text-xl font-nav bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
               JLC Carpentry
             </span>
           </div>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            <a href="#services" className="text-slate-700 hover:text-blue-600 transition-all font-medium">Services</a>
-            <a href="#about" className="text-slate-700 hover:text-blue-600 transition-all font-medium">About</a>
-            <a href="#contact" className="text-slate-700 hover:text-blue-600 transition-all font-medium">Contact</a>
+            <a href="#services" className="text-slate-700 hover:text-blue-600 transition-all font-nav">Services</a>
+            <a href="#about" className="text-slate-700 hover:text-blue-600 transition-all font-nav">About</a>
+            <a href="#contact" className="text-slate-700 hover:text-blue-600 transition-all font-nav">Contact</a>
           </div>
 
           {/* Mobile Hamburger Button */}
@@ -48,21 +48,21 @@ export default function Design1() {
           <div className="md:hidden mt-4 glass rounded-2xl px-6 py-4 space-y-4">
             <a 
               href="#services" 
-              className="block text-slate-700 hover:text-blue-600 transition-all font-medium py-2"
+              className="block text-slate-700 hover:text-blue-600 transition-all font-nav py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Services
             </a>
             <a 
               href="#about" 
-              className="block text-slate-700 hover:text-blue-600 transition-all font-medium py-2"
+              className="block text-slate-700 hover:text-blue-600 transition-all font-nav py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               About
             </a>
             <a 
               href="#contact" 
-              className="block text-slate-700 hover:text-blue-600 transition-all font-medium py-2"
+              className="block text-slate-700 hover:text-blue-600 transition-all font-nav py-2"
               onClick={() => setIsMenuOpen(false)}
             >
               Contact
@@ -81,9 +81,9 @@ export default function Design1() {
           
           <div className="relative z-10 max-w-4xl mx-auto">
             <div className="mb-8">
-              <h1 className="text-5xl md:text-7xl font-light text-slate-800 mb-6 leading-tight">
-                Expert <span className="font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">Carpentry</span>
-                <br />& Building Services
+              <h1 className="font-display text-5xl md:text-7xl text-slate-800 mb-6 leading-tight">
+                EXPERT <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">CARPENTRY</span>
+                <br />& BUILDING SERVICES
               </h1>
               <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-8 leading-relaxed">
                 Transforming Melbourne homes with precision craftsmanship, innovative design, and professional excellence since 1995.
@@ -120,8 +120,8 @@ export default function Design1() {
         <section id="services" className="py-20 px-4 bg-white/50 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-light text-slate-800 mb-4">
-                Our <span className="font-bold text-blue-600">Expertise</span>
+              <h2 className="font-heading text-4xl md:text-5xl text-slate-800 mb-4">
+                OUR <span className="text-blue-600">EXPERTISE</span>
               </h2>
               <p className="text-xl text-slate-600 max-w-2xl mx-auto">
                 From concept to completion, we deliver exceptional results that exceed expectations.
@@ -159,7 +159,7 @@ export default function Design1() {
                   <div className="card-glass p-8 h-full relative overflow-hidden">
                     <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${service.gradient} opacity-10 rounded-bl-3xl`}></div>
                     <div className="text-4xl mb-4">{service.icon}</div>
-                    <h3 className="text-xl font-bold text-slate-800 mb-3">
+                    <h3 className="font-heading text-xl text-slate-800 mb-3">
                       {service.title}
                     </h3>
                     <p className="text-slate-600 leading-relaxed">
@@ -184,8 +184,8 @@ export default function Design1() {
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-transparent via-white/5 to-white/10"></div>
           
           <div className="relative z-10 max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-light text-white mb-6">
-              Ready to Transform Your Space?
+            <h2 className="font-heading text-4xl md:text-5xl text-white mb-6">
+              READY TO TRANSFORM YOUR SPACE?
             </h2>
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto leading-relaxed">
               From Alphington to all corners of Melbourne, we bring exceptional craftsmanship directly to your doorstep.
@@ -207,7 +207,7 @@ export default function Design1() {
                 { title: 'Local Melbourne', desc: 'Based in Alphington, serving all areas' }
               ].map((feature, index) => (
                 <div key={index} className="glass-dark rounded-xl p-6 text-center">
-                  <h4 className="text-lg font-semibold text-white mb-2">{feature.title}</h4>
+                  <h4 className="font-heading text-lg text-white mb-2">{feature.title}</h4>
                   <p className="text-blue-100 text-sm">{feature.desc}</p>
                 </div>
               ))}

@@ -20,20 +20,20 @@ export default function Design3() {
                 height={40}
                 className="rounded-xl border border-blue-400/30 md:w-12 md:h-12"
               />
-              <div className="text-xl md:text-3xl font-black text-blue-400 tracking-wider drop-shadow-2xl">
+              <div className="font-display text-xl md:text-3xl text-blue-400 tracking-wider drop-shadow-2xl">
                 JLC
               </div>
             </div>
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">
-              <a href="#services" className="text-white hover:text-blue-400 transition-all font-bold text-lg tracking-wide">
+              <a href="#services" className="text-white hover:text-blue-400 transition-all font-nav text-lg tracking-wide">
                 SERVICES
               </a>
-              <a href="#gallery" className="text-white hover:text-blue-400 transition-all font-bold text-lg tracking-wide">
+              <a href="#gallery" className="text-white hover:text-blue-400 transition-all font-nav text-lg tracking-wide">
                 GALLERY
               </a>
-              <a href="#contact" className="text-white hover:text-blue-400 transition-all font-bold text-lg tracking-wide">
+              <a href="#contact" className="text-white hover:text-blue-400 transition-all font-nav text-lg tracking-wide">
                 CONTACT
               </a>
             </div>
@@ -55,21 +55,21 @@ export default function Design3() {
             <div className="md:hidden mt-4 glass-dark rounded-2xl px-6 py-6 space-y-4 border border-white/20 shadow-2xl">
               <a 
                 href="#services" 
-                className="block text-white hover:text-blue-400 transition-all font-bold text-lg tracking-wide py-3 border-b border-white/10"
+                className="block text-white hover:text-blue-400 transition-all font-nav text-lg tracking-wide py-3 border-b border-white/10"
                 onClick={() => setIsMenuOpen(false)}
               >
                 SERVICES
               </a>
               <a 
                 href="#gallery" 
-                className="block text-white hover:text-blue-400 transition-all font-bold text-lg tracking-wide py-3 border-b border-white/10"
+                className="block text-white hover:text-blue-400 transition-all font-nav text-lg tracking-wide py-3 border-b border-white/10"
                 onClick={() => setIsMenuOpen(false)}
               >
                 GALLERY
               </a>
               <a 
                 href="#contact" 
-                className="block text-white hover:text-blue-400 transition-all font-bold text-lg tracking-wide py-3"
+                className="block text-white hover:text-blue-400 transition-all font-nav text-lg tracking-wide py-3"
                 onClick={() => setIsMenuOpen(false)}
               >
                 CONTACT
@@ -96,7 +96,7 @@ export default function Design3() {
         
         <div className="relative z-10 max-w-5xl mx-auto px-6">
           <div className="mb-12">
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-white mb-8 leading-none tracking-tight">
+            <h1 className="font-display text-6xl md:text-8xl lg:text-9xl text-white mb-8 leading-none tracking-tight">
               <span className="block">CRAFT.</span>
               <span className="block">BUILD.</span>
               <span className="block bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
@@ -124,7 +124,7 @@ export default function Design3() {
       <section id="services" className="py-24 bg-gradient-to-b from-black to-slate-900 relative">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tight">
+            <h2 className="font-heading text-5xl md:text-7xl text-white mb-8 tracking-tight">
               What We <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Create</span>
             </h2>
             <div className="w-32 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto"></div>
@@ -174,7 +174,7 @@ export default function Design3() {
                   <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl ${service.accent} opacity-10 rounded-tr-3xl rounded-bl-full`}></div>
                   
                   <div className="pt-8">
-                    <h3 className="text-3xl font-black text-white mb-3 group-hover:text-blue-400 transition-colors">
+                    <h3 className="font-heading text-3xl text-white mb-3 group-hover:text-blue-400 transition-colors">
                       {service.title}
                     </h3>
                     <p className="text-blue-400 font-semibold mb-6 text-lg">
@@ -204,7 +204,7 @@ export default function Design3() {
         <div className="absolute bottom-20 right-20 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
         
         <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-          <h2 className="text-5xl md:text-7xl font-black text-white mb-8 tracking-tight">
+          <h2 className="font-heading text-5xl md:text-7xl text-white mb-8 tracking-tight">
             Ready to Build Something <span className="text-black">Amazing?</span>
           </h2>
           <p className="text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed">
@@ -253,7 +253,7 @@ export default function Design3() {
                 className="rounded-xl"
               />
               <div>
-                <h3 className="text-3xl font-black bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                <h3 className="font-heading text-3xl bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                   JLC CARPENTRY
                 </h3>
                 <p className="text-gray-400 font-semibold">& BUILDING SERVICES PTY LTD</p>
@@ -263,13 +263,13 @@ export default function Design3() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center mb-12">
             <div className="space-y-4">
-              <h4 className="text-xl font-bold text-blue-400">📍 LOCATION</h4>
+              <h4 className="font-heading text-xl text-blue-400">📍 LOCATION</h4>
               <p className="text-gray-300">Alphington, Melbourne</p>
               <p className="text-blue-400 font-semibold">Serving all areas of Melbourne</p>
             </div>
             
             <div className="space-y-4">
-              <h4 className="text-xl font-bold text-blue-400">🔗 CONNECT</h4>
+              <h4 className="font-heading text-xl text-blue-400">🔗 CONNECT</h4>
               <div className="space-y-2">
                 <a href="https://g.co/kgs/ZxMwn9o" className="block text-white hover:text-blue-400 transition-colors font-medium">
                   Google Business Profile
@@ -284,7 +284,7 @@ export default function Design3() {
             </div>
             
             <div className="space-y-4">
-              <h4 className="text-xl font-bold text-blue-400">⚡ SERVICES</h4>
+              <h4 className="font-heading text-xl text-blue-400">⚡ SERVICES</h4>
               <p className="text-gray-300">24/7 Emergency Response</p>
               <p className="text-blue-400 font-semibold">Licensed & Fully Insured</p>
             </div>

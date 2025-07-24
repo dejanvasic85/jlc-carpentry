@@ -24,7 +24,7 @@ export default function Design2() {
                 className="rounded-lg border border-white/20 md:w-12 md:h-12"
               />
               <div>
-                <h1 className="text-sm md:text-2xl font-bold tracking-wide leading-tight">
+                <h1 className="text-sm md:text-2xl font-heading tracking-wide leading-tight">
                   JLC CARPENTRY & BUILDING SERVICES
                 </h1>
                 <p className="text-blue-200 text-xs md:text-sm font-medium">PTY LTD</p>
@@ -33,10 +33,10 @@ export default function Design2() {
             
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex space-x-8">
-              <a href="#home" className="text-blue-300 font-semibold hover:text-white transition-colors border-b-2 border-blue-300 pb-1">HOME</a>
-              <a href="#services" className="text-white hover:text-blue-300 transition-colors font-semibold">SERVICES</a>
-              <a href="#about" className="text-white hover:text-blue-300 transition-colors font-semibold">ABOUT</a>
-              <a href="#contact" className="text-white hover:text-blue-300 transition-colors font-semibold">CONTACT</a>
+              <a href="#home" className="text-blue-300 font-nav hover:text-white transition-colors border-b-2 border-blue-300 pb-1">HOME</a>
+              <a href="#services" className="text-white hover:text-blue-300 transition-colors font-nav">SERVICES</a>
+              <a href="#about" className="text-white hover:text-blue-300 transition-colors font-nav">ABOUT</a>
+              <a href="#contact" className="text-white hover:text-blue-300 transition-colors font-nav">CONTACT</a>
             </nav>
 
             {/* Mobile Hamburger Button */}
@@ -56,28 +56,28 @@ export default function Design2() {
             <div className="lg:hidden mt-6 glass-dark rounded-xl px-6 py-6 space-y-4 border border-white/20">
               <a 
                 href="#home" 
-                className="block text-blue-300 font-semibold hover:text-white transition-colors py-3 border-b border-white/10"
+                className="block text-blue-300 font-nav hover:text-white transition-colors py-3 border-b border-white/10"
                 onClick={() => setIsMenuOpen(false)}
               >
                 HOME
               </a>
               <a 
                 href="#services" 
-                className="block text-white hover:text-blue-300 transition-colors font-semibold py-3 border-b border-white/10"
+                className="block text-white hover:text-blue-300 transition-colors font-nav py-3 border-b border-white/10"
                 onClick={() => setIsMenuOpen(false)}
               >
                 SERVICES
               </a>
               <a 
                 href="#about" 
-                className="block text-white hover:text-blue-300 transition-colors font-semibold py-3 border-b border-white/10"
+                className="block text-white hover:text-blue-300 transition-colors font-nav py-3 border-b border-white/10"
                 onClick={() => setIsMenuOpen(false)}
               >
                 ABOUT
               </a>
               <a 
                 href="#contact" 
-                className="block text-white hover:text-blue-300 transition-colors font-semibold py-3"
+                className="block text-white hover:text-blue-300 transition-colors font-nav py-3"
                 onClick={() => setIsMenuOpen(false)}
               >
                 CONTACT
@@ -95,7 +95,7 @@ export default function Design2() {
         
         <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
           <div className="mb-12">
-            <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            <h2 className="font-display text-5xl md:text-7xl mb-6 leading-tight">
               PROFESSIONAL
               <br />
               <span className="bg-gradient-to-r from-blue-200 to-white bg-clip-text text-transparent">
@@ -138,7 +138,7 @@ export default function Design2() {
       <section className="py-20 bg-gradient-to-br from-slate-50 to-slate-100">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight">
+            <h2 className="font-heading text-4xl md:text-5xl text-slate-900 mb-4 tracking-tight">
               OUR <span className="text-blue-600">EXPERTISE</span>
             </h2>
             <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
@@ -185,7 +185,7 @@ export default function Design2() {
                       {service.icon}
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+                      <h3 className="font-heading text-2xl text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
                         {service.title}
                       </h3>
                     </div>
@@ -222,7 +222,7 @@ export default function Design2() {
         <div className="absolute inset-0 opacity-30" style={{backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`}}></div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12 tracking-tight">
+          <h2 className="font-heading text-4xl md:text-5xl mb-12 tracking-tight">
             WHY CHOOSE <span className="text-blue-400">JLC CARPENTRY?</span>
           </h2>
           
@@ -246,7 +246,7 @@ export default function Design2() {
             ].map((feature, index) => (
               <div key={index} className="glass-dark rounded-xl p-8 text-center">
                 <div className="text-5xl mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-bold text-blue-300 mb-4">{feature.title}</h3>
+                <h3 className="font-heading text-xl text-blue-300 mb-4">{feature.title}</h3>
                 <p className="text-gray-300 leading-relaxed">{feature.desc}</p>
               </div>
             ))}
@@ -254,7 +254,7 @@ export default function Design2() {
           
           {/* CTA Card */}
           <div className="card-glass bg-gradient-to-r from-blue-600 to-blue-700 p-12 rounded-2xl border border-blue-400/20">
-            <h3 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+            <h3 className="font-heading text-3xl md:text-4xl mb-4 text-white">
               GET YOUR FREE CONSULTATION TODAY
             </h3>
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
@@ -281,7 +281,7 @@ export default function Design2() {
                   className="rounded-lg"
                 />
                 <div>
-                  <h3 className="text-2xl font-bold">JLC CARPENTRY</h3>
+                  <h3 className="font-heading text-2xl">JLC CARPENTRY</h3>
                   <p className="text-blue-300 font-semibold">& BUILDING SERVICES PTY LTD</p>
                 </div>
               </div>
@@ -295,7 +295,7 @@ export default function Design2() {
             </div>
             
             <div>
-              <h4 className="text-xl font-bold text-blue-300 mb-4">LOCATION</h4>
+              <h4 className="font-heading text-xl text-blue-300 mb-4">LOCATION</h4>
               <div className="space-y-2">
                 <p className="text-gray-300">Based in Alphington</p>
                 <p className="text-gray-300">Serving all areas of Melbourne</p>
@@ -304,7 +304,7 @@ export default function Design2() {
             </div>
             
             <div>
-              <h4 className="text-xl font-bold text-blue-300 mb-4">CONNECT</h4>
+              <h4 className="font-heading text-xl text-blue-300 mb-4">CONNECT</h4>
               <div className="space-y-3">
                 <a href="https://g.co/kgs/ZxMwn9o" className="block text-white hover:text-blue-300 transition-colors font-medium">
                   📍 Google Business Profile

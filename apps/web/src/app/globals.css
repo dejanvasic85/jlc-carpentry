@@ -13,9 +13,33 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-nunito-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Font utility classes */
+.font-display {
+  font-family: var(--font-bebas-neue), impact, Arial Black, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.font-heading {
+  font-family: var(--font-oswald), Arial Black, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.font-body {
+  font-family: var(--font-nunito-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+}
+
+.font-nav {
+  font-family: var(--font-nunito-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.025em;
 }
 
 /* Glass effect utilities */
