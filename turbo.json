@@ -11,7 +11,7 @@
     "type:check": {
       "dependsOn": ["^type:check"]
     },
-    "dev:web": {
+    "dev": {
       "cache": false,
       "persistent": true
     }
