@@ -1,42 +1,104 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import "tailwindcss";
+
+@theme {
+  --color-jlc-blue: #4A90E2;
+  --color-jlc-blue-light: #7BB3F0;
+  --color-jlc-blue-dark: #2E5984;
+  --color-jlc-black: #1a1a1a;
+  --color-jlc-gray: #f8fafc;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-nunito-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+/* Font utility classes */
+.font-display {
+  font-family: var(--font-bebas-neue), impact, Arial Black, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.font-heading {
+  font-family: var(--font-oswald), Arial Black, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.font-body {
+  font-family: var(--font-nunito-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+}
+
+.font-nav {
+  font-family: var(--font-nunito-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
+
+/* Glass effect utilities */
+.glass {
+  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  backdrop-filter: blur(12px);
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Custom button styles */
+.btn-primary {
+  background: linear-gradient(to right, #3b82f6, #2563eb);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+  transform: translateY(0);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(to right, #2563eb, #1d4ed8);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  border: 2px solid #3b82f6;
+  color: #3b82f6;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: #3b82f6;
+  color: white;
+}
+
+/* Glass card component */
+.card-glass {
+  backdrop-filter: blur(4px);
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s;
+  transform: translateY(0);
+}
+
+.card-glass:hover {
+  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.35);
+  transform: translateY(-4px);
 }
