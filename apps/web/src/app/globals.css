@@ -2,11 +2,44 @@
 
 @theme {
   --color-jlc-blue: #4a90e2;
-  --color-jlc-blue-light: #7bb3f0;
+  --color-jlc-blue-light: #7bb3f0;  
   --color-jlc-blue-dark: #2e5984;
   --color-jlc-black: #1a1a1a;
   --color-jlc-gray: #f8fafc;
 }
+
+/* JLC Brand Color Utility Classes - Only Used Classes */
+.bg-jlc-black {
+  background-color: var(--color-jlc-black);
+}
+
+.text-jlc-blue-light {
+  color: var(--color-jlc-blue-light);
+}
+
+.border-jlc-blue-light {
+  border-color: var(--color-jlc-blue-light);
+}
+
+/* Header specific gradients */
+.bg-jlc-header-gradient {
+  background-image: linear-gradient(to right, var(--color-jlc-black), var(--color-jlc-black), var(--color-jlc-blue-dark));
+}
+
+/* Navigation hover states */
+.nav-link {
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-jlc-blue-light);
+}
+
+.nav-link-active {
+  color: var(--color-jlc-blue-light);
+  border-color: var(--color-jlc-blue-light);
+}
+
 
 html {
   scroll-behavior: smooth;

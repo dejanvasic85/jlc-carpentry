@@ -10,8 +10,8 @@ export default function Header({ className = '' }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className={`relative bg-slate-900 text-white overflow-hidden ${className}`}>
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-800 to-blue-900"></div>
+    <header className={`relative bg-jlc-black text-white overflow-hidden ${className}`}>
+      <div className="absolute inset-0 bg-jlc-header-gradient"></div>
       <div
         className="absolute inset-0 opacity-30"
         style={{
@@ -33,7 +33,7 @@ export default function Header({ className = '' }: HeaderProps) {
               <h1 className="text-sm md:text-2xl font-heading tracking-wide leading-tight">
                 JLC CARPENTRY & BUILDING SERVICES
               </h1>
-              <p className="text-blue-200 text-xs md:text-sm font-medium">PTY LTD</p>
+              <p className="text-jlc-blue-light text-xs md:text-sm font-medium">PTY LTD</p>
             </div>
           </div>
 
@@ -41,17 +41,17 @@ export default function Header({ className = '' }: HeaderProps) {
           <nav className="hidden lg:flex space-x-8">
             <a
               href="#home"
-              className="text-blue-300 font-nav hover:text-white transition-colors border-b-2 border-blue-300 pb-1"
+              className="nav-link-active font-nav hover:text-white border-b-2 border-jlc-blue-light pb-1"
             >
               HOME
             </a>
-            <a href="#services" className="text-white hover:text-blue-300 transition-colors font-nav">
+            <a href="#services" className="nav-link text-white font-nav">
               SERVICES
             </a>
-            <a href="#about" className="text-white hover:text-blue-300 transition-colors font-nav">
+            <a href="#about" className="nav-link text-white font-nav">
               ABOUT
             </a>
-            <a href="#contact" className="text-white hover:text-blue-300 transition-colors font-nav">
+            <a href="#contact" className="nav-link text-white font-nav">
               CONTACT
             </a>
           </nav>
@@ -77,28 +77,28 @@ export default function Header({ className = '' }: HeaderProps) {
           <div className="lg:hidden mt-6 glass-dark rounded-xl px-6 py-6 space-y-4 border border-white/20">
             <a
               href="#home"
-              className="block text-blue-300 font-nav hover:text-white transition-colors py-3 border-b border-white/10"
+              className="nav-link-active block font-nav hover:text-white py-3 border-b border-white/10"
               onClick={() => setIsMenuOpen(false)}
             >
               HOME
             </a>
             <a
               href="#services"
-              className="block text-white hover:text-blue-300 transition-colors font-nav py-3 border-b border-white/10"
+              className="nav-link block text-white font-nav py-3 border-b border-white/10"
               onClick={() => setIsMenuOpen(false)}
             >
               SERVICES
             </a>
             <a
               href="#about"
-              className="block text-white hover:text-blue-300 transition-colors font-nav py-3 border-b border-white/10"
+              className="nav-link block text-white font-nav py-3 border-b border-white/10"
               onClick={() => setIsMenuOpen(false)}
             >
               ABOUT
             </a>
             <a
               href="#contact"
-              className="block text-white hover:text-blue-300 transition-colors font-nav py-3"
+              className="nav-link block text-white font-nav py-3"
               onClick={() => setIsMenuOpen(false)}
             >
               CONTACT

@@ -8,6 +8,8 @@
 - Clean and maintainable code with re-usable React components
 - Ensure the use of typescript alias @/ for imports
 
+Please read all the latest documentation for Next.js, Tailwind CSS, and Sanity CMS to ensure you are familiar with the latest features and best practices.
+
 # Commands
 
 This is a monorepo with multiple apps so each command should target specific workspace.
@@ -28,6 +30,8 @@ Here are some common commands you can use:
 - Each React component should declare its own prop types using TypeScript within the same file
 - Use camelCase for variable and function names
 - Use PascalCase for React component names
+- Avoid use of inline styles, prefer Tailwind CSS classes
+- Avoid using `any` type in Typescript or casting with as
 
 # Workflow
 
