@@ -32,9 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${bebasNeue.variable} ${oswald.variable} ${nunitoSans.variable}`}>
-        {children}
-      </body>
+      <body className={`${bebasNeue.variable} ${oswald.variable} ${nunitoSans.variable}`}>{children}</body>
     </html>
   );
 }

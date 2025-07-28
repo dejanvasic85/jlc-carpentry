@@ -1,9 +1,9 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-  --color-jlc-blue: #4A90E2;
-  --color-jlc-blue-light: #7BB3F0;
-  --color-jlc-blue-dark: #2E5984;
+  --color-jlc-blue: #4a90e2;
+  --color-jlc-blue-light: #7bb3f0;
+  --color-jlc-blue-dark: #2e5984;
   --color-jlc-black: #1a1a1a;
   --color-jlc-gray: #f8fafc;
 }
@@ -13,31 +13,52 @@ html {
 }
 
 body {
-  font-family: var(--font-nunito-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family:
+    var(--font-nunito-sans),
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 /* Font utility classes */
 .font-display {
-  font-family: var(--font-bebas-neue), impact, Arial Black, sans-serif;
+  font-family:
+    var(--font-bebas-neue),
+    impact,
+    Arial Black,
+    sans-serif;
   font-weight: 400;
   letter-spacing: 0.02em;
 }
 
 .font-heading {
-  font-family: var(--font-oswald), Arial Black, sans-serif;
+  font-family:
+    var(--font-oswald),
+    Arial Black,
+    sans-serif;
   font-weight: 600;
   letter-spacing: 0.01em;
 }
 
 .font-body {
-  font-family: var(--font-nunito-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    var(--font-nunito-sans),
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   font-weight: 400;
 }
 
 .font-nav {
-  font-family: var(--font-nunito-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    var(--font-nunito-sans),
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   font-weight: 600;
   letter-spacing: 0.025em;
 }

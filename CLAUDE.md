@@ -24,6 +24,10 @@ Here are some common commands you can use:
 
 - Use ES modules (import/export) syntax, not CommonJS (require)
 - Destructure imports when possible (eg. import { foo } from 'bar')
+- React components should be functional components
+- Each React component should declare its own prop types using TypeScript within the same file
+- Use camelCase for variable and function names
+- Use PascalCase for React component names
 
 # Workflow
 
