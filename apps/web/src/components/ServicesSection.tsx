@@ -43,7 +43,7 @@ export default function ServicesSection({ className = '' }: ServicesSectionProps
   ];
 
   return (
-    <section className={`py-20 bg-gradient-to-br from-slate-50 to-slate-100 ${className}`}>
+    <section className={`perf-section py-20 bg-gradient-to-br from-slate-50 to-slate-100 ${className}`}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="font-heading text-4xl md:text-5xl text-slate-900 mb-4 tracking-tight">

@@ -28,7 +28,7 @@ export default function TrustSection({ className = '' }: TrustSectionProps) {
   ];
 
   return (
-    <section className={`py-20 bg-slate-900 text-white relative overflow-hidden ${className}`}>
+    <section className={`perf-section py-20 bg-slate-900 text-white relative overflow-hidden ${className}`}>
       <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-800 to-blue-900"></div>
       <div
         className="absolute inset-0 opacity-30"
@@ -58,7 +58,7 @@ export default function TrustSection({ className = '' }: TrustSectionProps) {
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
             Call us now or visit our Google Business page for reviews and comprehensive project information
           </p>
-          <button className="bg-slate-900 hover:bg-slate-800 text-white font-bold py-4 px-12 text-xl tracking-wide transition-all duration-200 shadow-2xl hover:shadow-3xl transform hover:-translate-y-1">
+          <button className="bg-slate-900 hover:bg-slate-800 text-white font-bold py-4 px-12 text-xl tracking-wide transition-colors duration-200 shadow-lg hover:shadow-xl">
             CONTACT US NOW
           </button>
         </div>
