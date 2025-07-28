@@ -1,3 +1,5 @@
+import Card from '@/components/Card';
+
 interface ServicesSectionProps {
   className?: string;
 }
@@ -59,7 +61,7 @@ export default function ServicesSection({ className = '' }: ServicesSectionProps
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {services.map((service, index) => (
             <div key={index} className="group relative">
-              <div className="card-glass p-8 h-full border-l-4 border-blue-600 hover:border-l-8 transition-all duration-300">
+              <Card className="p-8 h-full border-l-4 border-blue-600 hover:border-l-8 transition-all duration-300">
                 <div className="flex items-start space-x-4 mb-6">
                   <div
                     className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center text-2xl shadow-lg`}
@@ -89,7 +91,7 @@ export default function ServicesSection({ className = '' }: ServicesSectionProps
                     LEARN MORE →
                   </button>
                 </div>
-              </div>
+              </Card>
             </div>
           ))}
         </div>

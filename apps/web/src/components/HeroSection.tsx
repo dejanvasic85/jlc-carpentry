@@ -1,3 +1,6 @@
+import Button from '@/components/Button';
+import Card from '@/components/Card';
+
 interface HeroSectionProps {
   className?: string;
 }
@@ -39,22 +42,22 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-          <button className="bg-slate-900 hover:bg-slate-800 text-white font-bold py-4 px-10 text-lg tracking-wide transition-colors duration-200 shadow-lg hover:shadow-xl">
+          <Button variant="primary" size="md">
             FREE ESTIMATE
-          </button>
-          <button className="border-3 border-white text-white hover:bg-white hover:text-blue-700 font-bold py-4 px-10 text-lg tracking-wide transition-all duration-200">
+          </Button>
+          <Button variant="outline" size="md">
             VIEW OUR WORK
-          </button>
+          </Button>
         </div>
 
         {/* Corporate Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
-            <div key={index} className="glass-dark rounded-xl p-6 text-center">
+            <Card key={index} variant="glass-dark" className="p-6 text-center" hover={false}>
               <div className="text-4xl font-bold text-blue-200 mb-2">{stat.number}</div>
               <div className="text-white font-semibold mb-1">{stat.label}</div>
               <div className="text-blue-200 text-xs">{stat.subtitle}</div>
-            </div>
+            </Card>
           ))}
         </div>
       </div>

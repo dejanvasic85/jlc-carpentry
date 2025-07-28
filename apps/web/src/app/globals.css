@@ -67,82 +67,8 @@ body {
   letter-spacing: 0.025em;
 }
 
-/* Glass effect utilities - optimized for performance */
-.glass {
-  background-color: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  will-change: auto;
-}
-
-.glass-dark {
-  background-color: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  will-change: auto;
-}
-
-/* Custom button styles */
-.btn-primary {
-  background: linear-gradient(to right, #3b82f6, #2563eb);
-  color: white;
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s;
-  transform: translateY(0);
-}
-
-.btn-primary:hover {
-  background: linear-gradient(to right, #2563eb, #1d4ed8);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  transform: translateY(-2px);
-}
-
-.btn-secondary {
-  border: 2px solid #3b82f6;
-  color: #3b82f6;
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.75rem;
-  transition: all 0.2s;
-}
-
-.btn-secondary:hover {
-  background-color: #3b82f6;
-  color: white;
-}
-
-/* Glass card component - optimized for performance */
-.card-glass {
-  background-color: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 1rem;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
-  transition:
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
-  will-change: transform;
-  /* Performance optimizations */
-  contain: layout style;
-  transform: translateZ(0);
-}
-
-.card-glass:hover {
-  box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.25);
-  transform: translateY(-2px) translateZ(0);
-}
-
 /* Performance utility classes */
 .perf-section {
   contain: layout style;
   transform: translateZ(0);
-}
-
-.perf-item {
-  will-change: auto;
-  contain: layout;
 }

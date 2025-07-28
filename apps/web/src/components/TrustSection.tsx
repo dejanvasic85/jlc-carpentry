@@ -1,3 +1,6 @@
+import Button from '@/components/Button';
+import Card from '@/components/Card';
+
 interface TrustSectionProps {
   className?: string;
 }
@@ -44,24 +47,24 @@ export default function TrustSection({ className = '' }: TrustSectionProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {features.map((feature, index) => (
-            <div key={index} className="glass-dark rounded-xl p-8 text-center">
+            <Card key={index} variant="glass-dark" className="p-8 text-center" hover={false}>
               <div className="text-5xl mb-4">{feature.icon}</div>
               <h3 className="font-heading text-xl text-blue-300 mb-4">{feature.title}</h3>
               <p className="text-gray-300 leading-relaxed">{feature.desc}</p>
-            </div>
+            </Card>
           ))}
         </div>
 
         {/* CTA Card */}
-        <div className="card-glass bg-gradient-to-r from-blue-600 to-blue-700 p-12 rounded-2xl border border-blue-400/20">
+        <Card className="bg-gradient-to-r from-blue-600 to-blue-700 p-12 border border-blue-400/20" hover={false}>
           <h3 className="font-heading text-3xl md:text-4xl mb-4 text-white">GET YOUR FREE CONSULTATION TODAY</h3>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
             Call us now or visit our Google Business page for reviews and comprehensive project information
           </p>
-          <button className="bg-slate-900 hover:bg-slate-800 text-white font-bold py-4 px-12 text-xl tracking-wide transition-colors duration-200 shadow-lg hover:shadow-xl">
+          <Button variant="primary" size="lg">
             CONTACT US NOW
-          </button>
-        </div>
+          </Button>
+        </Card>
       </div>
     </section>
   );
