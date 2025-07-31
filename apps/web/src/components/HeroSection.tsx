@@ -21,7 +21,6 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
 
   return (
     <section
-      id="home"
       className={`perf-section relative py-20 bg-gradient-to-br from-blue-600 via-blue-700 to-slate-800 text-white overflow-hidden ${className}`}
     >
       <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>

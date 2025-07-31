@@ -46,7 +46,7 @@ export default function Header({ className = '' }: HeaderProps) {
   };
 
   return (
-    <header className={`relative bg-jlc-black text-white overflow-hidden ${className}`}>
+    <header className={`sticky top-0 z-50 bg-jlc-black text-white overflow-hidden ${className}`}>
       <div className="absolute inset-0 bg-jlc-header-gradient"></div>
       <div
         className="absolute inset-0 opacity-30"
@@ -66,7 +66,7 @@ export default function Header({ className = '' }: HeaderProps) {
               className="rounded-lg border border-white/20 md:w-12 md:h-12"
             />
             <div>
-              <h1 className="text-sm md:text-2xl font-heading tracking-wide leading-tight">
+              <h1 className="text-sm md:text-2xl font-heading tracking-wide leading-tight" id="home">
                 JLC CARPENTRY & BUILDING SERVICES
               </h1>
               <p className="text-jlc-blue-light text-xs md:text-sm font-medium">PTY LTD</p>
