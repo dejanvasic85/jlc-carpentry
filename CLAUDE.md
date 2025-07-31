@@ -34,8 +34,9 @@ Here are some commands you can use:
 - Avoid use of inline styles, prefer Tailwind CSS classes
 - Avoid using `any` type in Typescript or casting with as
 - Declare constant values and objects using `const`
-- Constant values that are objects, do not use CAPS for the variable name, use camelCase instead suffixed with 'Value'.
+- Constant values that are objects, do not use CAPS for the variable name, use camelCase instead suffixed with 'Value'
 - Event handlers should be named with the `handle` prefix (e.g. `handleClick`)
+- Only write code comments when the code is not clear and keep it conscise, avoid commenting out code
 
 # Workflow
 
