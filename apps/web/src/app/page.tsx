@@ -1,7 +1,7 @@
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import ServicesSection from '@/components/ServicesSection';
-import TrustSection from '@/components/TrustSection';
+import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
 export default function Home() {
@@ -10,7 +10,7 @@ export default function Home() {
       <Header />
       <HeroSection />
       <ServicesSection />
-      <TrustSection />
+      <Contact />
       <Footer />
     </div>
   );

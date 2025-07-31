@@ -19,6 +19,12 @@ const navigationItemsValue: readonly NavigationItem[] = [
   { id: 'contact', label: 'CONTACT', href: '#contact' },
 ] as const;
 
+const BREAKPOINTS = {
+  lg: 1024, // Tailwind's lg breakpoint
+} as const;
+
+const HEADER_HEIGHT = 80 as const;
+
 export default function Header({ className = '' }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -28,8 +34,8 @@ export default function Header({ className = '' }: HeaderProps) {
     const targetElement = document.getElementById(targetId);
 
     if (targetElement) {
-      // Calculate header height to offset scroll position
-      const headerHeight = 80; // Approximate header height
+      const isMobile = window.innerWidth < BREAKPOINTS.lg;
+      const headerHeight = isMobile ? HEADER_HEIGHT + 240 : HEADER_HEIGHT;
       const elementPosition = targetElement.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
 
@@ -66,7 +72,7 @@ export default function Header({ className = '' }: HeaderProps) {
               className="rounded-lg border border-white/20 md:w-12 md:h-12"
             />
             <div>
-              <h1 className="text-sm md:text-2xl font-heading tracking-wide leading-tight" id="home">
+              <h1 className="text-sm md:text-2xl font-heading tracking-wide leading-tight">
                 JLC CARPENTRY & BUILDING SERVICES
               </h1>
               <p className="text-jlc-blue-light text-xs md:text-sm font-medium">PTY LTD</p>

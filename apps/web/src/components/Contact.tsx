@@ -1,7 +1,7 @@
 import Button from '@/components/Button';
 import Card from '@/components/Card';
 
-interface TrustSectionProps {
+interface ContactSectionProps {
   className?: string;
 }
 
@@ -28,7 +28,8 @@ const features: Feature[] = [
     icon: '📍',
   },
 ];
-export default function TrustSection({ className = '' }: TrustSectionProps) {
+
+export default function ContactSection({ className = '' }: ContactSectionProps) {
   return (
     <section id="about" className={`perf-section py-20 bg-slate-900 text-white relative overflow-hidden ${className}`}>
       <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-800 to-blue-900"></div>
@@ -54,16 +55,18 @@ export default function TrustSection({ className = '' }: TrustSectionProps) {
           ))}
         </div>
 
-        {/* CTA Card */}
-        <Card className="bg-gradient-to-r from-blue-600 to-blue-700 p-12 border border-blue-400/20" hover={false}>
-          <h3 className="font-heading text-3xl md:text-4xl mb-4 text-white">GET YOUR FREE CONSULTATION TODAY</h3>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Call us now or visit our Google Business page for reviews and comprehensive project information
-          </p>
-          <Button variant="primary" size="lg">
-            CONTACT US NOW
-          </Button>
-        </Card>
+        <div id="contact" className="mt-2">
+          {/* CTA Card */}
+          <Card className="bg-gradient-to-r from-blue-600 to-blue-700 p-12 border border-blue-400/20" hover={false}>
+            <h3 className="font-heading text-3xl md:text-4xl mb-4 text-white">GET YOUR FREE CONSULTATION TODAY</h3>
+            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+              Call us now or visit our Google Business page for reviews and comprehensive project information
+            </p>
+            <Button variant="primary" size="lg">
+              CONTACT US NOW
+            </Button>
+          </Card>
+        </div>
       </div>
     </section>
   );

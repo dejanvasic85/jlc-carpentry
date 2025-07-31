@@ -37,6 +37,7 @@ Here are some commands you can use:
 - Constant values that are objects, do not use CAPS for the variable name, use camelCase instead suffixed with 'Value'
 - Event handlers should be named with the `handle` prefix (e.g. `handleClick`)
 - Only write code comments when the code is not clear and keep it conscise, avoid commenting out code
+- Avoid magic numbers and strings, use constants instead
 
 # Workflow
 
