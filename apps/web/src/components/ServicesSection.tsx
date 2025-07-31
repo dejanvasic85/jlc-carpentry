@@ -62,14 +62,14 @@ export default function ServicesSection({ className = '' }: ServicesSectionProps
           {services.map((service, index) => (
             <div key={index} className="group relative">
               <Card className="p-8 h-full border-l-4 border-blue-600 hover:border-l-8 transition-all duration-300">
-                <div className="flex items-start space-x-4 mb-6">
+                <div className="flex flex-col sm:flex-row sm:items-start space-y-4 sm:space-y-0 sm:space-x-4 mb-6">
                   <div
-                    className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center text-2xl shadow-lg`}
+                    className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center text-2xl shadow-lg flex-shrink-0`}
                   >
                     {service.icon}
                   </div>
-                  <div>
-                    <h3 className="font-heading text-2xl text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+                  <div className="flex-1">
+                    <h3 className="font-heading text-xl sm:text-2xl text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
                       {service.title}
                     </h3>
                   </div>
