@@ -12,44 +12,44 @@ interface Service {
   color: string;
 }
 
-export default function ServicesSection({ className = '' }: ServicesSectionProps) {
-  const services: Service[] = [
-    {
-      title: 'DECKS & PERGOLAS',
-      desc: "Custom-designed outdoor structures built to withstand Melbourne's diverse weather conditions. From simple decks to elaborate pergolas, we create outdoor living spaces that enhance your lifestyle and property value.",
-      features: ['Weather-resistant materials', 'Council-approved designs', '10-year structural warranty'],
-      icon: '🏗️',
-      color: 'from-blue-500 to-blue-600',
-    },
-    {
-      title: 'KITCHEN & BATHROOM RENOVATIONS',
-      desc: 'Complete renovation services from initial concept through to final completion. We coordinate all trades and manage every aspect of your project for seamless, stress-free results.',
-      features: ['Full project management', 'Licensed trades coordination', 'Quality assurance guarantee'],
-      icon: '🔨',
-      color: 'from-emerald-500 to-emerald-600',
-    },
-    {
-      title: 'DOORS, WINDOWS & CLADDING',
-      desc: 'Professional installation of premium doors, windows, and exterior cladding systems. We focus on improving both the aesthetic appeal and energy efficiency of your property.',
-      features: ['Energy-efficient solutions', 'Premium materials only', 'Professional installation'],
-      icon: '🚪',
-      color: 'from-purple-500 to-purple-600',
-    },
-    {
-      title: 'STRUCTURAL MODIFICATIONS',
-      desc: 'Safe and compliant structural changes including wall removal, extensions, and load-bearing modifications. All work includes professional engineering consultation and council compliance.',
-      features: ['Engineering consultation', 'Council permit assistance', 'Structural warranties'],
-      icon: '🏢',
-      color: 'from-orange-500 to-orange-600',
-    },
-  ];
+const services: Service[] = [
+  {
+    title: 'DECKS & PERGOLAS',
+    desc: "Custom-designed outdoor structures built to withstand Melbourne's diverse weather conditions. From simple decks to elaborate pergolas, we create outdoor living spaces that enhance your lifestyle and property value.",
+    features: ['Weather-resistant materials', 'Council-approved designs', '10-year structural warranty'],
+    icon: '🏗️',
+    color: 'from-blue-500 to-blue-600',
+  },
+  {
+    title: 'KITCHEN & BATHROOM RENOVATIONS',
+    desc: 'Complete renovation services from initial concept through to final completion. We coordinate all trades and manage every aspect of your project for seamless, stress-free results.',
+    features: ['Full project management', 'Licensed trades coordination', 'Quality assurance guarantee'],
+    icon: '🔨',
+    color: 'from-emerald-500 to-emerald-600',
+  },
+  {
+    title: 'DOORS, WINDOWS & CLADDING',
+    desc: 'Professional installation of premium doors, windows, and exterior cladding systems. We focus on improving both the aesthetic appeal and energy efficiency of your property.',
+    features: ['Energy-efficient solutions', 'Premium materials only', 'Professional installation'],
+    icon: '🚪',
+    color: 'from-purple-500 to-purple-600',
+  },
+  {
+    title: 'STRUCTURAL MODIFICATIONS',
+    desc: 'Safe and compliant structural changes including wall removal, extensions, and load-bearing modifications. All work includes professional engineering consultation and council compliance.',
+    features: ['Engineering consultation', 'Council permit assistance', 'Structural warranties'],
+    icon: '🏢',
+    color: 'from-orange-500 to-orange-600',
+  },
+];
 
+export default function ServicesSection({ className = '' }: ServicesSectionProps) {
   return (
-    <section className={`perf-section py-20 bg-gradient-to-br from-slate-50 to-slate-100 ${className}`}>
+    <section id="services" className={`perf-section py-20 bg-gradient-to-br from-slate-50 to-slate-100 ${className}`}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="font-heading text-4xl md:text-5xl text-slate-900 mb-4 tracking-tight">
-            OUR <span className="text-blue-600">EXPERTISE</span>
+          <h2 className="font-heading text-4xl md:text-5xl text-slate-900 mb-4 tracking-tight capitalize">
+            Our <span className="text-blue-600">expertise</span>
           </h2>
           <div className="w-24 h-1 bg-blue-600 mx-auto mb-6"></div>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">

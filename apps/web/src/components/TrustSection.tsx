@@ -30,7 +30,7 @@ const features: Feature[] = [
 ];
 export default function TrustSection({ className = '' }: TrustSectionProps) {
   return (
-    <section className={`perf-section py-20 bg-slate-900 text-white relative overflow-hidden ${className}`}>
+    <section id="about" className={`perf-section py-20 bg-slate-900 text-white relative overflow-hidden ${className}`}>
       <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-800 to-blue-900"></div>
       <div
         className="absolute inset-0 opacity-30"

@@ -6,8 +6,44 @@ interface HeaderProps {
   className?: string;
 }
 
+interface NavigationItem {
+  id: string;
+  label: string;
+  href: string;
+}
+
+const navigationItemsValue: readonly NavigationItem[] = [
+  { id: 'home', label: 'HOME', href: '#home' },
+  { id: 'services', label: 'SERVICES', href: '#services' },
+  { id: 'about', label: 'ABOUT', href: '#about' },
+  { id: 'contact', label: 'CONTACT', href: '#contact' },
+] as const;
+
 export default function Header({ className = '' }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      // Calculate header height to offset scroll position
+      const headerHeight = 80; // Approximate header height
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+
+      // Update URL hash
+      window.history.pushState(null, '', href);
+    }
+
+    setIsMenuOpen(false);
+  };
 
   return (
     <header className={`relative bg-jlc-black text-white overflow-hidden ${className}`}>
@@ -39,21 +75,18 @@ export default function Header({ className = '' }: HeaderProps) {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-8">
-            <a
-              href="#home"
-              className="nav-link-active font-nav hover:text-white border-b-2 border-jlc-blue-light pb-1"
-            >
-              HOME
-            </a>
-            <a href="#services" className="nav-link text-white font-nav">
-              SERVICES
-            </a>
-            <a href="#about" className="nav-link text-white font-nav">
-              ABOUT
-            </a>
-            <a href="#contact" className="nav-link text-white font-nav">
-              CONTACT
-            </a>
+            {navigationItemsValue.map((item, index) => (
+              <a
+                key={item.id}
+                href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
+                className={`font-nav hover:text-white ${
+                  index === 0 ? 'nav-link-active border-b-2 border-jlc-blue-light pb-1' : 'nav-link text-white'
+                }`}
+              >
+                {item.label}
+              </a>
+            ))}
           </nav>
 
           {/* Mobile Hamburger Button */}
@@ -75,34 +108,18 @@ export default function Header({ className = '' }: HeaderProps) {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="lg:hidden mt-6 glass-dark rounded-xl px-6 py-6 space-y-4 border border-white/20">
-            <a
-              href="#home"
-              className="nav-link-active block font-nav hover:text-white py-3 border-b border-white/10"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              HOME
-            </a>
-            <a
-              href="#services"
-              className="nav-link block text-white font-nav py-3 border-b border-white/10"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              SERVICES
-            </a>
-            <a
-              href="#about"
-              className="nav-link block text-white font-nav py-3 border-b border-white/10"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              ABOUT
-            </a>
-            <a
-              href="#contact"
-              className="nav-link block text-white font-nav py-3"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              CONTACT
-            </a>
+            {navigationItemsValue.map((item, index) => (
+              <a
+                key={item.id}
+                href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
+                className={`block font-nav hover:text-white py-3 ${
+                  index === 0 ? 'nav-link-active' : 'nav-link text-white'
+                } ${index < navigationItemsValue.length - 1 ? 'border-b border-white/10' : ''}`}
+              >
+                {item.label}
+              </a>
+            ))}
           </div>
         )}
       </div>

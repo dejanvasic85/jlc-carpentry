@@ -13,7 +13,7 @@ Please read all the latest documentation for Next.js, Tailwind CSS, and Sanity C
 # Commands
 
 This is a monorepo with multiple apps so each command should target specific workspace.
-E.g. `npm run build -w <workspace-name>`.
+E.g. `npm run build -w <workspace-name>`. E.g. npm run type:check -w web.
 
 Here are some commands you can use:
 
@@ -28,10 +28,14 @@ Here are some commands you can use:
 - Destructure imports when possible (eg. import { foo } from 'bar')
 - React components should be functional components
 - Each React component should declare its own prop types using TypeScript within the same file
+- React components should not keep redeclaring constants and they should be declared outside the component function
 - Use camelCase for variable and function names
 - Use PascalCase for React component names
 - Avoid use of inline styles, prefer Tailwind CSS classes
 - Avoid using `any` type in Typescript or casting with as
+- Declare constant values and objects using `const`
+- Constant values that are objects, do not use CAPS for the variable name, use camelCase instead suffixed with 'Value'.
+- Event handlers should be named with the `handle` prefix (e.g. `handleClick`)
 
 # Workflow
 
