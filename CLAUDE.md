@@ -3,19 +3,19 @@
 - Next.js (located under apps/web)
 - Tailwind CSS
 - Sanity CMS (schema located under apps/content-studio)
-- Accessibility (a11y) compliant 100%
+- Accessibility (a11y) AAA compliant
 - Responsive design (mobile-first)
 - Clean and maintainable code with re-usable React components
 - Ensure the use of typescript alias @/ for imports
 
-Please read all the latest documentation for Next.js, Tailwind CSS, and Sanity CMS to ensure you are familiar with the latest features and best practices.
+Please read all the latest documentation for Next.js, Tailwind CSS, and Sanity CMS to ensure you are familiar with the latest features and best practices before implementing any new features or changes in these areas.
 
 # Commands
 
 This is a monorepo with multiple apps so each command should target specific workspace.
 E.g. `npm run build -w <workspace-name>`.
 
-Here are some common commands you can use:
+Here are some commands you can use:
 
 - npm run type:check: Runs TypeScript type checking without building
 - npm run format: Uses Prettier to format the code

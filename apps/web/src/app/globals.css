@@ -2,7 +2,7 @@
 
 @theme {
   --color-jlc-blue: #4a90e2;
-  --color-jlc-blue-light: #7bb3f0;  
+  --color-jlc-blue-light: #7bb3f0;
   --color-jlc-blue-dark: #2e5984;
   --color-jlc-black: #1a1a1a;
   --color-jlc-gray: #f8fafc;
@@ -23,7 +23,12 @@
 
 /* Header specific gradients */
 .bg-jlc-header-gradient {
-  background-image: linear-gradient(to right, var(--color-jlc-black), var(--color-jlc-black), var(--color-jlc-blue-dark));
+  background-image: linear-gradient(
+    to right,
+    var(--color-jlc-black),
+    var(--color-jlc-black),
+    var(--color-jlc-blue-dark)
+  );
 }
 
 /* Navigation hover states */
@@ -39,7 +44,6 @@
   color: var(--color-jlc-blue-light);
   border-color: var(--color-jlc-blue-light);
 }
-
 
 html {
   scroll-behavior: smooth;

@@ -11,25 +11,24 @@ interface Feature {
   icon: string;
 }
 
+const features: Feature[] = [
+  {
+    title: 'LICENSED & INSURED',
+    desc: 'Fully licensed builders with comprehensive insurance coverage for complete peace of mind.',
+    icon: '🛡️',
+  },
+  {
+    title: 'QUALITY GUARANTEE',
+    desc: 'We stand behind our work with extensive warranties and use only premium materials and finishes.',
+    icon: '⭐',
+  },
+  {
+    title: 'LOCAL EXPERTISE',
+    desc: 'Based in Alphington, serving all Melbourne areas with deep local knowledge and established relationships.',
+    icon: '📍',
+  },
+];
 export default function TrustSection({ className = '' }: TrustSectionProps) {
-  const features: Feature[] = [
-    {
-      title: 'LICENSED & INSURED',
-      desc: 'Fully licensed builders with comprehensive insurance coverage for complete peace of mind.',
-      icon: '🛡️',
-    },
-    {
-      title: 'QUALITY GUARANTEE',
-      desc: 'We stand behind our work with extensive warranties and use only premium materials and finishes.',
-      icon: '⭐',
-    },
-    {
-      title: 'LOCAL EXPERTISE',
-      desc: 'Based in Alphington, serving all Melbourne areas with deep local knowledge and established relationships.',
-      icon: '📍',
-    },
-  ];
-
   return (
     <section className={`perf-section py-20 bg-slate-900 text-white relative overflow-hidden ${className}`}>
       <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-800 to-blue-900"></div>
