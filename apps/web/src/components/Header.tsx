@@ -24,9 +24,11 @@ const BREAKPOINTS = {
 } as const;
 
 const HEADER_HEIGHT = 80 as const;
+const OFFSET_HEIGHT = 40 as const; // Additional offset for better alignment
 
 export default function Header({ className = '' }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -35,7 +37,7 @@ export default function Header({ className = '' }: HeaderProps) {
 
     if (targetElement) {
       const isMobile = window.innerWidth < BREAKPOINTS.lg;
-      const headerHeight = isMobile ? HEADER_HEIGHT + 240 : HEADER_HEIGHT;
+      const headerHeight = isMobile ? HEADER_HEIGHT + OFFSET_HEIGHT : OFFSET_HEIGHT;
       const elementPosition = targetElement.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
 
@@ -44,8 +46,9 @@ export default function Header({ className = '' }: HeaderProps) {
         behavior: 'smooth',
       });
 
-      // Update URL hash
       window.history.pushState(null, '', href);
+
+      setActiveSection(targetId);
     }
 
     setIsMenuOpen(false);
@@ -81,13 +84,13 @@ export default function Header({ className = '' }: HeaderProps) {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-8">
-            {navigationItemsValue.map((item, index) => (
+            {navigationItemsValue.map((item) => (
               <a
                 key={item.id}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className={`font-nav hover:text-white ${
-                  index === 0 ? 'nav-link-active border-b-2 border-jlc-blue-light pb-1' : 'nav-link text-white'
+                className={`font-nav hover:text-white transition-colors ${
+                  activeSection === item.id ? 'text-white border-b-2 border-jlc-blue-light pb-1' : 'text-white'
                 }`}
               >
                 {item.label}
@@ -119,8 +122,8 @@ export default function Header({ className = '' }: HeaderProps) {
                 key={item.id}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className={`block font-nav hover:text-white py-3 ${
-                  index === 0 ? 'nav-link-active' : 'nav-link text-white'
+                className={`block font-nav hover:text-white py-3 transition-colors ${
+                  activeSection === item.id ? 'text-white border-b-2 border-jlc-blue-light pb-1' : 'text-white'
                 } ${index < navigationItemsValue.length - 1 ? 'border-b border-white/10' : ''}`}
               >
                 {item.label}
