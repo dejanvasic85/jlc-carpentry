@@ -24,7 +24,7 @@ const BREAKPOINTS = {
 } as const;
 
 const HEADER_HEIGHT = 80 as const;
-const OFFSET_HEIGHT = 40 as const; // Additional offset for better alignment
+const MOBILE_OFFSET_HEIGHT = 260 as const; // Additional offset for better alignment
 
 export default function Header({ className = '' }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,7 +37,7 @@ export default function Header({ className = '' }: HeaderProps) {
 
     if (targetElement) {
       const isMobile = window.innerWidth < BREAKPOINTS.lg;
-      const headerHeight = isMobile ? HEADER_HEIGHT + OFFSET_HEIGHT : OFFSET_HEIGHT;
+      const headerHeight = isMobile ? HEADER_HEIGHT + MOBILE_OFFSET_HEIGHT : HEADER_HEIGHT;
       const elementPosition = targetElement.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
 
