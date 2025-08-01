@@ -1,5 +1,9 @@
+'use client';
+
 import Button from '@/components/Button';
 import Card from '@/components/Card';
+import ContactDialog from '@/components/ContactDialog';
+import { useState } from 'react';
 
 interface ContactSectionProps {
   className?: string;
@@ -30,6 +34,15 @@ const features: Feature[] = [
 ];
 
 export default function ContactSection({ className = '' }: ContactSectionProps) {
+  const [isContactDialogOpen, setIsContactDialogOpen] = useState(false);
+
+  const handleOpenDialog = () => {
+    setIsContactDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setIsContactDialogOpen(false);
+  };
   return (
     <section id="about" className={`perf-section py-20 bg-slate-900 text-white relative overflow-hidden ${className}`}>
       <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-800 to-blue-900"></div>
@@ -62,12 +75,14 @@ export default function ContactSection({ className = '' }: ContactSectionProps) 
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
               Call us now or visit our Google Business page for reviews and comprehensive project information
             </p>
-            <Button variant="primary" size="lg">
+            <Button variant="primary" size="lg" onClick={handleOpenDialog}>
               CONTACT US NOW
             </Button>
           </Card>
         </div>
       </div>
+
+      <ContactDialog isOpen={isContactDialogOpen} onClose={handleCloseDialog} />
     </section>
   );
 }

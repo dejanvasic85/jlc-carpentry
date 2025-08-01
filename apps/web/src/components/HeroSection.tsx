@@ -1,5 +1,9 @@
+'use client';
+
 import Button from '@/components/Button';
 import Card from '@/components/Card';
+import ContactDialog from '@/components/ContactDialog';
+import { useState } from 'react';
 
 interface HeroSectionProps {
   className?: string;
@@ -12,12 +16,22 @@ interface Stat {
 }
 
 export default function HeroSection({ className = '' }: HeroSectionProps) {
+  const [isContactDialogOpen, setIsContactDialogOpen] = useState(false);
+
   const stats: Stat[] = [
     { number: '25+', label: 'Years Experience', subtitle: 'Established 1995' },
     { number: '1000+', label: 'Projects Completed', subtitle: 'Residential & Commercial' },
     { number: '100%', label: 'Licensed & Insured', subtitle: 'Full Compliance' },
     { number: '24/7', label: 'Support Available', subtitle: 'Emergency Services' },
   ];
+
+  const handleOpenDialog = () => {
+    setIsContactDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setIsContactDialogOpen(false);
+  };
 
   return (
     <section
@@ -43,7 +57,7 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-          <Button variant="primary" size="md">
+          <Button variant="primary" size="md" onClick={handleOpenDialog}>
             FREE ESTIMATE
           </Button>
           <Button variant="outline" size="md">
@@ -62,6 +76,8 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
           ))}
         </div>
       </div>
+
+      <ContactDialog isOpen={isContactDialogOpen} onClose={handleCloseDialog} />
     </section>
   );
 }
