@@ -21,7 +21,7 @@
   "license": "MIT",
   "homepage": "https://github.com/dejanvasic85/jlc-carpentry#readme",
   "volta": {
-    "node": "22.17.1"
+    "node": "22.18.0"
   },
   "dependencies": {
     "turbo": "2.5.5"
