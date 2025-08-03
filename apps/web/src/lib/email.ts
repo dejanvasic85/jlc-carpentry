@@ -20,7 +20,7 @@ export async function sendContactEmail(data: ContactFormData) {
   const validation = validateContactForm(data);
 
   if (!validation.success) {
-    throw new Error(`Validation failed: ${validation.error.errors.map((e) => e.message).join(', ')}`);
+    throw new Error(`Validation failed: ${validation.error.issues.map((e) => e.message).join(', ')}`);
   }
 
   const config = getConfig();
