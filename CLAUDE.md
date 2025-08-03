@@ -28,7 +28,7 @@ Here are some commands you can use:
 - Destructure imports when possible (eg. import { foo } from 'bar')
 - React components should be functional components
 - Each React component should declare its own prop types using TypeScript within the same file
-- React components should not keep redeclaring constants and they should be declared outside the component function
+- React component files should have constants declared outside the component function
 - Use camelCase for variable and function names
 - Use PascalCase for React component names
 - Avoid use of inline styles, prefer Tailwind CSS classes
@@ -38,6 +38,7 @@ Here are some commands you can use:
 - Event handlers should be named with the `handle` prefix (e.g. `handleClick`)
 - Only write code comments when the code is not clear and keep it conscise, avoid commenting out code
 - Avoid magic numbers and strings, use constants instead
+- Each file should have line break at the end
 
 # Workflow
 
