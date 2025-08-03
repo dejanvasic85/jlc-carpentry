@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface HeaderProps {
   className?: string;
@@ -29,6 +29,55 @@ const MOBILE_OFFSET_HEIGHT = 260 as const; // Additional offset for better align
 export default function Header({ className = '' }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-10% 0px -60% 0px', // Trigger when section is in the top portion of viewport
+      threshold: 0.1
+    };
+
+    const visibleSections = new Set<string>();
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        const sectionId = entry.target.id;
+        if (!sectionId || !navigationItemsValue.some(item => item.id === sectionId)) return;
+
+        if (entry.isIntersecting) {
+          visibleSections.add(sectionId);
+        } else {
+          visibleSections.delete(sectionId);
+        }
+      });
+
+      // Find the topmost visible section
+      if (visibleSections.size > 0) {
+        const sectionsOrder = ['home', 'services', 'about', 'contact'];
+        const topSection = sectionsOrder.find(section => visibleSections.has(section));
+        
+        if (topSection && topSection !== activeSection) {
+          setActiveSection(topSection);
+          // Update URL hash without scrolling
+          window.history.replaceState(null, '', `#${topSection}`);
+        }
+      }
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    // Observe all navigation target sections
+    navigationItemsValue.forEach(item => {
+      const element = document.getElementById(item.id);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [activeSection]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
