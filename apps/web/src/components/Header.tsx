@@ -34,7 +34,7 @@ export default function Header({ className = '' }: HeaderProps) {
     const observerOptions = {
       root: null,
       rootMargin: '-10% 0px -60% 0px', // Trigger when section is in the top portion of viewport
-      threshold: 0.1
+      threshold: 0.1,
     };
 
     const visibleSections = new Set<string>();
@@ -42,7 +42,7 @@ export default function Header({ className = '' }: HeaderProps) {
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         const sectionId = entry.target.id;
-        if (!sectionId || !navigationItemsValue.some(item => item.id === sectionId)) return;
+        if (!sectionId || !navigationItemsValue.some((item) => item.id === sectionId)) return;
 
         if (entry.isIntersecting) {
           visibleSections.add(sectionId);
@@ -54,8 +54,8 @@ export default function Header({ className = '' }: HeaderProps) {
       // Find the topmost visible section
       if (visibleSections.size > 0) {
         const sectionsOrder = ['home', 'services', 'about', 'contact'];
-        const topSection = sectionsOrder.find(section => visibleSections.has(section));
-        
+        const topSection = sectionsOrder.find((section) => visibleSections.has(section));
+
         if (topSection && topSection !== activeSection) {
           setActiveSection(topSection);
           // Update URL hash without scrolling
@@ -67,7 +67,7 @@ export default function Header({ className = '' }: HeaderProps) {
     const observer = new IntersectionObserver(observerCallback, observerOptions);
 
     // Observe all navigation target sections
-    navigationItemsValue.forEach(item => {
+    navigationItemsValue.forEach((item) => {
       const element = document.getElementById(item.id);
       if (element) {
         observer.observe(element);

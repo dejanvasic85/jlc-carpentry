@@ -3,7 +3,10 @@ import { z } from 'zod';
 import { getConfig } from './config';
 
 const contactFormSchema = z.object({
-  contactDetails: z.string().min(1, 'Contact details are required').max(100, 'Contact details must be 100 characters or less'),
+  contactDetails: z
+    .string()
+    .min(1, 'Contact details are required')
+    .max(100, 'Contact details must be 100 characters or less'),
   description: z.string().min(1, 'Description is required').max(1000, 'Description must be 1000 characters or less'),
 });
 
@@ -15,13 +18,13 @@ export function validateContactForm(data: ContactFormData) {
 
 export async function sendContactEmail(data: ContactFormData) {
   const validation = validateContactForm(data);
-  
+
   if (!validation.success) {
-    throw new Error(`Validation failed: ${validation.error.errors.map(e => e.message).join(', ')}`);
+    throw new Error(`Validation failed: ${validation.error.errors.map((e) => e.message).join(', ')}`);
   }
 
   const config = getConfig();
-  
+
   if (!config.emailEnabled) {
     console.log('Email sending is disabled. Contact form data:', {
       contactDetails: data.contactDetails,
@@ -78,11 +81,11 @@ Submitted at: ${new Date().toISOString()}`,
   try {
     const command = new SendEmailCommand(emailParams);
     const result = await sesClient.send(command);
-    
-    return { 
-      success: true, 
+
+    return {
+      success: true,
       message: 'Email sent successfully',
-      messageId: result.MessageId 
+      messageId: result.MessageId,
     };
   } catch (error) {
     console.error('Failed to send email:', error);

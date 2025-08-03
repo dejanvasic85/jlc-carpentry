@@ -13,7 +13,7 @@ export interface ContactFormState {
 
 export async function submitContactForm(
   prevState: ContactFormState | null,
-  formData: FormData
+  formData: FormData,
 ): Promise<ContactFormState> {
   try {
     const data: ContactFormData = {
@@ -22,7 +22,7 @@ export async function submitContactForm(
     };
 
     const result = await sendContactEmail(data);
-    
+
     return {
       success: true,
       message: 'Thank you for your message! Our team has been notified and will get back to you shortly.',
@@ -40,7 +40,7 @@ export async function submitContactForm(
     }
 
     console.error('Contact form submission error:', error);
-    
+
     return {
       success: false,
       message: "We're experiencing technical difficulties. Please try again later or contact us directly.",
