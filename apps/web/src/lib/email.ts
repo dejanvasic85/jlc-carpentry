@@ -42,8 +42,6 @@ export async function sendContactEmail(data: ContactFormData) {
     },
   });
 
-  console.log('sending email', config);
-
   const emailParams = {
     Source: config.emailFrom,
     Destination: {
