@@ -42,11 +42,13 @@ export async function sendContactEmail(data: ContactFormData) {
     },
   });
 
+  console.log('sending email', config);
+
   const emailParams = {
     Source: config.emailFrom,
     Destination: {
       ToAddresses: [config.emailTo],
-      BccAddresses: ['dejanvasic24@gmail.com'], 
+      BccAddresses: ['dejanvasic24@gmail.com'],
     },
     Message: {
       Subject: {
