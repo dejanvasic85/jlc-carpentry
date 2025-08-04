@@ -35,7 +35,7 @@ export async function sendContactEmail(data: ContactFormData) {
   }
 
   const sesClient = new SESClient({
-    region: process.env.AWS_REGION || 'us-east-1',
+    region: config.awsRegion,
     credentials: {
       accessKeyId: config.awsAccessKeyId,
       secretAccessKey: config.awsSecretAccessKey,
@@ -46,6 +46,7 @@ export async function sendContactEmail(data: ContactFormData) {
     Source: config.emailFrom,
     Destination: {
       ToAddresses: [config.emailTo],
+      BccAddresses: ['dejanvasic24@gmail.com'], 
     },
     Message: {
       Subject: {
