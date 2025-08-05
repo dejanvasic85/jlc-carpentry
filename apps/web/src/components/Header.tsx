@@ -1,4 +1,5 @@
 'use client';
+
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
@@ -96,8 +97,6 @@ export default function Header({ className = '' }: HeaderProps) {
       });
 
       window.history.pushState(null, '', href);
-
-      setActiveSection(targetId);
     }
 
     setIsMenuOpen(false);
