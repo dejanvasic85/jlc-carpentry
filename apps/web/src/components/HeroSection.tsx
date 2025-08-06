@@ -87,19 +87,19 @@ export default function HeroSection({
     >
       <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
       <div className="absolute top-10 right-10 w-64 h-64 bg-white/5 rounded-full blur-xl opacity-60"></div>
-      <div className="absolute bottom-10 left-10 w-48 h-48 bg-blue-300/10 rounded-full blur-xl opacity-70"></div>
+      <div className="absolute bottom-10 left-10 w-48 h-48 bg-jlc-blue-light/10 rounded-full blur-xl opacity-70"></div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
         <div className="mb-12">
           <h2 className="font-display text-5xl md:text-7xl mb-6 leading-tight">
             <span className="capitalize">{title.split(' ')[0]}</span>
             <br />
-            <span className="bg-gradient-to-r from-blue-200 to-white bg-clip-text text-transparent capitalize">
+            <span className="bg-gradient-to-r from-jlc-blue-light to-white bg-clip-text capitalize">
               {title.split(' ').slice(1).join(' ')}
             </span>
           </h2>
-          <p className="text-2xl md:text-3xl mb-8 text-blue-100 font-light">{subtitle}</p>
-          {description && <p className="text-lg mb-8 text-blue-200 max-w-3xl mx-auto">{description}</p>}
+          <p className="text-2xl md:text-3xl mb-8  font-light">{subtitle}</p>
+          {description && <p className="text-lg mb-8 max-w-3xl mx-auto">{description}</p>}
         </div>
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
@@ -117,9 +117,9 @@ export default function HeroSection({
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
             <Card key={index} variant="glass-dark" className="p-6 text-center" hover={false}>
-              <div className="text-4xl font-bold text-blue-200 mb-2">{stat.number}</div>
+              <div className="text-4xl font-bold text-jlc-blue-light mb-2">{stat.number}</div>
               <div className="text-white font-semibold mb-1">{stat.label}</div>
-              <div className="text-blue-200 text-xs">{stat.subtitle}</div>
+              <div className="text-xs">{stat.subtitle}</div>
             </Card>
           ))}
         </div>

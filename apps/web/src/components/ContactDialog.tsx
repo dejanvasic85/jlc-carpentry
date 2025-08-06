@@ -111,7 +111,7 @@ export default function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
                     id="contact-details"
                     type="text"
                     placeholder="your.email@example.com or 0400 000 000"
-                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
+                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-jlc-blue focus:border-jlc-blue transition-colors ${
                       errors.contactDetails ? 'border-red-300' : 'border-slate-300'
                     }`}
                     aria-invalid={errors.contactDetails ? 'true' : 'false'}
@@ -139,7 +139,7 @@ export default function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
                     id="description"
                     rows={4}
                     placeholder="Tell us about your project..."
-                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-vertical ${
+                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-jlc-blue focus:border-jlc-blue transition-colors resize-vertical ${
                       errors.description ? 'border-red-300' : 'border-slate-300'
                     }`}
                     aria-invalid={errors.description ? 'true' : 'false'}
@@ -163,7 +163,7 @@ export default function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
                   <button
                     type="submit"
                     disabled={isPending}
-                    className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed transition-colors font-medium flex items-center justify-center gap-2"
+                    className="flex-1 bg-jlc-blue text-white px-4 py-2 rounded-lg hover:bg-jlc-blue-dark disabled:bg-jlc-blue-light disabled:cursor-not-allowed transition-colors font-medium flex items-center justify-center gap-2"
                   >
                     {isPending && (
                       <svg

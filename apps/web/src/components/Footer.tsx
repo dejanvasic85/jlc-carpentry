@@ -14,7 +14,7 @@ export default function Footer({ className = '' }: FooterProps) {
               <Image src="/Business Logo 2.jpg" alt="JLC Logo" width={60} height={60} className="rounded-lg" />
               <div>
                 <h3 className="font-heading text-2xl">JLC CARPENTRY</h3>
-                <p className="text-blue-300 font-semibold">& BUILDING SERVICES PTY LTD</p>
+                <p className="text-jlc-blue-light font-semibold">& BUILDING SERVICES PTY LTD</p>
               </div>
             </div>
             <p className="text-gray-300 leading-relaxed mb-4">
@@ -23,36 +23,36 @@ export default function Footer({ className = '' }: FooterProps) {
             </p>
             <div className="space-y-2">
               <p className="text-gray-400">
-                <span className="text-blue-300 font-semibold">ABN:</span> [Company ABN]
+                <span className="text-jlc-blue-light font-semibold">ABN:</span> [Company ABN]
               </p>
               <p className="text-gray-400">
-                <span className="text-blue-300 font-semibold">License:</span> [Builder License]
+                <span className="text-jlc-blue-light font-semibold">License:</span> [Builder License]
               </p>
             </div>
           </div>
 
           <div>
-            <h4 className="font-heading text-xl text-blue-300 mb-4">LOCATION</h4>
+            <h4 className="font-heading text-xl text-jlc-blue-light mb-4">LOCATION</h4>
             <div className="space-y-2">
               <p className="text-gray-300">Based in Alphington</p>
               <p className="text-gray-300">Serving all areas of Melbourne</p>
-              <p className="text-blue-300 font-semibold">24/7 Emergency Services</p>
+              <p className="text-jlc-blue-light font-semibold">24/7 Emergency Services</p>
             </div>
           </div>
 
           <div>
-            <h4 className="font-heading text-xl text-blue-300 mb-4">CONNECT</h4>
+            <h4 className="font-heading text-xl text-jlc-blue-light mb-4">CONNECT</h4>
             <div className="space-y-3">
               <a
                 href="https://g.co/kgs/ZxMwn9o"
-                className="block text-white hover:text-blue-300 transition-colors font-medium"
+                className="block text-white hover:text-jlc-blue-light transition-colors font-medium"
               >
                 📍 Google Business Profile
               </a>
-              <a href="#" className="block text-white hover:text-blue-300 transition-colors font-medium">
+              <a href="#" className="block text-white hover:text-jlc-blue-light transition-colors font-medium">
                 📱 @Jlcbuilding
               </a>
-              <a href="#" className="block text-white hover:text-blue-300 transition-colors font-medium">
+              <a href="#" className="block text-white hover:text-jlc-blue-light transition-colors font-medium">
                 📘 Facebook Page
               </a>
             </div>
