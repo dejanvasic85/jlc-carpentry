@@ -4,13 +4,20 @@ import Button from '@/components/Button';
 import Card from '@/components/Card';
 import ContactDialog from '@/components/ContactDialog';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+
+interface ButtonData {
+  text: string;
+  action: 'contact' | 'navigate' | 'page' | 'external';
+  link?: string;
+}
 
 interface HeroSectionProps {
   title: string;
   subtitle: string;
   description?: string;
-  primaryButtonText: string;
-  secondaryButtonText: string;
+  primaryButton: ButtonData;
+  secondaryButton: ButtonData | null;
   className?: string;
 }
 
@@ -24,11 +31,12 @@ export default function HeroSection({
   title,
   subtitle,
   description,
-  primaryButtonText,
-  secondaryButtonText,
+  primaryButton,
+  secondaryButton,
   className = '',
 }: HeroSectionProps) {
   const [isContactDialogOpen, setIsContactDialogOpen] = useState(false);
+  const router = useRouter();
 
   const stats: Stat[] = [
     { number: '25+', label: 'Years Experience', subtitle: 'Established 1995' },
@@ -43,6 +51,33 @@ export default function HeroSection({
 
   const handleCloseDialog = () => {
     setIsContactDialogOpen(false);
+  };
+
+  const handleButtonAction = (button: ButtonData) => {
+    switch (button.action) {
+      case 'contact':
+        handleOpenDialog();
+        break;
+      case 'navigate':
+        if (button.link) {
+          // Navigate to section (scroll to element with ID)
+          const element = document.getElementById(button.link.replace('#', ''));
+          element?.scrollIntoView({ behavior: 'smooth' });
+        }
+        break;
+      case 'page':
+        if (button.link) {
+          // Navigate to internal page using Next.js router
+          router.push(button.link);
+        }
+        break;
+      case 'external':
+        if (button.link) {
+          // Open external link in new tab
+          window.open(button.link, '_blank', 'noopener,noreferrer');
+        }
+        break;
+    }
   };
 
   return (
@@ -68,12 +103,14 @@ export default function HeroSection({
         </div>
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-          <Button variant="primary" size="md" onClick={handleOpenDialog}>
-            <span className="capitalize">{primaryButtonText}</span>
+          <Button variant="primary" size="md" onClick={() => handleButtonAction(primaryButton)}>
+            <span className="capitalize">{primaryButton.text}</span>
           </Button>
-          <Button variant="outline" size="md">
-            <span className="capitalize">{secondaryButtonText}</span>
-          </Button>
+          {secondaryButton && (
+            <Button variant="outline" size="md" onClick={() => handleButtonAction(secondaryButton)}>
+              <span className="capitalize">{secondaryButton.text}</span>
+            </Button>
+          )}
         </div>
 
         {/* Corporate Stats */}

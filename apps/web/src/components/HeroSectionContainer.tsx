@@ -19,16 +19,25 @@ export default async function HeroSectionContainer({ className = '' }: HeroSecti
   const subtitle = content.subtitle || '25+ Years of Excellence in Carpentry and Construction';
   const description = content.description;
 
-  const primaryButtonText = buttons.primaryButton.text || 'Free Estimate';
-  const secondaryButtonText = buttons.secondaryButton?.text || 'View Our Work';
+  const primaryButton = {
+    text: buttons.primaryButton.text || 'Free Estimate',
+    action: buttons.primaryButton.action || 'contact',
+    link: buttons.primaryButton.link,
+  };
+
+  const secondaryButton = buttons.secondaryButton ? {
+    text: buttons.secondaryButton.text || 'View Our Work',
+    action: buttons.secondaryButton.action || 'navigate',
+    link: buttons.secondaryButton.link,
+  } : null;
 
   return (
     <HeroSection
       title={title}
       subtitle={subtitle}
       description={description}
-      primaryButtonText={primaryButtonText}
-      secondaryButtonText={secondaryButtonText}
+      primaryButton={primaryButton}
+      secondaryButton={secondaryButton}
       className={className}
     />
   );
