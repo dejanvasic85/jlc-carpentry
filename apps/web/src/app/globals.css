@@ -109,3 +109,16 @@ body {
   contain: layout style;
   transform: translateZ(0);
 }
+
+/* JLC Brand Gradient Classes */
+.from-jlc-blue {
+  --tw-gradient-from: var(--color-jlc-blue) var(--tw-gradient-from-position);
+}
+
+.via-jlc-blue-dark {
+  --tw-gradient-via: var(--color-jlc-blue-dark) var(--tw-gradient-via-position);
+}
+
+.to-jlc-black {
+  --tw-gradient-to: var(--color-jlc-black) var(--tw-gradient-to-position);
+}

@@ -6,6 +6,11 @@ import ContactDialog from '@/components/ContactDialog';
 import { useState } from 'react';
 
 interface HeroSectionProps {
+  title: string;
+  subtitle: string;
+  description?: string;
+  primaryButtonText: string;
+  secondaryButtonText: string;
   className?: string;
 }
 
@@ -15,7 +20,14 @@ interface Stat {
   subtitle: string;
 }
 
-export default function HeroSection({ className = '' }: HeroSectionProps) {
+export default function HeroSection({
+  title,
+  subtitle,
+  description,
+  primaryButtonText,
+  secondaryButtonText,
+  className = '',
+}: HeroSectionProps) {
   const [isContactDialogOpen, setIsContactDialogOpen] = useState(false);
 
   const stats: Stat[] = [
@@ -36,7 +48,7 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
   return (
     <section
       id="home"
-      className={`perf-section relative py-20 bg-gradient-to-br from-blue-600 via-blue-700 to-slate-800 text-white overflow-hidden ${className}`}
+      className={`perf-section relative py-20 bg-gradient-to-br from-jlc-blue via-jlc-blue-dark to-jlc-black text-white overflow-hidden ${className}`}
     >
       <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
       <div className="absolute top-10 right-10 w-64 h-64 bg-white/5 rounded-full blur-xl opacity-60"></div>
@@ -45,23 +57,22 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
         <div className="mb-12">
           <h2 className="font-display text-5xl md:text-7xl mb-6 leading-tight">
-            <span className="capitalize">Professional</span>
+            <span className="capitalize">{title.split(' ')[0]}</span>
             <br />
             <span className="bg-gradient-to-r from-blue-200 to-white bg-clip-text text-transparent capitalize">
-              Building Solutions
+              {title.split(' ').slice(1).join(' ')}
             </span>
           </h2>
-          <p className="text-2xl md:text-3xl mb-8 text-blue-100 font-light">
-            25+ Years of Excellence in Carpentry and Construction
-          </p>
+          <p className="text-2xl md:text-3xl mb-8 text-blue-100 font-light">{subtitle}</p>
+          {description && <p className="text-lg mb-8 text-blue-200 max-w-3xl mx-auto">{description}</p>}
         </div>
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
           <Button variant="primary" size="md" onClick={handleOpenDialog}>
-            <span className="capitalize">Free Estimate</span>
+            <span className="capitalize">{primaryButtonText}</span>
           </Button>
           <Button variant="outline" size="md">
-            <span className="capitalize">View Our Work</span>
+            <span className="capitalize">{secondaryButtonText}</span>
           </Button>
         </div>
 

@@ -10,6 +10,7 @@
 - [ ] Accessibility (a11y) AAA compliant testing
 - [ ] Performance testing with Lighthouse
 - [x] Improved Header with navigation links that scroll to sections of the page
+- [ ] Use classnames for conditional styling
 
 ## Contact form
 
