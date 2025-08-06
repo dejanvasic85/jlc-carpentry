@@ -14,28 +14,28 @@ interface Service {
 
 const services: Service[] = [
   {
-    title: 'DECKS & PERGOLAS',
+    title: 'Decks & Pergolas',
     desc: "Custom-designed outdoor structures built to withstand Melbourne's diverse weather conditions. From simple decks to elaborate pergolas, we create outdoor living spaces that enhance your lifestyle and property value.",
     features: ['Weather-resistant materials', 'Council-approved designs', '10-year structural warranty'],
     icon: '🏗️',
     color: 'from-blue-500 to-blue-600',
   },
   {
-    title: 'KITCHEN & BATHROOM RENOVATIONS',
+    title: 'Kitchen & Bathroom Renovations',
     desc: 'Complete renovation services from initial concept through to final completion. We coordinate all trades and manage every aspect of your project for seamless, stress-free results.',
     features: ['Full project management', 'Licensed trades coordination', 'Quality assurance guarantee'],
     icon: '🔨',
     color: 'from-emerald-500 to-emerald-600',
   },
   {
-    title: 'DOORS, WINDOWS & CLADDING',
+    title: 'Doors, Windows & Cladding',
     desc: 'Professional installation of premium doors, windows, and exterior cladding systems. We focus on improving both the aesthetic appeal and energy efficiency of your property.',
     features: ['Energy-efficient solutions', 'Premium materials only', 'Professional installation'],
     icon: '🚪',
     color: 'from-purple-500 to-purple-600',
   },
   {
-    title: 'STRUCTURAL MODIFICATIONS',
+    title: 'Structural Modifications',
     desc: 'Safe and compliant structural changes including wall removal, extensions, and load-bearing modifications. All work includes professional engineering consultation and council compliance.',
     features: ['Engineering consultation', 'Council permit assistance', 'Structural warranties'],
     icon: '🏢',
@@ -69,7 +69,7 @@ export default function ServicesSection({ className = '' }: ServicesSectionProps
                     {service.icon}
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-heading text-xl sm:text-2xl text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+                    <h3 className="font-heading text-xl sm:text-2xl text-slate-900 mb-2 group-hover:text-blue-600 transition-colors capitalize">
                       {service.title}
                     </h3>
                   </div>
@@ -88,7 +88,7 @@ export default function ServicesSection({ className = '' }: ServicesSectionProps
 
                 <div className="mt-6">
                   <button className="text-blue-600 font-bold hover:text-blue-700 transition-colors">
-                    LEARN MORE →
+                    <span className="capitalize">Learn More</span> →
                   </button>
                 </div>
               </Card>

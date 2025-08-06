@@ -45,10 +45,10 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
         <div className="mb-12">
           <h2 className="font-display text-5xl md:text-7xl mb-6 leading-tight">
-            PROFESSIONAL
+            <span className="capitalize">Professional</span>
             <br />
-            <span className="bg-gradient-to-r from-blue-200 to-white bg-clip-text text-transparent">
-              BUILDING SOLUTIONS
+            <span className="bg-gradient-to-r from-blue-200 to-white bg-clip-text text-transparent capitalize">
+              Building Solutions
             </span>
           </h2>
           <p className="text-2xl md:text-3xl mb-8 text-blue-100 font-light">
@@ -58,10 +58,10 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
           <Button variant="primary" size="md" onClick={handleOpenDialog}>
-            FREE ESTIMATE
+            <span className="capitalize">Free Estimate</span>
           </Button>
           <Button variant="outline" size="md">
-            VIEW OUR WORK
+            <span className="capitalize">View Our Work</span>
           </Button>
         </div>
 
