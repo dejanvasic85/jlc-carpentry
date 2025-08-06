@@ -61,7 +61,7 @@ export default function ServicesSection({ className = '' }: ServicesSectionProps
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {services.map((service, index) => (
             <div key={index} className="group relative">
-              <Card className="p-8 h-full border-l-4 border-jlc-blue hover:border-l-8 transition-all duration-300">
+              <Card className="p-8 h-full border-l-4 border-jlc-blue">
                 <div className="flex flex-col sm:flex-row sm:items-start space-y-4 sm:space-y-0 sm:space-x-4 mb-6">
                   <div
                     className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center text-2xl shadow-lg flex-shrink-0`}
@@ -69,19 +69,19 @@ export default function ServicesSection({ className = '' }: ServicesSectionProps
                     {service.icon}
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-heading text-xl sm:text-2xl text-slate-900 mb-2 group-hover:text-jlc-blue transition-colors capitalize">
+                    <h3 className="font-heading text-xl sm:text-3xl text-jlc-black mb-2 transition-colors capitalize">
                       {service.title}
                     </h3>
                   </div>
                 </div>
 
-                <p className="text-slate-600 leading-relaxed mb-6">{service.desc}</p>
+                <p className="text-slate-600 leading-relaxed text-lg mb-6">{service.desc}</p>
 
                 <div className="space-y-3">
                   {service.features.map((feature, idx) => (
                     <div key={idx} className="flex items-center space-x-3">
                       <div className="w-2 h-2 bg-jlc-blue rounded-full"></div>
-                      <span className="text-slate-700 font-medium text-sm">{feature}</span>
+                      <span className="text-slate-700 font-medium">{feature}</span>
                     </div>
                   ))}
                 </div>

@@ -20,7 +20,7 @@ export default function Card({ variant = 'glass', className = '', children, hove
       [-webkit-backdrop-filter:blur(8px)]
       [contain:layout_style]
       [transform:translateZ(0)]
-      ${hover ? 'transition-[box-shadow,transform] duration-200 ease-[will-change:transform] hover:shadow-[0_20px_40px_-8px_rgba(0,0,0,0.25)] hover:translate-y-[-2px] hover:[transform:translateY(-2px)_translateZ(0)]' : ''}
+      ${hover ? 'transition-shadow duration-200 hover:shadow-[0_20px_40px_-8px_rgba(0,0,0,0.25)]' : ''}
     `,
     'glass-dark': `
       bg-black/20 
