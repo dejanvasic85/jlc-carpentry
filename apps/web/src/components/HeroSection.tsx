@@ -5,6 +5,7 @@ import Card from '@/components/Card';
 import ContactDialog from '@/components/ContactDialog';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import type { Statistic } from '@/lib/sanity/schemas';
 
 interface ButtonData {
   text: string;
@@ -18,6 +19,7 @@ interface HeroSectionProps {
   description?: string;
   primaryButton: ButtonData;
   secondaryButton: ButtonData | null;
+  stats: Statistic[];
   className?: string;
 }
 
@@ -33,17 +35,22 @@ export default function HeroSection({
   description,
   primaryButton,
   secondaryButton,
+  stats,
   className = '',
 }: HeroSectionProps) {
   const [isContactDialogOpen, setIsContactDialogOpen] = useState(false);
   const router = useRouter();
 
-  const stats: Stat[] = [
+  // Fallback stats if none provided from Sanity
+  const fallbackStats: Stat[] = [
     { number: '25+', label: 'Years Experience', subtitle: 'Established 1995' },
     { number: '1000+', label: 'Projects Completed', subtitle: 'Residential & Commercial' },
     { number: '100%', label: 'Licensed & Insured', subtitle: 'Full Compliance' },
     { number: '24/7', label: 'Support Available', subtitle: 'Emergency Services' },
   ];
+
+  // Use Sanity stats or fallback to hardcoded ones
+  const displayStats = stats.length > 0 ? stats : fallbackStats;
 
   const handleOpenDialog = () => {
     setIsContactDialogOpen(true);
@@ -83,7 +90,7 @@ export default function HeroSection({
   return (
     <section
       id="home"
-      className={`perf-section relative py-20 bg-gradient-to-br from-jlc-blue via-jlc-blue-dark to-jlc-black text-white overflow-hidden ${className}`}
+      className={`perf-section relative py-20 bg-gradient-to-br from-jlc-black via-jlc-blue-dark to-jlc-blue text-white overflow-hidden ${className}`}
     >
       <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
       <div className="absolute top-10 right-10 w-64 h-64 bg-white/5 rounded-full blur-xl opacity-60"></div>
@@ -115,7 +122,7 @@ export default function HeroSection({
 
         {/* Corporate Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {stats.map((stat, index) => (
+          {displayStats.map((stat, index) => (
             <Card key={index} variant="glass-dark" className="p-6 text-center" hover={false}>
               <div className="text-4xl font-bold text-jlc-blue-light mb-2">{stat.number}</div>
               <div className="text-white font-semibold mb-1">{stat.label}</div>

@@ -1,19 +1,28 @@
-import { sanityFetch } from '@/lib/sanity/queries';
-import { HeroSectionSchema } from '@/lib/sanity/schemas';
+import { sanityFetch, statisticsQuery } from '@/lib/sanity/queries';
+import { HeroSectionSchema, StatisticSchema } from '@/lib/sanity/schemas';
+import { z } from 'zod';
 import HeroSection from './HeroSection';
 
 interface HeroSectionProps {
   className?: string;
 }
 
-const HERO_QUERY = `*[_type == "heroSection"][0]`;
-
 export default async function HeroSectionContainer({ className = '' }: HeroSectionProps) {
-  const { content, buttons } = await sanityFetch({
-    query: HERO_QUERY,
-    schema: HeroSectionSchema,
-    tags: ['heroSection'],
-  });
+  // Fetch both hero section and statistics in parallel
+  const [heroData, statsData] = await Promise.all([
+    sanityFetch({
+      query: `*[_type == "heroSection"][0]`,
+      schema: HeroSectionSchema,
+      tags: ['heroSection'],
+    }),
+    sanityFetch({
+      query: statisticsQuery,
+      schema: z.array(StatisticSchema),
+      tags: ['statistic'],
+    }),
+  ]);
+
+  const { content, buttons } = heroData;
 
   const title = content.title || 'Professional Building Solutions';
   const subtitle = content.subtitle || '25+ Years of Excellence in Carpentry and Construction';
@@ -38,6 +47,7 @@ export default async function HeroSectionContainer({ className = '' }: HeroSecti
       description={description}
       primaryButton={primaryButton}
       secondaryButton={secondaryButton}
+      stats={statsData}
       className={className}
     />
   );

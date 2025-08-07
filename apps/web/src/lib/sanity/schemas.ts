@@ -33,6 +33,21 @@ export const HeroSectionSchema = SanityDocument.extend({
   }),
 })
 
+// Statistic Schema - handle null values from Sanity
+export const StatisticSchema = z.object({
+  _id: z.string().optional(),
+  _rev: z.string().optional(),
+  _type: z.literal('statistic').optional(),
+  _createdAt: z.string().optional(),
+  _updatedAt: z.string().optional(),
+  number: z.string(),
+  label: z.string(),
+  subtitle: z.string(),
+  icon: z.string().nullable().optional(),
+  color: z.enum(['blue', 'green', 'purple', 'orange', 'red', 'teal']).optional(),
+})
+
 // Export inferred types
 export type HeroSection = z.infer<typeof HeroSectionSchema>
 export type ButtonAction = z.infer<typeof ButtonActionSchema>
+export type Statistic = z.infer<typeof StatisticSchema>
