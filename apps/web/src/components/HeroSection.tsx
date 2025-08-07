@@ -23,12 +23,6 @@ interface HeroSectionProps {
   className?: string;
 }
 
-interface Stat {
-  number: string;
-  label: string;
-  subtitle: string;
-}
-
 export default function HeroSection({
   title,
   subtitle,
@@ -40,17 +34,6 @@ export default function HeroSection({
 }: HeroSectionProps) {
   const [isContactDialogOpen, setIsContactDialogOpen] = useState(false);
   const router = useRouter();
-
-  // Fallback stats if none provided from Sanity
-  const fallbackStats: Stat[] = [
-    { number: '25+', label: 'Years Experience', subtitle: 'Established 1995' },
-    { number: '1000+', label: 'Projects Completed', subtitle: 'Residential & Commercial' },
-    { number: '100%', label: 'Licensed & Insured', subtitle: 'Full Compliance' },
-    { number: '24/7', label: 'Support Available', subtitle: 'Emergency Services' },
-  ];
-
-  // Use Sanity stats or fallback to hardcoded ones
-  const displayStats = stats.length > 0 ? stats : fallbackStats;
 
   const handleOpenDialog = () => {
     setIsContactDialogOpen(true);
@@ -120,9 +103,8 @@ export default function HeroSection({
           )}
         </div>
 
-        {/* Corporate Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {displayStats.map((stat, index) => (
+          {stats.map((stat, index) => (
             <Card key={index} variant="glass-dark" className="p-6 text-center" hover={false}>
               <div className="text-4xl font-bold text-jlc-blue-light mb-2">{stat.number}</div>
               <div className="text-white font-semibold mb-1">{stat.label}</div>
