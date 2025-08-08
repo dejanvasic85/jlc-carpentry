@@ -9,30 +9,6 @@ interface ContactSectionProps {
   className?: string;
 }
 
-interface Feature {
-  title: string;
-  desc: string;
-  icon: string;
-}
-
-const features: Feature[] = [
-  {
-    title: 'LICENSED & INSURED',
-    desc: 'Fully licensed builders with comprehensive insurance coverage for complete peace of mind.',
-    icon: '🛡️',
-  },
-  {
-    title: 'QUALITY GUARANTEE',
-    desc: 'We stand behind our work with extensive warranties and use only premium materials and finishes.',
-    icon: '⭐',
-  },
-  {
-    title: 'LOCAL EXPERTISE',
-    desc: 'Based in Alphington, serving all Melbourne areas with deep local knowledge and established relationships.',
-    icon: '📍',
-  },
-];
-
 export default function ContactSection({ className = '' }: ContactSectionProps) {
   const [isContactDialogOpen, setIsContactDialogOpen] = useState(false);
 
@@ -43,8 +19,12 @@ export default function ContactSection({ className = '' }: ContactSectionProps) 
   const handleCloseDialog = () => {
     setIsContactDialogOpen(false);
   };
+
   return (
-    <section id="about" className={`perf-section py-20 bg-slate-900 text-white relative overflow-hidden ${className}`}>
+    <section
+      id="contact"
+      className={`perf-section py-20 bg-slate-900 text-white relative overflow-hidden ${className}`}
+    >
       <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-800 to-jlc-blue-dark"></div>
       <div
         className="absolute inset-0 opacity-30"
@@ -54,32 +34,19 @@ export default function ContactSection({ className = '' }: ContactSectionProps) 
       ></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-        <h2 className="font-heading text-4xl md:text-5xl mb-12 tracking-tight">
-          WHY CHOOSE <span className="text-jlc-blue-light">JLC CARPENTRY?</span>
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {features.map((feature, index) => (
-            <Card key={index} variant="glass-dark" className="p-8 text-center" hover={false}>
-              <div className="text-5xl mb-4">{feature.icon}</div>
-              <h3 className="font-heading text-xl text-jlc-blue-light mb-4">{feature.title}</h3>
-              <p className="text-gray-300 leading-relaxed">{feature.desc}</p>
-            </Card>
-          ))}
-        </div>
-
-        <div id="contact" className="mt-2">
-          {/* CTA Card */}
-          <Card className="bg-gradient-to-r from-jlc-blue to-jlc-blue-dark p-12 border border-jlc-blue-light/20" hover={false}>
-            <h3 className="font-heading text-3xl md:text-4xl mb-4 text-white">GET YOUR FREE CONSULTATION TODAY</h3>
-            <p className="text-xl text-jlc-blue-light/80 mb-8 max-w-2xl mx-auto">
-              Call us now or visit our Google Business page for reviews and comprehensive project information
-            </p>
-            <Button variant="primary" size="lg" onClick={handleOpenDialog}>
-              CONTACT US NOW
-            </Button>
-          </Card>
-        </div>
+        {/* CTA Card */}
+        <Card
+          className="bg-gradient-to-r from-jlc-blue to-jlc-blue-dark p-12 border border-jlc-blue-light/20"
+          hover={false}
+        >
+          <h3 className="font-heading text-3xl md:text-4xl mb-4 text-white">GET YOUR FREE CONSULTATION TODAY</h3>
+          <p className="text-xl text-jlc-blue-light/80 mb-8 max-w-2xl mx-auto">
+            Call us now or visit our Google Business page for reviews and comprehensive project information
+          </p>
+          <Button variant="primary" size="lg" onClick={handleOpenDialog}>
+            CONTACT US NOW
+          </Button>
+        </Card>
       </div>
 
       <ContactDialog isOpen={isContactDialogOpen} onClose={handleCloseDialog} />

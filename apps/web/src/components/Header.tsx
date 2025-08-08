@@ -20,6 +20,8 @@ const navigationItemsValue: readonly NavigationItem[] = [
   { id: 'contact', label: 'CONTACT', href: '#contact' },
 ] as const;
 
+const sectionsOrder = ['home', 'services', 'about', 'contact'];
+
 const BREAKPOINTS = {
   lg: 1024, // Tailwind's lg breakpoint
 } as const;
@@ -54,9 +56,7 @@ export default function Header({ className = '' }: HeaderProps) {
 
       // Find the topmost visible section
       if (visibleSections.size > 0) {
-        const sectionsOrder = ['home', 'services', 'about', 'contact'];
         const topSection = sectionsOrder.find((section) => visibleSections.has(section));
-
         if (topSection && topSection !== activeSection) {
           setActiveSection(topSection);
           // Update URL hash without scrolling
@@ -130,36 +130,62 @@ export default function Header({ className = '' }: HeaderProps) {
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex space-x-8">
-            {navigationItemsValue.map((item) => (
-              <a
-                key={item.id}
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                className={`font-nav hover:text-white transition-colors ${
-                  activeSection === item.id ? 'text-white border-b-2 border-jlc-blue-light pb-1' : 'text-white'
-                }`}
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
+          <div className="flex items-center space-x-4">
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex space-x-8">
+              {navigationItemsValue.map((item) => (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className={`font-nav hover:text-white transition-colors ${
+                    activeSection === item.id ? 'text-white border-b-2 border-jlc-blue-light pb-1' : 'text-white'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
 
-          {/* Mobile Hamburger Button */}
-          <button
-            className="lg:hidden flex flex-col space-y-1 p-2"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            <span
-              className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}
-            ></span>
-            <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-            <span
-              className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}
-            ></span>
-          </button>
+            {/* Phone Call Icon - visible on all screen sizes */}
+            <a
+              href="tel:+61400000000"
+              className="flex items-center justify-center w-10 h-10 hover:bg-jlc-blue-dark rounded-full transition-colors"
+              aria-label="Call JLC Carpentry"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                className="size-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"
+                />
+              </svg>
+            </a>
+
+            {/* Mobile Hamburger Button */}
+            <button
+              className="lg:hidden flex flex-col space-y-1 p-2"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              <span
+                className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}
+              ></span>
+              <span
+                className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}
+              ></span>
+              <span
+                className={`w-6 h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}
+              ></span>
+            </button>
+          </div>
         </nav>
 
         {/* Mobile Menu */}

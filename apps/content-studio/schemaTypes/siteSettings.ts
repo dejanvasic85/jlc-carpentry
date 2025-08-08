@@ -117,15 +117,7 @@ export default defineType({
                   title: 'Day',
                   type: 'string',
                   options: {
-                    list: [
-                      'Monday',
-                      'Tuesday',
-                      'Wednesday',
-                      'Thursday',
-                      'Friday',
-                      'Saturday',
-                      'Sunday',
-                    ],
+                    list: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
                   },
                 }),
                 defineField({

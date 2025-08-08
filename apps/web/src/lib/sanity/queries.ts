@@ -1,6 +1,6 @@
-import { client } from './client'
-import { type QueryParams } from 'next-sanity'
-import { z } from 'zod'
+import { client } from './client';
+import { type QueryParams } from 'next-sanity';
+import { z } from 'zod';
 
 export async function sanityFetch<T>({
   query,
@@ -9,21 +9,21 @@ export async function sanityFetch<T>({
   revalidate = 60,
   tags = [],
 }: {
-  query: string
-  params?: QueryParams
-  schema: z.ZodSchema<T>
-  revalidate?: number | false
-  tags?: string[]
+  query: string;
+  params?: QueryParams;
+  schema: z.ZodSchema<T>;
+  revalidate?: number | false;
+  tags?: string[];
 }): Promise<T> {
   const data = await client.fetch(query, params, {
     next: {
       revalidate: tags.length ? false : revalidate,
       tags,
     },
-  })
+  });
 
   // Validate with Zod
-  return schema.parse(data)
+  return schema.parse(data);
 }
 
 // Query for Hero Section with Statistics
@@ -49,7 +49,7 @@ export const heroSectionQuery = `
       }
     }
   }
-`
+`;
 
 // Query for Statistics
 export const statisticsQuery = `
@@ -60,4 +60,4 @@ export const statisticsQuery = `
     icon,
     color
   }
-`
+`;

@@ -34,11 +34,13 @@ export default async function HeroSectionContainer({ className = '' }: HeroSecti
     link: buttons.primaryButton.link,
   };
 
-  const secondaryButton = buttons.secondaryButton ? {
-    text: buttons.secondaryButton.text || 'View Our Work',
-    action: buttons.secondaryButton.action || 'navigate',
-    link: buttons.secondaryButton.link,
-  } : null;
+  const secondaryButton = buttons.secondaryButton
+    ? {
+        text: buttons.secondaryButton.text || 'View Our Work',
+        action: buttons.secondaryButton.action || 'navigate',
+        link: buttons.secondaryButton.link,
+      }
+    : null;
 
   return (
     <HeroSection
