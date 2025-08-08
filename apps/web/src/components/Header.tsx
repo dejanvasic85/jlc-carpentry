@@ -104,7 +104,7 @@ export default function Header({ className = '' }: HeaderProps) {
 
   return (
     <header className={`sticky top-0 z-50 bg-jlc-black text-white overflow-hidden ${className}`}>
-      <div className="absolute inset-0 bg-jlc-header-gradient"></div>
+      <div className="absolute inset-0"></div>
       <div
         className="absolute inset-0 opacity-30"
         style={{
