@@ -11,6 +11,8 @@
 - [ ] Performance testing with Lighthouse
 - [x] Improved Header with navigation links that scroll to sections of the page
 - [ ] Use classnames for conditional styling
+- [ ] Add a separate section for About to separate Contact us now
+- [ ] Create a mobile icon for calling the phone number directly in the header
 
 ## Contact form
 
