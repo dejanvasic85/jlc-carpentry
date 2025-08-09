@@ -1,4 +1,4 @@
-import { sanityFetch, statisticsQuery } from '@/lib/sanity/queries';
+import { sanityFetch, statisticsQuery, heroSectionQuery } from '@/lib/sanity/queries';
 import { HeroSectionSchema, StatisticSchema } from '@/lib/sanity/schemas';
 import { z } from 'zod';
 import HeroSection from './HeroSection';
@@ -11,7 +11,7 @@ export default async function HeroSectionContainer({ className = '' }: HeroSecti
   // Fetch both hero section and statistics in parallel
   const [heroData, statsData] = await Promise.all([
     sanityFetch({
-      query: `*[_type == "heroSection"][0]`,
+      query: heroSectionQuery,
       schema: HeroSectionSchema,
       tags: ['heroSection'],
     }),
@@ -22,7 +22,7 @@ export default async function HeroSectionContainer({ className = '' }: HeroSecti
     }),
   ]);
 
-  const { content, buttons } = heroData;
+  const { content, buttons, stats: showStats } = heroData;
 
   const title = content.title || 'Professional Building Solutions';
   const subtitle = content.subtitle || '25+ Years of Excellence in Carpentry and Construction';
@@ -31,14 +31,14 @@ export default async function HeroSectionContainer({ className = '' }: HeroSecti
   const primaryButton = {
     text: buttons.primaryButton.text || 'Free Estimate',
     action: buttons.primaryButton.action || 'contact',
-    link: buttons.primaryButton.link,
+    link: buttons.primaryButton.link || undefined,
   };
 
   const secondaryButton = buttons.secondaryButton
     ? {
         text: buttons.secondaryButton.text || 'View Our Work',
         action: buttons.secondaryButton.action || 'navigate',
-        link: buttons.secondaryButton.link,
+        link: buttons.secondaryButton.link || undefined,
       }
     : null;
 
@@ -50,6 +50,7 @@ export default async function HeroSectionContainer({ className = '' }: HeroSecti
       primaryButton={primaryButton}
       secondaryButton={secondaryButton}
       stats={statsData}
+      showStats={showStats}
       className={className}
     />
   );

@@ -16,10 +16,11 @@ interface ButtonData {
 interface HeroSectionProps {
   title: string;
   subtitle: string;
-  description?: string;
+  description?: string | null;
   primaryButton: ButtonData;
   secondaryButton: ButtonData | null;
   stats: Statistic[];
+  showStats?: boolean;
   className?: string;
 }
 
@@ -30,6 +31,7 @@ export default function HeroSection({
   primaryButton,
   secondaryButton,
   stats,
+  showStats = true,
   className = '',
 }: HeroSectionProps) {
   const [isContactDialogOpen, setIsContactDialogOpen] = useState(false);
@@ -103,15 +105,17 @@ export default function HeroSection({
           )}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {stats.map((stat, index) => (
-            <Card key={index} variant="glass-dark" className="p-6 text-center" hover={false}>
-              <div className="text-4xl font-bold text-jlc-blue-light mb-2">{stat.number}</div>
-              <div className="text-white font-semibold mb-1">{stat.label}</div>
-              <div className="text-xs">{stat.subtitle}</div>
-            </Card>
-          ))}
-        </div>
+        {showStats && (
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {stats.map((stat, index) => (
+              <Card key={index} variant="glass-dark" className="p-6 text-center" hover={false}>
+                <div className="text-4xl font-bold text-jlc-blue-light mb-2">{stat.number}</div>
+                <div className="text-white font-semibold mb-1">{stat.label}</div>
+                <div className="text-xs">{stat.subtitle}</div>
+              </Card>
+            ))}
+          </div>
+        )}
       </div>
 
       <ContactDialog isOpen={isContactDialogOpen} onClose={handleCloseDialog} />

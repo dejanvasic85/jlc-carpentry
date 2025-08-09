@@ -10,7 +10,8 @@
     "dev": "turbo run dev --filter web",
     "build": "turbo run build",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "type:check": "turbo run type:check"
   },
   "repository": {
     "type": "git",

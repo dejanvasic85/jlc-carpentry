@@ -26,7 +26,24 @@ export async function sanityFetch<T>({
   return schema.parse(data);
 }
 
-// Query for Hero Section with Statistics
+// Query for Homepage
+export const homepageQuery = `
+  *[_type == "homepage"][0] {
+    seo {
+      title,
+      description,
+      keywords,
+      ogImage {
+        asset {
+          _ref
+        }
+      }
+    },
+    hero
+  }
+`;
+
+// Query for Hero Section with Statistics visibility
 export const heroSectionQuery = `
   *[_type == "heroSection"][0] {
     name,
@@ -47,7 +64,8 @@ export const heroSectionQuery = `
         action,
         link
       }
-    }
+    },
+    stats
   }
 `;
 

@@ -4,10 +4,11 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "rm -rf .next && next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "type:check": "tsc --noEmit"
   },
   "dependencies": {
     "@aws-sdk/client-ses": "3.859.0",
@@ -16,6 +17,7 @@
     "autoprefixer": "10.4.21",
     "next": "15.4.5",
     "next-sanity": "10.0.10",
+    "next-seo": "6.8.0",
     "postcss": "8.5.6",
     "react": "19.1.1",
     "react-dom": "19.1.1",
