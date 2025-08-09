@@ -63,6 +63,12 @@ export const HomepageSchema = z.object({
       .optional(),
   }),
   hero: z.boolean().optional(),
+  servicesSection: z
+    .object({
+      title: z.string().optional(),
+      description: z.string().optional(),
+    })
+    .optional(),
 });
 
 // Site Settings Schema

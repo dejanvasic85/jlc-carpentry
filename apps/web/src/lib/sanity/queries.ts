@@ -39,7 +39,11 @@ export const homepageQuery = `
         }
       }
     },
-    hero
+    hero,
+    servicesSection {
+      title,
+      description
+    }
   }
 `;
 

@@ -25,10 +25,7 @@ async function getSiteSettingsData() {
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  const [homepage, siteSettings] = await Promise.all([
-    getHomepageData(),
-    getSiteSettingsData(),
-  ]);
+  const [homepage, siteSettings] = await Promise.all([getHomepageData(), getSiteSettingsData()]);
 
   const businessName = siteSettings.company.name;
   const pageTitle = `${businessName} - ${homepage.seo.title}`;
@@ -59,7 +56,7 @@ export default async function Home() {
     <div className="min-h-screen bg-slate-50">
       <Header />
       {homepage.hero && <HeroSectionContainer />}
-      <ServicesSection />
+      <ServicesSection title={homepage.servicesSection?.title} description={homepage.servicesSection?.description} />
       <About />
       <Contact />
       <Footer />

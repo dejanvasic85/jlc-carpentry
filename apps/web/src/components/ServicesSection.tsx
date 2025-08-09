@@ -2,6 +2,8 @@ import Card from '@/components/Card';
 
 interface ServicesSectionProps {
   className?: string;
+  title?: string;
+  description?: string;
 }
 
 interface Service {
@@ -43,19 +45,27 @@ const services: Service[] = [
   },
 ];
 
-export default function ServicesSection({ className = '' }: ServicesSectionProps) {
+export default function ServicesSection({ className = '', title = '', description = '' }: ServicesSectionProps) {
+  const [firstWord, secondWord = ''] = title.split(' ');
+
   return (
     <section id="services" className={`perf-section py-20 bg-gradient-to-br from-slate-50 to-slate-100 ${className}`}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="font-heading text-4xl md:text-5xl text-slate-900 mb-4 tracking-tight capitalize">
-            Our <span className="text-jlc-blue">expertise</span>
-          </h2>
-          <div className="w-24 h-1 bg-jlc-blue mx-auto mb-6"></div>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Comprehensive building solutions delivered with precision, professionalism, and unwavering commitment to
-            quality.
-          </p>
+          {title && (
+            <h2 className="font-heading text-4xl md:text-5xl text-slate-900 mb-4 tracking-tight capitalize">
+              {firstWord} <span className="text-jlc-blue">{secondWord}</span>
+            </h2>
+          )}
+
+          {/* <div className="w-24 h-1 bg-jlc-blue mx-auto mb-6"></div> */}
+
+          {description && (
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+              Comprehensive building solutions delivered with precision, professionalism, and unwavering commitment to
+              quality.
+            </p>
+          )}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

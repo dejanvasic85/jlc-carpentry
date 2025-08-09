@@ -47,6 +47,27 @@ export default defineType({
       type: 'boolean',
       initialValue: true,
     }),
+
+    defineField({
+      name: 'servicesSection',
+      title: 'Services',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'title',
+          title: 'Title',
+          type: 'string',
+          description: 'The title of the services section. Preferrably two words for styling purposes.',
+          validation: (Rule) => Rule.required().max(60),
+        }),
+        defineField({
+          name: 'description',
+          title: 'Description',
+          type: 'text',
+          validation: (Rule) => Rule.required().max(160),
+        }),
+      ],
+    }),
   ],
 
   preview: {
