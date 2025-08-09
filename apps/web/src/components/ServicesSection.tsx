@@ -1,5 +1,7 @@
 import Card from '@/components/Card';
 import { Service } from '@/lib/sanity/schemas';
+import { urlFor } from '@/lib/sanity/image';
+import Image from 'next/image';
 
 interface ServicesSectionProps {
   className?: string;
@@ -8,7 +10,12 @@ interface ServicesSectionProps {
   services?: Service[];
 }
 
-export default function ServicesSection({ className = '', title = '', description = '', services }: ServicesSectionProps) {
+export default function ServicesSection({
+  className = '',
+  title = '',
+  description = '',
+  services,
+}: ServicesSectionProps) {
   const [firstWord, secondWord = ''] = title.split(' ');
 
   return (
@@ -23,45 +30,50 @@ export default function ServicesSection({ className = '', title = '', descriptio
 
           {/* <div className="w-24 h-1 bg-jlc-blue mx-auto mb-6"></div> */}
 
-          {description && (
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              {description}
-            </p>
-          )}
+          {description && <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">{description}</p>}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {services?.map((service, index) => (
             <div key={service._id || index} className="group relative">
-              <Card className="p-8 h-full border-l-4 border-jlc-blue">
-                <div className="flex flex-col sm:flex-row sm:items-start space-y-4 sm:space-y-0 sm:space-x-4 mb-6">
-                  <div
-                    className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center text-2xl shadow-lg flex-shrink-0`}
-                  >
-                    {service.icon}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-heading text-xl sm:text-3xl text-jlc-black mb-2 transition-colors capitalize">
+              <Card className="p-0 h-full border-l-4 border-jlc-blue overflow-hidden">
+                <div className="p-6 pb-4">
+                  <div className="flex items-center space-x-3 mb-4">
+                    <h3 className="font-heading text-xl uppercase sm:text-2xl text-jlc-black transition-colors">
                       {service.title}
                     </h3>
                   </div>
                 </div>
 
-                <p className="text-slate-600 leading-relaxed text-lg mb-6">{service.description}</p>
+                {service.image?.asset && (
+                  <div className="relative w-full aspect-video mb-6">
+                    <Image
+                      src={urlFor(service.image).width(400).height(225).format('webp').url()}
+                      alt={service.title}
+                      width={400}
+                      height={225}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
 
-                <div className="space-y-3">
-                  {service.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center space-x-3">
-                      <div className="w-2 h-2 bg-jlc-blue rounded-full"></div>
-                      <span className="text-slate-700 font-medium">{feature}</span>
-                    </div>
-                  ))}
-                </div>
+                <div className="p-6 pt-0">
+                  <p className="text-slate-600 leading-relaxed text-base mb-6">{service.description}</p>
 
-                <div className="mt-6">
-                  <button className="text-jlc-blue font-bold hover:text-jlc-blue-dark transition-colors">
-                    <span className="capitalize">{service.link?.text || 'Learn More'}</span> →
-                  </button>
+                  <div className="space-y-3 mb-6">
+                    {service.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center space-x-3">
+                        <div className="w-2 h-2 bg-jlc-blue rounded-full"></div>
+                        <span className="text-slate-700 font-medium text-sm">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div>
+                    <button className="text-jlc-blue font-bold hover:text-jlc-blue-dark transition-colors">
+                      <span className="uppercase">{service.link?.text || 'Learn More'}</span> →
+                    </button>
+                  </div>
                 </div>
               </Card>
             </div>
