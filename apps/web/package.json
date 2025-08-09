@@ -24,7 +24,7 @@
     "react-dom": "19.1.1",
     "react-hook-form": "7.62.0",
     "tailwindcss": "4.1.11",
-    "zod": "4.0.14"
+    "zod": "4.0.17"
   },
   "devDependencies": {
     "@eslint/eslintrc": "3.3.1",
