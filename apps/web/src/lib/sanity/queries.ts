@@ -84,6 +84,27 @@ export const statisticsQuery = `
   }
 `;
 
+// Query for Services
+export const servicesQuery = `
+  *[_type == "service"] | order(_createdAt asc) {
+    title,
+    description,
+    features,
+    icon,
+    color,
+    image {
+      asset {
+        _ref
+      }
+    },
+    link {
+      text,
+      url,
+      action
+    }
+  }
+`;
+
 // Query for Site Settings
 export const siteSettingsQuery = `
   *[_type == "siteSettings"][0] {

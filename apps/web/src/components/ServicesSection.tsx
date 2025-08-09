@@ -1,51 +1,14 @@
 import Card from '@/components/Card';
+import { Service } from '@/lib/sanity/schemas';
 
 interface ServicesSectionProps {
   className?: string;
   title?: string;
   description?: string;
+  services?: Service[];
 }
 
-interface Service {
-  title: string;
-  desc: string;
-  features: string[];
-  icon: string;
-  color: string;
-}
-
-const services: Service[] = [
-  {
-    title: 'Decks & Pergolas',
-    desc: "Custom-designed outdoor structures built to withstand Melbourne's diverse weather conditions. From simple decks to elaborate pergolas, we create outdoor living spaces that enhance your lifestyle and property value.",
-    features: ['Weather-resistant materials', 'Council-approved designs', '10-year structural warranty'],
-    icon: '🏗️',
-    color: 'from-jlc-blue to-jlc-blue-dark',
-  },
-  {
-    title: 'Kitchen & Bathroom Renovations',
-    desc: 'Complete renovation services from initial concept through to final completion. We coordinate all trades and manage every aspect of your project for seamless, stress-free results.',
-    features: ['Full project management', 'Licensed trades coordination', 'Quality assurance guarantee'],
-    icon: '🔨',
-    color: 'from-emerald-500 to-emerald-600',
-  },
-  {
-    title: 'Doors, Windows & Cladding',
-    desc: 'Professional installation of premium doors, windows, and exterior cladding systems. We focus on improving both the aesthetic appeal and energy efficiency of your property.',
-    features: ['Energy-efficient solutions', 'Premium materials only', 'Professional installation'],
-    icon: '🚪',
-    color: 'from-purple-500 to-purple-600',
-  },
-  {
-    title: 'Structural Modifications',
-    desc: 'Safe and compliant structural changes including wall removal, extensions, and load-bearing modifications. All work includes professional engineering consultation and council compliance.',
-    features: ['Engineering consultation', 'Council permit assistance', 'Structural warranties'],
-    icon: '🏢',
-    color: 'from-orange-500 to-orange-600',
-  },
-];
-
-export default function ServicesSection({ className = '', title = '', description = '' }: ServicesSectionProps) {
+export default function ServicesSection({ className = '', title = '', description = '', services }: ServicesSectionProps) {
   const [firstWord, secondWord = ''] = title.split(' ');
 
   return (
@@ -62,15 +25,14 @@ export default function ServicesSection({ className = '', title = '', descriptio
 
           {description && (
             <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              Comprehensive building solutions delivered with precision, professionalism, and unwavering commitment to
-              quality.
+              {description}
             </p>
           )}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {services.map((service, index) => (
-            <div key={index} className="group relative">
+          {services?.map((service, index) => (
+            <div key={service._id || index} className="group relative">
               <Card className="p-8 h-full border-l-4 border-jlc-blue">
                 <div className="flex flex-col sm:flex-row sm:items-start space-y-4 sm:space-y-0 sm:space-x-4 mb-6">
                   <div
@@ -85,7 +47,7 @@ export default function ServicesSection({ className = '', title = '', descriptio
                   </div>
                 </div>
 
-                <p className="text-slate-600 leading-relaxed text-lg mb-6">{service.desc}</p>
+                <p className="text-slate-600 leading-relaxed text-lg mb-6">{service.description}</p>
 
                 <div className="space-y-3">
                   {service.features.map((feature, idx) => (
@@ -98,7 +60,7 @@ export default function ServicesSection({ className = '', title = '', descriptio
 
                 <div className="mt-6">
                   <button className="text-jlc-blue font-bold hover:text-jlc-blue-dark transition-colors">
-                    <span className="capitalize">Learn More</span> →
+                    <span className="capitalize">{service.link?.text || 'Learn More'}</span> →
                   </button>
                 </div>
               </Card>
