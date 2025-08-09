@@ -4,8 +4,8 @@ import ServicesSection from '@/components/ServicesSection';
 import About from '@/components/About';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import { sanityFetch, homepageQuery } from '@/lib/sanity/queries';
-import { HomepageSchema } from '@/lib/sanity/schemas';
+import { sanityFetch, homepageQuery, siteSettingsQuery } from '@/lib/sanity/queries';
+import { HomepageSchema, SiteSettingsSchema } from '@/lib/sanity/schemas';
 import { Metadata } from 'next';
 
 async function getHomepageData() {
@@ -16,23 +16,37 @@ async function getHomepageData() {
   });
 }
 
+async function getSiteSettingsData() {
+  return await sanityFetch({
+    query: siteSettingsQuery,
+    schema: SiteSettingsSchema,
+    tags: ['siteSettings'],
+  });
+}
+
 export async function generateMetadata(): Promise<Metadata> {
-  const homepage = await getHomepageData();
+  const [homepage, siteSettings] = await Promise.all([
+    getHomepageData(),
+    getSiteSettingsData(),
+  ]);
+
+  const businessName = siteSettings.company.name;
+  const pageTitle = `${businessName} - ${homepage.seo.title}`;
 
   return {
-    title: homepage.seo.title,
+    title: pageTitle,
     description: homepage.seo.description,
     keywords: homepage.seo.keywords?.join(', '),
     openGraph: {
-      title: homepage.seo.title,
+      title: pageTitle,
       description: homepage.seo.description,
       type: 'website',
       locale: 'en_AU',
-      siteName: 'JLC Carpentry & Building Services',
+      siteName: businessName,
     },
     twitter: {
       card: 'summary_large_image',
-      title: homepage.seo.title,
+      title: pageTitle,
       description: homepage.seo.description,
     },
   };

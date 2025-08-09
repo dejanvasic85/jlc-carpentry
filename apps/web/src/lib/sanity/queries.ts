@@ -79,3 +79,24 @@ export const statisticsQuery = `
     color
   }
 `;
+
+// Query for Site Settings
+export const siteSettingsQuery = `
+  *[_type == "siteSettings"][0] {
+    company {
+      name,
+      shortName,
+      description
+    },
+    seoDefaults {
+      siteTitle,
+      siteDescription,
+      keywords,
+      ogImage {
+        asset {
+          _ref
+        }
+      }
+    }
+  }
+`;
