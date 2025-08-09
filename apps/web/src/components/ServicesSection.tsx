@@ -64,7 +64,7 @@ export default function ServicesSection({
                     {service.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center space-x-3">
                         <div className="w-2 h-2 bg-jlc-blue rounded-full"></div>
-                        <span className="text-slate-700 font-medium text-sm">{feature}</span>
+                        <span className="text-slate-700 font-medium">{feature}</span>
                       </div>
                     ))}
                   </div>
