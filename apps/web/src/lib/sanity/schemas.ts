@@ -30,6 +30,7 @@ export const HeroSectionSchema = SanityDocument.extend({
     primaryButton: ButtonActionSchema,
     secondaryButton: ButtonActionSchema.optional(),
   }),
+  stats: z.boolean().optional(),
 });
 
 // Statistic Schema - handle null values from Sanity

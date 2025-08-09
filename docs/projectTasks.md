@@ -11,8 +11,8 @@
 - [ ] Performance testing with Lighthouse
 - [x] Improved Header with navigation links that scroll to sections of the page
 - [ ] Use classnames for conditional styling
-- [ ] Add a separate section for About to separate Contact us now
-- [ ] Create a mobile icon for calling the phone number directly in the header
+- [x] Add a separate section for About to separate Contact us now
+- [x] Create a mobile icon for calling the phone number directly in the header
 
 ## Contact form
 
@@ -23,8 +23,8 @@
 
 ## Content management
 
-- [ ] Set up Sanity CMS schema for content management
-- [ ] Create a basic content structure for services, testimonials, and contact information
+- [x] Set up Sanity CMS schema for content management
+- [x] Create a basic content structure for services, testimonials, and contact information
 - [ ] Load the content from Sanity CMS into the Next.js app
 - [ ] Setup deployment trigger for Sanity CMS to rebuild the Next.js app when content changes
 

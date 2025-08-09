@@ -127,6 +127,13 @@ export default defineType({
         }),
       ],
     }),
+
+    defineField({
+      name: 'stats',
+      title: 'Show statistics section',
+      type: 'boolean',
+      initialValue: true,
+    }),
   ],
 
   preview: {

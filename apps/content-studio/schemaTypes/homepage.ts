@@ -41,119 +41,21 @@ export default defineType({
       ],
     }),
 
-    // Referenced Components
     defineField({
       name: 'hero',
-      title: 'Hero Section',
-      type: 'reference',
-      to: [{ type: 'heroSection' }],
-      validation: (Rule) => Rule.required(),
-    }),
-
-    defineField({
-      name: 'stats',
-      title: 'Statistics Section',
-      type: 'reference',
-      to: [{ type: 'statistic' }],
-    }),
-
-    // Page-specific Content
-    defineField({
-      name: 'additionalSections',
-      title: 'Additional Sections',
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'type',
-              title: 'Section Type',
-              type: 'string',
-              options: {
-                list: [
-                  { title: 'About Us', value: 'about' },
-                  { title: 'Testimonials', value: 'testimonials' },
-                  { title: 'Contact CTA', value: 'contact-cta' },
-                  { title: 'FAQ', value: 'faq' },
-                ],
-              },
-              validation: (Rule) => Rule.required(),
-            }),
-            defineField({
-              name: 'title',
-              title: 'Section Title',
-              type: 'string',
-            }),
-            defineField({
-              name: 'content',
-              title: 'Content',
-              type: 'text',
-            }),
-            defineField({
-              name: 'enabled',
-              title: 'Show Section',
-              type: 'boolean',
-              initialValue: true,
-            }),
-          ],
-          preview: {
-            select: {
-              title: 'title',
-              subtitle: 'type',
-            },
-            prepare({ title, subtitle }) {
-              return {
-                title: title || 'Untitled Section',
-                subtitle: subtitle ? subtitle.charAt(0).toUpperCase() + subtitle.slice(1) : '',
-              };
-            },
-          },
-        },
-      ],
-    }),
-
-    // Page Settings
-    defineField({
-      name: 'pageSettings',
-      title: 'Page Settings',
-      type: 'object',
-      fields: [
-        defineField({
-          name: 'slug',
-          title: 'Page Slug',
-          type: 'slug',
-          options: {
-            source: 'seo.title',
-            maxLength: 96,
-          },
-          validation: (Rule) => Rule.required(),
-        }),
-        defineField({
-          name: 'publishedAt',
-          title: 'Published Date',
-          type: 'datetime',
-          initialValue: () => new Date().toISOString(),
-        }),
-        defineField({
-          name: 'isPublished',
-          title: 'Published',
-          type: 'boolean',
-          initialValue: true,
-        }),
-      ],
+      title: 'Show large hero',
+      type: 'boolean',
+      initialValue: true,
     }),
   ],
 
   preview: {
     select: {
       title: 'seo.title',
-      subtitle: 'pageSettings.slug.current',
     },
-    prepare({ title, subtitle }) {
+    prepare({ title }) {
       return {
         title: title || 'Homepage',
-        subtitle: subtitle ? `/${subtitle}` : '/homepage',
       };
     },
   },
