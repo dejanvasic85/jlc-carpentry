@@ -9,25 +9,11 @@ import { HomepageSchema } from '@/lib/sanity/schemas';
 import { Metadata } from 'next';
 
 async function getHomepageData() {
-  try {
-    const homepage = await sanityFetch({
-      query: homepageQuery,
-      schema: HomepageSchema,
-      tags: ['homepage'],
-    });
-    return homepage;
-  } catch {
-    // Return default values if homepage data is not available
-    return {
-      seo: {
-        title: 'JLC Carpentry & Building Services - Professional Building Solutions Melbourne',
-        description:
-          'Expert carpentry and building services in Melbourne. 25+ years experience in decks, pergolas, walls, doors, cladding, and renovations. Licensed & insured.',
-        keywords: ['carpentry', 'building', 'melbourne', 'decks', 'pergolas', 'renovations'],
-      },
-      hero: true,
-    };
-  }
+  return await sanityFetch({
+    query: homepageQuery,
+    schema: HomepageSchema,
+    tags: ['homepage'],
+  });
 }
 
 export async function generateMetadata(): Promise<Metadata> {
