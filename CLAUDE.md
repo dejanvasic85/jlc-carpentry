@@ -12,7 +12,8 @@ Please read all the latest documentation for Next.js, Tailwind CSS, and Sanity C
 
 # Commands
 
-This is a monorepo with multiple apps so each command should target specific workspace.
+This is a monorepo with multiple apps so each command should target specific workspace instead of 
+having to navigate to each app.
 E.g. `npm run build -w <workspace-name>`. E.g. npm run type:check -w web.
 
 Here are some commands you can use:
@@ -48,7 +49,7 @@ Here are some commands you can use:
 
 # Dependency management
 
-- Always pin dependencies to a specific version
+- Always pin dependencies to a specific version when installing. E.g. npm install --save-exact -w web
 - Ensure to find the latest version of a package before adding it
 - Avoid using deprecated packages or APIs
 - Always install packages at the root of the monorepo targeting the correct workspace with -w <workspace-name>
