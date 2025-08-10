@@ -1,9 +1,7 @@
-import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import ServicesSection from '@/components/ServicesSection';
 import About from '@/components/About';
 import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
 import {
   getHomepageData,
   getSiteSettingsData,
@@ -39,17 +37,15 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  const [homepage, services, siteSettings, heroData, statsData] = await Promise.all([
+  const [homepage, services, heroData, statsData] = await Promise.all([
     getHomepageData(),
     getServicesData(),
-    getSiteSettingsData(),
     getHeroData(),
     getStatisticsData(),
   ]);
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <Header />
+    <>
       {homepage.hero && heroData?.content && (
         <HeroSection
           title={heroData.content.title}
@@ -70,7 +66,6 @@ export default async function Home() {
       )}
       <About />
       <Contact />
-      {siteSettings && <Footer siteSettings={siteSettings} />}
-    </div>
+    </>
   );
 }

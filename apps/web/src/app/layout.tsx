@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { Bebas_Neue, Oswald, Nunito_Sans } from 'next/font/google';
 import './globals.css';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import { getSiteSettingsData } from '@/lib/sanity/client';
 
 const bebasNeue = Bebas_Neue({
   weight: '400',
@@ -20,19 +23,32 @@ const nunitoSans = Nunito_Sans({
   variable: '--font-nunito-sans',
 });
 
-export const metadata: Metadata = {
-  title: 'JLC Carpentry & Building Services',
-  description: 'Professional carpentry and building services throughout Melbourne',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const siteSettings = await getSiteSettingsData();
 
-export default function RootLayout({
+  return {
+    title: siteSettings.seoDefaults.siteTitle,
+    description: siteSettings.seoDefaults.siteDescription,
+    keywords: siteSettings.seoDefaults.keywords?.join(', '),
+  };
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const siteSettings = await getSiteSettingsData();
+
   return (
     <html lang="en">
-      <body className={`${bebasNeue.variable} ${oswald.variable} ${nunitoSans.variable}`}>{children}</body>
+      <body className={`${bebasNeue.variable} ${oswald.variable} ${nunitoSans.variable}`}>
+        <div className="min-h-screen bg-slate-50">
+          <Header />
+          <main>{children}</main>
+          {siteSettings && <Footer siteSettings={siteSettings} />}
+        </div>
+      </body>
     </html>
   );
 }
