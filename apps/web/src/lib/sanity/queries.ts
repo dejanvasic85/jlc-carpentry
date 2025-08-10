@@ -110,8 +110,46 @@ export const siteSettingsQuery = `
   *[_type == "siteSettings"][0] {
     company {
       name,
+      abn,
       shortName,
-      description
+      description,
+      shortDescription,
+      yearsOfExperience,
+      logo {
+        asset {
+          _ref
+        }
+      }
+    },
+    location {
+      address {
+        street,
+        suburb,
+        state,
+        postcode
+      },
+      serviceAreas
+    },
+    contact {
+      phone,
+      email,
+      businessHours[] {
+        day,
+        hours
+      }
+    },
+    socialMedia {
+      googleBusinessLink,
+      instagram,
+      facebook,
+      linkedin,
+      website
+    },
+    licenses[]-> {
+      _id,
+      name,
+      number,
+      type
     },
     seoDefaults {
       siteTitle,

@@ -95,9 +95,50 @@ export const ServiceSchema = BaseSanitySchema.extend({
 export const SiteSettingsSchema = BaseSanitySchema.extend({
   company: z.object({
     name: z.string(),
-    shortName: z.string().optional(),
-    description: z.string().optional(),
+    abn: z.string().nullable().optional(),
+    shortName: z.string().nullable().optional(),
+    description: z.string().nullable().optional(),
+    shortDescription: z.string().nullable().optional(),
+    yearsOfExperience: z.number().nullable().optional(),
+    logo: z
+      .object({
+        asset: z.object({
+          _ref: z.string(),
+        }),
+      })
+      .nullable()
+      .optional(),
   }),
+  location: z.object({
+    address: z.object({
+      street: z.string().nullable().optional(),
+      suburb: z.string().nullable().optional(),
+      state: z.string().nullable().optional(),
+      postcode: z.string().nullable().optional(),
+    }).optional(),
+    serviceAreas: z.array(z.string()).optional(),
+  }).optional(),
+  contact: z.object({
+    phone: z.string().nullable().optional(),
+    email: z.string().nullable().optional(),
+    businessHours: z.array(z.object({
+      day: z.string(),
+      hours: z.string(),
+    })).optional(),
+  }).optional(),
+  socialMedia: z.object({
+    googleBusinessLink: z.string().nullable().optional(),
+    instagram: z.string().nullable().optional(),
+    facebook: z.string().nullable().optional(),
+    linkedin: z.string().nullable().optional(),
+    website: z.string().nullable().optional(),
+  }).optional(),
+  licenses: z.array(z.object({
+    _id: z.string(),
+    name: z.string(),
+    number: z.string(),
+    type: z.string(),
+  })).optional(),
   seoDefaults: z.object({
     siteTitle: z.string(),
     siteDescription: z.string(),

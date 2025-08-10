@@ -25,7 +25,7 @@
 
 - [x] Set up Sanity CMS schema for content management
 - [x] Create a basic content structure for services, testimonials, and contact information
-- [ ] Load the content from Sanity CMS into the Next.js app
+- [x] Load the content from Sanity CMS into the Next.js app
 - [ ] Setup deployment trigger for Sanity CMS to rebuild the Next.js app when content changes
 
 ## Google
@@ -35,3 +35,4 @@
 - [ ] Setup Google Search Console for SEO
 - [ ] Setup Google Maps for location services
 - [ ] Add Google reCAPTCHA to the contact form for spam protection
+- [ ] Sitemap integration for SEO

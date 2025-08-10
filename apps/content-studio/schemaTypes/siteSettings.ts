@@ -19,6 +19,11 @@ export default defineType({
           validation: (Rule) => Rule.required(),
         }),
         defineField({
+          name: 'abn',
+          title: 'ABN (Australian Business Number)',
+          type: 'string',
+        }),
+        defineField({
           name: 'shortName',
           title: 'Short Name',
           type: 'string',
@@ -26,6 +31,11 @@ export default defineType({
         defineField({
           name: 'description',
           title: 'Company Description',
+          type: 'text',
+        }),
+        defineField({
+          name: 'shortDescription',
+          title: 'Shorter Company Description (footer)',
           type: 'text',
         }),
         defineField({
@@ -146,18 +156,18 @@ export default defineType({
         }),
         defineField({
           name: 'instagram',
-          title: 'Instagram Handle',
+          title: 'Instagram Link',
           type: 'string',
           description: 'Without @ symbol',
         }),
         defineField({
           name: 'facebook',
-          title: 'Facebook Page Name',
+          title: 'Facebook page url',
           type: 'string',
         }),
         defineField({
           name: 'linkedin',
-          title: 'LinkedIn Profile',
+          title: 'LinkedIn Profile link',
           type: 'url',
         }),
         defineField({

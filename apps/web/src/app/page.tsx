@@ -59,7 +59,11 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  const [homepage, services] = await Promise.all([getHomepageData(), getServicesData()]);
+  const [homepage, services, siteSettings] = await Promise.all([
+    getHomepageData(), 
+    getServicesData(), 
+    getSiteSettingsData()
+  ]);
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -72,7 +76,7 @@ export default async function Home() {
       />
       <About />
       <Contact />
-      <Footer />
+      <Footer siteSettings={siteSettings} />
     </div>
   );
 }
