@@ -13,6 +13,7 @@
 - [ ] Use classnames for conditional styling
 - [x] Add a separate section for About to separate Contact us now
 - [x] Create a mobile icon for calling the phone number directly in the header
+- [ ] Page for each service with dynamic routing
 
 ## Contact form
 
