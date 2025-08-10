@@ -12,7 +12,7 @@ Please read all the latest documentation for Next.js, Tailwind CSS, and Sanity C
 
 # Commands
 
-This is a monorepo with multiple apps so each command should target specific workspace instead of 
+This is a monorepo with multiple apps so each command should target specific workspace
 having to navigate to each app.
 E.g. `npm run build -w <workspace-name>`. E.g. npm run type:check -w web.
 
