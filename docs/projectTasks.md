@@ -1,19 +1,23 @@
 # Tasks for JLC Carpentry Project
 
-## Project Setup and design
+## Project Setup and Technical tasks
 
 - [x] Setup domain with Amazon Web Services and hosting with Vercel
-- [x] Layout and Design options: client selected a professional with brand colours of light blue and black/white
 - [x] Create a new Next.js app under `apps/web`
 - [x] Setup Coding style guide
 - [ ] End to end testing with Playwright including pipeline integration
 - [ ] Accessibility (a11y) AAA compliant testing
 - [ ] Performance testing with Lighthouse
-- [x] Improved Header with navigation links that scroll to sections of the page
 - [ ] Use classnames for conditional styling
+
+## Website
+
+- [x] Layout and Design options: client selected a professional with brand colours of light blue and black/white
+- [x] Improved Header with navigation links that scroll to sections of the page
 - [x] Add a separate section for About to separate Contact us now
 - [x] Create a mobile icon for calling the phone number directly in the header
 - [ ] Page for each service with dynamic routing
+- [ ] Different designs for hero to include an image
 
 ## Contact form
 
@@ -25,7 +29,7 @@
 ## Content management
 
 - [x] Set up Sanity CMS schema for content management
-- [x] Create a basic content structure for services, testimonials, and contact information
+- [x] Create a basic content model for services, testimonials, and contact information
 - [x] Load the content from Sanity CMS into the Next.js app
 - [ ] Setup deployment trigger for Sanity CMS to rebuild the Next.js app when content changes
 
@@ -37,3 +41,7 @@
 - [ ] Setup Google Maps for location services
 - [ ] Add Google reCAPTCHA to the contact form for spam protection
 - [ ] Sitemap integration for SEO
+
+## Change requests
+
+- [ ] Lighter colour of blue on the homepage
