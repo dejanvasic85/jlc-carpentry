@@ -10,7 +10,7 @@ import type { Statistic } from '@/lib/sanity/schemas';
 interface ButtonData {
   text: string;
   action: 'contact' | 'navigate' | 'page' | 'external';
-  link?: string;
+  link?: string | null;
 }
 
 interface HeroSectionProps {
@@ -18,7 +18,7 @@ interface HeroSectionProps {
   subtitle: string;
   description?: string | null;
   primaryButton: ButtonData;
-  secondaryButton: ButtonData | null;
+  secondaryButton: ButtonData | null | undefined;
   stats: Statistic[];
   showStats?: boolean;
   className?: string;

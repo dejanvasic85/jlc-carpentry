@@ -69,11 +69,13 @@ export default function ServicesSection({
                     ))}
                   </div>
 
-                  <div>
-                    <button className="text-jlc-blue font-bold hover:text-jlc-blue-dark transition-colors">
-                      <span className="uppercase">{service.link?.text || 'Learn More'}</span> →
-                    </button>
-                  </div>
+                  {service.link?.text && (
+                    <div>
+                      <button className="text-jlc-blue font-bold hover:text-jlc-blue-dark transition-colors">
+                        <span className="uppercase">{service.link.text}</span> →
+                      </button>
+                    </div>
+                  )}
                 </div>
               </Card>
             </div>
