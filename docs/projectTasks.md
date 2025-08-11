@@ -7,7 +7,7 @@
 - [ ] Homepage with hero section, services, testimonials, and contact form
 - [x] Add a separate section for About to separate Contact us now
 - [x] Create a mobile icon for calling the phone number directly in the header
-- [ ] Page for each service with dynamic routing
+- [x] Page for each service with dynamic routing
 - [ ] Different designs for hero to include an image
 - [ ] Custom not found and error pages
 
@@ -33,6 +33,7 @@
 - [ ] Setup Google Maps for location services
 - [ ] Add Google reCAPTCHA to the contact form for spam protection
 - [ ] Sitemap integration for SEO
+- [ ] Integrate Google reviews
 
 ## Change requests
 
@@ -47,3 +48,4 @@
 - [ ] Accessibility (a11y) AAA compliant testing
 - [ ] Performance testing with Lighthouse
 - [ ] Use classnames for conditional styling
+- [ ] Integrate the prettier plugin for sorting imports
