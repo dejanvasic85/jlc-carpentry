@@ -1,8 +1,8 @@
 # Technical Requirements
 
-- Next.js (located under apps/web)
-- Tailwind CSS
-- Sanity CMS (schema located under apps/content-studio)
+- Next.js (located under apps/web) v15
+- Tailwind CSS V4
+- Sanity CMS (schema located under apps/content-studio) v4
 - Accessibility (a11y) AAA compliant
 - Responsive design (mobile-first)
 - Clean and maintainable code with re-usable React components
