@@ -26,7 +26,7 @@ export default function ProjectGallery({ projects, serviceTitle }: ProjectGaller
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           {/* Project Selector (if multiple projects) */}
           {projects.length > 1 && (
             <div className="mb-8">

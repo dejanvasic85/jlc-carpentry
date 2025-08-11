@@ -41,7 +41,7 @@ export default function ImageCarousel({ project }: ImageCarouselProps) {
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden">
       {/* Project Info Header */}
-      <div className="px-6 py-4 border-b bg-gray-50">
+      <div className="px-6 py-4">
         <div className="flex justify-between items-center">
           <div>
             <h3 className="font-heading text-xl text-jlc-black mb-1">{project.suburb}</h3>
@@ -58,7 +58,7 @@ export default function ImageCarousel({ project }: ImageCarouselProps) {
       {/* Carousel - Following Flowbite Structure */}
       <div className="relative w-full" data-carousel="slide">
         {/* Carousel wrapper */}
-        <div className="relative h-56 overflow-hidden md:h-96">
+        <div className="relative h-64 overflow-hidden md:h-80 lg:h-96">
           {/* Carousel Items */}
           {project.imageGallery.map((image, index) => (
             <div
@@ -79,9 +79,9 @@ export default function ImageCarousel({ project }: ImageCarouselProps) {
 
           {/* Image Caption Overlay */}
           {currentImage.caption && (
-            <div className="absolute bottom-4 left-4 right-4 z-10">
+            <div className="absolute bottom-4 left-4 z-10 max-w-xs">
               <div className="bg-black/70 text-white px-3 py-2 rounded-lg backdrop-blur-sm">
-                <p className="text-sm">{currentImage.caption}</p>
+                <p className="text-sm font-medium">{currentImage.caption}</p>
               </div>
             </div>
           )}
@@ -89,7 +89,7 @@ export default function ImageCarousel({ project }: ImageCarouselProps) {
 
         {/* Slider indicators */}
         {project.imageGallery.length > 1 && (
-          <div className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+          <div className="absolute z-30 flex bottom-4 right-4 space-x-2">
             {project.imageGallery.map((_, index) => (
               <button
                 key={index}
@@ -162,7 +162,7 @@ export default function ImageCarousel({ project }: ImageCarouselProps) {
 
       {/* Description */}
       {project.description && (
-        <div className="px-6 py-4 border-t bg-gray-50">
+        <div className="px-6 py-4 bg-gray-50">
           <p className="text-gray-700 text-sm">{project.description}</p>
         </div>
       )}
