@@ -3,9 +3,9 @@ import { Metadata } from 'next';
 import { getSiteSettingsData, getServicePageData } from '@/lib/sanity/client';
 import { urlFor } from '@/lib/sanity/image';
 import { PortableText } from '@portabletext/react';
-import Card from '@/components/Card';
 import { notFound } from 'next/navigation';
 import { portableTextComponents } from '@/components/PortableText';
+import ProjectGallery from '@/components/ProjectGallery';
 
 export async function generateMetadata({ params }: { params: Promise<{ serviceName: string }> }): Promise<Metadata> {
   const { serviceName } = await params;
@@ -101,48 +101,9 @@ export default async function ServicePage({ params }: { params: Promise<{ servic
         </section>
       )}
 
-      {/* Showcase Section */}
+      {/* Recent Projects Gallery */}
       {serviceData.recentProjects && serviceData.recentProjects.length > 0 && (
-        <section className="py-20">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center mb-12">
-              <h2 className="font-heading text-3xl md:text-4xl mb-4 text-jlc-black">Recent Projects</h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                See some of our latest {serviceData.title.toLowerCase()} projects across Melbourne
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {serviceData.recentProjects.map((project, index) => (
-                <Card key={project._id || index} className="overflow-hidden">
-                  <div className="relative h-48 mb-4">
-                    {project.imageGallery && project.imageGallery.length > 0 ? (
-                      <Image
-                        src={urlFor(project.imageGallery[0]).width(400).url()}
-                        alt={project.imageGallery[0].alt || `${serviceData.title} project in ${project.suburb}`}
-                        fill
-                        className="object-cover"
-                        placeholder="blur"
-                        blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                        <span className="text-gray-400">No image</span>
-                      </div>
-                    )}
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-heading text-xl mb-2 text-jlc-black">{project.suburb}</h3>
-                    <p className="text-sm text-jlc-blue font-semibold mb-3">
-                      {project.date.month} {project.date.year}
-                    </p>
-                    <p className="text-gray-700 leading-relaxed">{project.description}</p>
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+        <ProjectGallery projects={serviceData.recentProjects} serviceTitle={serviceData.title} />
       )}
     </article>
   );
