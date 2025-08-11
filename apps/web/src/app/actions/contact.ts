@@ -21,7 +21,7 @@ export async function submitContactForm(
       description: formData.get('description') as string,
     };
 
-    const result = await sendContactEmail(data);
+    await sendContactEmail(data);
 
     return {
       success: true,

@@ -1,7 +1,6 @@
 'use client';
 
 import Button from '@/components/Button';
-import Card from '@/components/Card';
 import ContactDialog from '@/components/ContactDialog';
 import { useState } from 'react';
 

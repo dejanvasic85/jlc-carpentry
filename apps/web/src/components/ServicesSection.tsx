@@ -2,6 +2,7 @@ import Card from '@/components/Card';
 import { Service } from '@/lib/sanity/schemas';
 import { urlFor } from '@/lib/sanity/image';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface ServicesSectionProps {
   className?: string;
@@ -28,8 +29,6 @@ export default function ServicesSection({
             </h2>
           )}
 
-          {/* <div className="w-24 h-1 bg-jlc-blue mx-auto mb-6"></div> */}
-
           {description && <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">{description}</p>}
         </div>
 
@@ -39,9 +38,7 @@ export default function ServicesSection({
               <Card className="p-0 h-full border-l-4 border-jlc-blue overflow-hidden">
                 <div className="p-6 pb-4">
                   <div className="flex items-center space-x-3 mb-4">
-                    <h3 className="font-heading text-xl uppercase sm:text-2xl text-jlc-black transition-colors">
-                      {service.title}
-                    </h3>
+                    <h3 className="font-heading text-xl uppercase sm:text-2xl text-jlc-black">{service.title}</h3>
                   </div>
                 </div>
 
@@ -59,7 +56,6 @@ export default function ServicesSection({
 
                 <div className="p-6 pt-0">
                   <p className="text-slate-600 leading-relaxed text-base mb-6">{service.description}</p>
-
                   <div className="space-y-3 mb-6">
                     {service.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center space-x-3">
@@ -69,11 +65,14 @@ export default function ServicesSection({
                     ))}
                   </div>
 
-                  {service.link?.text && (
+                  {service.slug && (
                     <div>
-                      <button className="text-jlc-blue font-bold hover:text-jlc-blue-dark transition-colors">
-                        <span className="uppercase">{service.link.text}</span> →
-                      </button>
+                      <Link
+                        href={`/services/${service.slug.current}`}
+                        className="text-jlc-blue font-bold hover:text-jlc-blue-dark transition-colors inline-block"
+                      >
+                        <span className="uppercase">Learn More</span> →
+                      </Link>
                     </div>
                   )}
                 </div>

@@ -1,19 +1,10 @@
 # Tasks for JLC Carpentry Project
 
-## Project Setup and Technical tasks
-
-- [x] Setup domain with Amazon Web Services and hosting with Vercel
-- [x] Create a new Next.js app under `apps/web`
-- [x] Setup Coding style guide
-- [ ] End to end testing with Playwright including pipeline integration
-- [ ] Accessibility (a11y) AAA compliant testing
-- [ ] Performance testing with Lighthouse
-- [ ] Use classnames for conditional styling
-
 ## Website
 
 - [x] Layout and Design options: client selected a professional with brand colours of light blue and black/white
 - [x] Improved Header with navigation links that scroll to sections of the page
+- [ ] Homepage with hero section, services, testimonials, and contact form
 - [x] Add a separate section for About to separate Contact us now
 - [x] Create a mobile icon for calling the phone number directly in the header
 - [ ] Page for each service with dynamic routing
@@ -46,3 +37,13 @@
 ## Change requests
 
 - [ ] Lighter colour of blue on the homepage
+
+## Project Setup and Technical tasks
+
+- [x] Setup domain with Amazon Web Services and hosting with Vercel
+- [x] Create a new Next.js app under `apps/web`
+- [x] Setup Coding style guide
+- [ ] End to end testing with Playwright including pipeline integration
+- [ ] Accessibility (a11y) AAA compliant testing
+- [ ] Performance testing with Lighthouse
+- [ ] Use classnames for conditional styling
