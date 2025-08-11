@@ -1,7 +1,9 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 interface HeaderProps {
   className?: string;
@@ -14,10 +16,10 @@ interface NavigationItem {
 }
 
 const navigationItemsValue: readonly NavigationItem[] = [
-  { id: 'home', label: 'HOME', href: '#home' },
-  { id: 'services', label: 'SERVICES', href: '#services' },
-  { id: 'about', label: 'ABOUT', href: '#about' },
-  { id: 'contact', label: 'CONTACT', href: '#contact' },
+  { id: 'home', label: 'HOME', href: '/' },
+  { id: 'services', label: 'SERVICES', href: '/#services' },
+  { id: 'about', label: 'ABOUT', href: '/#about' },
+  { id: 'contact', label: 'CONTACT', href: '/#contact' },
 ] as const;
 
 const sectionsOrder = ['home', 'services', 'about', 'contact'];
@@ -32,6 +34,7 @@ const MOBILE_OFFSET_HEIGHT = 260 as const; // Additional offset for better align
 export default function Header({ className = '' }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const pathname = usePathname();
 
   useEffect(() => {
     const observerOptions = {
@@ -59,8 +62,11 @@ export default function Header({ className = '' }: HeaderProps) {
         const topSection = sectionsOrder.find((section) => visibleSections.has(section));
         if (topSection && topSection !== activeSection) {
           setActiveSection(topSection);
-          // Update URL hash without scrolling
-          window.history.replaceState(null, '', `#${topSection}`);
+          // Update URL hash without scrolling, but only if we're on the homepage
+          if (pathname === '/') {
+            const newUrl = topSection === 'home' ? '/' : `/#${topSection}`;
+            window.history.replaceState(null, '', newUrl);
+          }
         }
       }
     };
@@ -78,11 +84,25 @@ export default function Header({ className = '' }: HeaderProps) {
     return () => {
       observer.disconnect();
     };
-  }, [activeSection]);
+  }, [activeSection, pathname]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // If it's the home link, let Next.js handle it normally
+    if (href === '/') {
+      setIsMenuOpen(false);
+      return;
+    }
+
+    // If we're not on the homepage, navigate to homepage first
+    if (pathname !== '/') {
+      setIsMenuOpen(false);
+      window.location.href = href;
+      return;
+    }
+
+    // Handle hash navigation on the homepage
     e.preventDefault();
-    const targetId = href.replace('#', '');
+    const targetId = href.replace('/#', '').replace('#', '');
     const targetElement = document.getElementById(targetId);
 
     if (targetElement) {
@@ -107,7 +127,7 @@ export default function Header({ className = '' }: HeaderProps) {
       <div className="absolute inset-0"></div>
       <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-4 md:py-6">
         <nav className="flex justify-between items-center">
-          <div className="flex items-center space-x-2 md:space-x-4">
+          <Link href="/" className="flex items-center space-x-2 md:space-x-4 hover:opacity-90 transition-opacity">
             <Image
               src="/Business Logo 1.jpg"
               alt="JLC Logo"
@@ -121,7 +141,7 @@ export default function Header({ className = '' }: HeaderProps) {
               </h1>
               <p className="text-jlc-blue-light text-xs md:text-sm font-medium">PTY LTD</p>
             </div>
-          </div>
+          </Link>
 
           <div className="flex items-center space-x-4">
             {/* Desktop Navigation */}
