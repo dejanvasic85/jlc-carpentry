@@ -50,7 +50,7 @@ export default function Alert({ type, message, onClose, autoClose = true, autoCl
       )}
 
       <div className="flex-1">
-        <p className="text-sm font-medium">{message}</p>
+        <p className="font-medium">{message}</p>
       </div>
 
       {onClose && (

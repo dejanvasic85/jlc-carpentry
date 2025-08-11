@@ -45,11 +45,11 @@ export default function ImageCarousel({ project }: ImageCarouselProps) {
         <div className="flex justify-between items-center">
           <div>
             <h3 className="font-heading text-xl text-jlc-black mb-1">{project.suburb}</h3>
-            <p className="text-jlc-blue text-sm font-medium">
+            <p className="text-jlc-blue font-medium">
               {project.date.month} {project.date.year}
             </p>
           </div>
-          <div className="text-sm text-gray-500">
+          <div className="text-gray-500">
             {currentIndex + 1} / {project.imageGallery.length}
           </div>
         </div>
@@ -81,7 +81,7 @@ export default function ImageCarousel({ project }: ImageCarouselProps) {
           {currentImage.caption && (
             <div className="absolute bottom-4 left-4 z-10 max-w-xs">
               <div className="bg-black/70 text-white px-3 py-2 rounded-lg backdrop-blur-sm">
-                <p className="text-sm font-medium">{currentImage.caption}</p>
+                <p className="font-medium">{currentImage.caption}</p>
               </div>
             </div>
           )}
@@ -89,13 +89,13 @@ export default function ImageCarousel({ project }: ImageCarouselProps) {
 
         {/* Slider indicators */}
         {project.imageGallery.length > 1 && (
-          <div className="absolute z-30 flex bottom-4 right-4 space-x-2">
+          <div className="absolute z-30 flex bottom-3 right-3 space-x-2 bg-black/20 px-2 py-1 rounded-lg backdrop-blur-sm">
             {project.imageGallery.map((_, index) => (
               <button
                 key={index}
                 type="button"
-                className={`w-3 h-3 rounded-full ${
-                  index === currentIndex ? 'bg-white' : 'bg-white/50 hover:bg-white/80'
+                className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                  index === currentIndex ? 'bg-white shadow-sm' : 'bg-white/60 hover:bg-white/90'
                 }`}
                 aria-current={index === currentIndex ? 'true' : 'false'}
                 aria-label={`Slide ${index + 1}`}
@@ -162,8 +162,8 @@ export default function ImageCarousel({ project }: ImageCarouselProps) {
 
       {/* Description */}
       {project.description && (
-        <div className="px-6 py-4 bg-gray-50">
-          <p className="text-gray-700 text-sm">{project.description}</p>
+        <div className="px-6 py-4">
+          <p className="text-gray-700">{project.description}</p>
         </div>
       )}
     </div>
