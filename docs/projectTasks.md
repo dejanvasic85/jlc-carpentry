@@ -18,6 +18,7 @@
 - [x] Create a mobile icon for calling the phone number directly in the header
 - [ ] Page for each service with dynamic routing
 - [ ] Different designs for hero to include an image
+- [ ] Custom not found and error pages
 
 ## Contact form
 

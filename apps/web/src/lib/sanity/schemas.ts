@@ -73,16 +73,65 @@ const ServiceLinkSchema = z.object({
   action: z.enum(['navigate', 'contact', 'external', 'scroll']).nullable().optional(),
 });
 
+// Recent Project Schema
+export const RecentProjectSchema = BaseSanitySchema.extend({
+  title: z.string(),
+  suburb: z.string(),
+  date: z.object({
+    month: z.string(),
+    year: z.number(),
+  }),
+  description: z.string(),
+  imageGallery: z.array(
+    z.object({
+      asset: z.object({
+        _ref: z.string(),
+      }),
+      alt: z.string(),
+      caption: z.string().nullable().optional(),
+    }),
+  ),
+});
+
 // Service Schema
 export const ServiceSchema = BaseSanitySchema.extend({
   title: z.string(),
+  slug: z.object({
+    current: z.string(),
+  }),
   description: z.string(),
+  subtitle: z.string().nullable().optional(),
   features: z.array(z.string()),
   image: z
     .object({
       asset: z.object({
         _ref: z.string(),
       }),
+    })
+    .nullable()
+    .optional(),
+  heroImage: z
+    .object({
+      asset: z.object({
+        _ref: z.string(),
+      }),
+    })
+    .nullable()
+    .optional(),
+  mainContent: z.array(z.any()).nullable().optional(), // Rich text content
+  testimonial: z
+    .object({
+      quote: z.string(),
+      author: z.string(),
+    })
+    .nullable()
+    .optional(),
+  recentProjects: z.array(RecentProjectSchema).nullable().optional(),
+  seo: z
+    .object({
+      metaTitle: z.string().nullable().optional(),
+      metaDescription: z.string().nullable().optional(),
+      keywords: z.array(z.string()).nullable().optional(),
     })
     .nullable()
     .optional(),
@@ -175,3 +224,4 @@ export type ButtonAction = z.infer<typeof ButtonActionSchema>;
 export type Statistic = z.infer<typeof StatisticSchema>;
 export type Service = z.infer<typeof ServiceSchema>;
 export type SiteSettings = z.infer<typeof SiteSettingsSchema>;
+export type RecentProject = z.infer<typeof RecentProjectSchema>;

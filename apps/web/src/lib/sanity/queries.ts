@@ -88,6 +88,9 @@ export const statisticsQuery = `
 export const servicesQuery = `
   *[_type == "service"] | order(_createdAt asc) {
     title,
+    slug {
+      current
+    },
     description,
     features,
     icon,
@@ -101,6 +104,56 @@ export const servicesQuery = `
       text,
       url,
       action
+    }
+  }
+`;
+
+// Query for Service by slug
+export const serviceBySlugQuery = `
+  *[_type == "service" && slug.current == $slug][0] {
+    title,
+    slug {
+      current
+    },
+    description,
+    subtitle,
+    features,
+    image {
+      asset {
+        _ref
+      }
+    },
+    heroImage {
+      asset {
+        _ref
+      }
+    },
+    mainContent,
+    testimonial {
+      quote,
+      author
+    },
+    recentProjects[]-> {
+      _id,
+      title,
+      suburb,
+      date {
+        month,
+        year
+      },
+      description,
+      imageGallery[] {
+        asset {
+          _ref
+        },
+        alt,
+        caption
+      }
+    },
+    seo {
+      metaTitle,
+      metaDescription,
+      keywords
     }
   }
 `;

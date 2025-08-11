@@ -7,6 +7,7 @@ import {
   servicesQuery,
   heroSectionQuery,
   statisticsQuery,
+  serviceBySlugQuery,
 } from './queries';
 import { HomepageSchema, SiteSettingsSchema, ServiceSchema, HeroSectionSchema, StatisticSchema } from './schemas';
 
@@ -55,5 +56,14 @@ export async function getStatisticsData() {
     query: statisticsQuery,
     schema: z.array(StatisticSchema),
     tags: ['statistic'],
+  });
+}
+
+export async function getServicePageData(slug: string) {
+  return await sanityFetch({
+    query: serviceBySlugQuery,
+    schema: ServiceSchema,
+    params: { slug },
+    tags: ['service'],
   });
 }
