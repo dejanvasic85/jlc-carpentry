@@ -69,7 +69,7 @@ export default function ImageCarousel({ project }: ImageCarouselProps) {
   const currentImage = project.imageGallery[currentIndex];
 
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+    <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
       {/* Project Info Header */}
       <div className="px-6 py-4">
         <div className="flex justify-between items-center">
@@ -88,7 +88,7 @@ export default function ImageCarousel({ project }: ImageCarouselProps) {
       {/* Carousel with Sliding Animation */}
       <div className="relative w-full" data-carousel="slide">
         {/* Carousel wrapper */}
-        <div className="relative h-64 overflow-hidden md:h-80 lg:h-96">
+        <div className="relative h-80 overflow-hidden md:h-[500px] lg:h-[600px] xl:h-[700px]">
           {/* Sliding Container */}
           <div
             className="flex transition-transform duration-500 ease-out h-full"
@@ -105,11 +105,11 @@ export default function ImageCarousel({ project }: ImageCarouselProps) {
                 data-carousel-item={index === currentIndex ? 'active' : ''}
               >
                 <Image
-                  src={urlFor(image).width(1200).url()}
+                  src={urlFor(image).width(1400).height(800).url()}
                   alt={image.alt || `${project.suburb} project image ${index + 1}`}
                   fill
-                  className="object-contain"
-                  quality={90}
+                  className="object-cover"
+                  quality={95}
                   priority={index === currentIndex}
                 />
               </div>
@@ -150,16 +150,16 @@ export default function ImageCarousel({ project }: ImageCarouselProps) {
         {currentIndex > 0 && (
           <button
             type="button"
-            className={`absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 group focus:outline-none transition-opacity ${
+            className={`absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 group focus:outline-none transition-all duration-200 ${
               isTransitioning ? 'cursor-wait opacity-50' : 'cursor-pointer hover:opacity-100'
             }`}
             onClick={goToPrevious}
             disabled={isTransitioning}
             data-carousel-prev
           >
-            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-lg border border-gray-200 group-hover:bg-gray-50 group-hover:shadow-xl group-focus:ring-4 group-focus:ring-jlc-blue/20 group-focus:outline-none transition-all duration-200">
               <svg
-                className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                className="w-5 h-5 text-gray-800 rtl:rotate-180"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -182,16 +182,16 @@ export default function ImageCarousel({ project }: ImageCarouselProps) {
         {currentIndex < project.imageGallery.length - 1 && (
           <button
             type="button"
-            className={`absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 group focus:outline-none transition-opacity ${
+            className={`absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 group focus:outline-none transition-all duration-200 ${
               isTransitioning ? 'cursor-wait opacity-50' : 'cursor-pointer hover:opacity-100'
             }`}
             onClick={goToNext}
             disabled={isTransitioning}
             data-carousel-next
           >
-            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <span className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white shadow-lg border border-gray-200 group-hover:bg-gray-50 group-hover:shadow-xl group-focus:ring-4 group-focus:ring-jlc-blue/20 group-focus:outline-none transition-all duration-200">
               <svg
-                className="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+                className="w-5 h-5 text-gray-800 rtl:rotate-180"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

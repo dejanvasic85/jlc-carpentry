@@ -26,37 +26,37 @@ export default function ProjectGallery({ projects, serviceTitle }: ProjectGaller
           </p>
         </div>
 
-        <div className="max-w-3xl mx-auto">
-          {/* Project Selector (if multiple projects) */}
-          {projects.length > 1 && (
-            <div className="mb-8">
-              <div className="flex flex-wrap gap-3 justify-center">
-                {projects.map((project) => (
-                  <button
-                    key={project._id}
-                    onClick={() => setSelectedProject(project)}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                      selectedProject._id === project._id
-                        ? 'bg-jlc-blue text-white shadow-lg'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
-                  >
-                    {project.suburb} - {project.date.month} {project.date.year}
-                  </button>
-                ))}
-              </div>
+        {/* Project Selector (if multiple projects) */}
+        {projects.length > 1 && (
+          <div className="mb-8">
+            <div className="flex flex-wrap gap-3 justify-center">
+              {projects.map((project) => (
+                <button
+                  key={project._id}
+                  onClick={() => setSelectedProject(project)}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                    selectedProject._id === project._id
+                      ? 'bg-jlc-blue text-white shadow-lg'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  {project.suburb} - {project.date.month} {project.date.year}
+                </button>
+              ))}
             </div>
-          )}
-
-          {/* Inline Carousel */}
-          <ImageCarousel project={selectedProject} />
-
-          {/* Project Count Info */}
-          <div className="text-center mt-8">
-            <p className="text-gray-500 text-sm">
-              {projects.length} project{projects.length !== 1 ? 's' : ''} featured
-            </p>
           </div>
+        )}
+
+        {/* Full Width Carousel */}
+        <div className="w-full">
+          <ImageCarousel project={selectedProject} />
+        </div>
+
+        {/* Project Count Info */}
+        <div className="text-center mt-8">
+          <p className="text-gray-500 text-sm">
+            {projects.length} project{projects.length !== 1 ? 's' : ''} featured
+          </p>
         </div>
       </div>
     </section>
