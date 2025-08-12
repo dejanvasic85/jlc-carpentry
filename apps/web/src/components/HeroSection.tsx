@@ -75,7 +75,7 @@ export default function HeroSection({
   return (
     <section
       id="home"
-      className={`perf-section relative py-20 bg-gradient-to-br from-jlc-black via-jlc-blue-dark to-jlc-blue text-white overflow-hidden ${className}`}
+      className={`perf-section relative py-20 bg-gradient-to-br from-jlc-blue-dark via-jlc-blue-dark to-jlc-blue text-white overflow-hidden ${className}`}
     >
       <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
       <div className="absolute top-10 right-10 w-64 h-64 bg-white/5 rounded-full blur-xl opacity-60"></div>
