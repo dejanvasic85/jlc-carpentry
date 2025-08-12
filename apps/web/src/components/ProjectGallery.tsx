@@ -47,8 +47,8 @@ export default function ProjectGallery({ projects, serviceTitle }: ProjectGaller
           </div>
         )}
 
-        {/* Full Width Carousel */}
-        <div className="w-full">
+        {/* Responsive Width Carousel */}
+        <div className="w-full lg:max-w-[75%] lg:mx-auto">
           <ImageCarousel project={selectedProject} />
         </div>
 

@@ -88,7 +88,7 @@ export default function ImageCarousel({ project }: ImageCarouselProps) {
       {/* Carousel with Sliding Animation */}
       <div className="relative w-full" data-carousel="slide">
         {/* Carousel wrapper */}
-        <div className="relative h-80 overflow-hidden md:h-[500px] lg:h-[600px] xl:h-[700px]">
+        <div className="relative h-80 overflow-hidden md:h-[500px] lg:h-[75vh] max-h-[600px]">
           {/* Sliding Container */}
           <div
             className="flex transition-transform duration-500 ease-out h-full"
