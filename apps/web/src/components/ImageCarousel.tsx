@@ -27,18 +27,21 @@ export default function ImageCarousel({ project }: ImageCarouselProps) {
     setTimeout(() => setIsTransitioning(false), 500); // Match transition duration
   }, [currentIndex, isTransitioning]);
 
-  const goToSlide = useCallback((index: number) => {
-    if (isTransitioning || index === currentIndex) return;
-    setIsTransitioning(true);
-    setCurrentIndex(index);
-    setTimeout(() => setIsTransitioning(false), 500);
-  }, [currentIndex, isTransitioning]);
+  const goToSlide = useCallback(
+    (index: number) => {
+      if (isTransitioning || index === currentIndex) return;
+      setIsTransitioning(true);
+      setCurrentIndex(index);
+      setTimeout(() => setIsTransitioning(false), 500);
+    },
+    [currentIndex, isTransitioning],
+  );
 
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (isTransitioning) return;
-      
+
       switch (event.key) {
         case 'ArrowLeft':
           if (currentIndex > 0) {
@@ -87,11 +90,11 @@ export default function ImageCarousel({ project }: ImageCarouselProps) {
         {/* Carousel wrapper */}
         <div className="relative h-64 overflow-hidden md:h-80 lg:h-96">
           {/* Sliding Container */}
-          <div 
+          <div
             className="flex transition-transform duration-500 ease-out h-full"
-            style={{ 
+            style={{
               transform: `translateX(-${currentIndex * 100}%)`,
-              willChange: 'transform'
+              willChange: 'transform',
             }}
           >
             {/* Carousel Items */}
@@ -131,9 +134,7 @@ export default function ImageCarousel({ project }: ImageCarouselProps) {
                 key={index}
                 type="button"
                 className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                  index === currentIndex 
-                    ? 'bg-white shadow-sm' 
-                    : 'bg-white/60 hover:bg-white/90'
+                  index === currentIndex ? 'bg-white shadow-sm' : 'bg-white/60 hover:bg-white/90'
                 } ${isTransitioning ? 'cursor-wait' : 'cursor-pointer'}`}
                 aria-current={index === currentIndex ? 'true' : 'false'}
                 aria-label={`Slide ${index + 1}`}

@@ -69,6 +69,12 @@ export const heroSectionQuery = `
         link
       }
     },
+    heroImage {
+      asset {
+        _ref
+      },
+      alt
+    },
     stats
   }
 `;

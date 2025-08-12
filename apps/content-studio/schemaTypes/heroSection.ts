@@ -129,6 +129,25 @@ export default defineType({
     }),
 
     defineField({
+      name: 'heroImage',
+      title: 'Hero Image',
+      type: 'image',
+      description: 'Optional hero image that will be displayed in the two-column layout',
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative Text',
+          description: 'Important for accessibility and SEO',
+          validation: (Rule) => Rule.required(),
+        },
+      ],
+    }),
+
+    defineField({
       name: 'stats',
       title: 'Show statistics section',
       type: 'boolean',

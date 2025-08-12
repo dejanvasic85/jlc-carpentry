@@ -29,6 +29,15 @@ export const HeroSectionSchema = BaseSanitySchema.extend({
     primaryButton: ButtonActionSchema,
     secondaryButton: ButtonActionSchema.nullable().optional(),
   }),
+  heroImage: z
+    .object({
+      asset: z.object({
+        _ref: z.string(),
+      }),
+      alt: z.string(),
+    })
+    .nullable()
+    .optional(),
   stats: z.boolean().optional(),
 });
 

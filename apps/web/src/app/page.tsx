@@ -55,6 +55,7 @@ export default async function Home() {
           secondaryButton={heroData.buttons.secondaryButton}
           stats={statsData}
           showStats={heroData.stats}
+          heroImage={heroData.heroImage}
         />
       )}
       {homepage.servicesSection && (
