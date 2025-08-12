@@ -9,7 +9,7 @@
 - [x] Create a mobile icon for calling the phone number directly in the header
 - [x] Page for each service with dynamic routing
 - [x] Different designs for hero to include an image
-- [ ] Custom not found and error pages
+- [x] Custom not found and error pages
 
 ## Contact form
 
@@ -25,19 +25,20 @@
 - [x] Load the content from Sanity CMS into the Next.js app
 - [ ] Setup deployment trigger for Sanity CMS to rebuild the Next.js app when content changes
 
-## Google
+## Google & SEO
 
 - [ ] Integrate Google Business profile into the website
 - [ ] Setup Google Analytics for tracking
 - [ ] Setup Google Search Console for SEO
 - [ ] Setup Google Maps for location services
 - [ ] Add Google reCAPTCHA to the contact form for spam protection
-- [ ] Sitemap integration for SEO
+- [x] Sitemap integration for SEO
 - [ ] Integrate Google reviews
+- [ ] Sign up for Bing Developer Tools
 
 ## Change requests
 
-- [ ] Lighter colour of blue on the homepage
+- [x] Lighter colour of blue on the homepage
 
 ## Project Setup and Technical tasks
 
