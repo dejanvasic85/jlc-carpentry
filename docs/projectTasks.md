@@ -8,7 +8,7 @@
 - [x] Add a separate section for About to separate Contact us now
 - [x] Create a mobile icon for calling the phone number directly in the header
 - [x] Page for each service with dynamic routing
-- [ ] Different designs for hero to include an image
+- [x] Different designs for hero to include an image
 - [ ] Custom not found and error pages
 
 ## Contact form
