@@ -1,9 +1,9 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-jlc-blue: #4a90e2;
-  --color-jlc-blue-light: #7bb3f0;
-  --color-jlc-blue-dark: #2e5984;
+  --color-jlc-blue: #36b6ff;
+  --color-jlc-blue-light: #66caff;
+  --color-jlc-blue-dark: #1a8ae6;
   --color-jlc-black: #1a1a1a;
   --color-jlc-gray: #f8fafc;
 }
