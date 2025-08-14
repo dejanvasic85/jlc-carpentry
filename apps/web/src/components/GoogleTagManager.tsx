@@ -6,6 +6,17 @@ interface GoogleTagManagerProps {
   gtmId: string;
 }
 
+// Define types for GTM data layer
+interface GTMDataLayer {
+  push: (data: Record<string, unknown>) => void;
+}
+
+interface WindowWithDataLayer extends Window {
+  dataLayer: GTMDataLayer;
+}
+
+declare const window: WindowWithDataLayer;
+
 export function GoogleTagManager({ gtmId }: GoogleTagManagerProps) {
   if (!gtmId) {
     return null;
@@ -51,9 +62,9 @@ export function GoogleTagManagerNoscript({ gtmId }: GoogleTagManagerProps) {
 // Analytics utility functions for tracking custom events
 export const gtag = {
   // Send custom events to GTM
-  event: (action: string, parameters?: Record<string, any>) => {
-    if (typeof window !== 'undefined' && (window as any).dataLayer) {
-      (window as any).dataLayer.push({
+  event: (action: string, parameters?: Record<string, unknown>) => {
+    if (typeof window !== 'undefined' && window.dataLayer) {
+      window.dataLayer.push({
         event: action,
         ...parameters,
       });
@@ -62,8 +73,8 @@ export const gtag = {
 
   // Track page views
   pageview: (url: string, title?: string) => {
-    if (typeof window !== 'undefined' && (window as any).dataLayer) {
-      (window as any).dataLayer.push({
+    if (typeof window !== 'undefined' && window.dataLayer) {
+      window.dataLayer.push({
         event: 'page_view',
         page_location: url,
         page_title: title || document.title,
@@ -73,8 +84,8 @@ export const gtag = {
 
   // Track conversions (form submissions, calls, etc.)
   conversion: (eventName: string, value?: number, currency: string = 'AUD') => {
-    if (typeof window !== 'undefined' && (window as any).dataLayer) {
-      (window as any).dataLayer.push({
+    if (typeof window !== 'undefined' && window.dataLayer) {
+      window.dataLayer.push({
         event: 'conversion',
         event_name: eventName,
         value: value,
