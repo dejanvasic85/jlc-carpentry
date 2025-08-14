@@ -4,7 +4,7 @@
 
 - [x] Layout and Design options: client selected a professional with brand colours of light blue and black/white
 - [x] Improved Header with navigation links that scroll to sections of the page
-- [ ] Homepage with hero section, services, testimonials, and contact form
+- [x] Homepage with hero section, services, testimonials, and contact form
 - [x] Add a separate section for About to separate Contact us now
 - [x] Create a mobile icon for calling the phone number directly in the header
 - [x] Page for each service with dynamic routing
@@ -28,7 +28,7 @@
 ## Google & SEO
 
 - [ ] Integrate Google Business profile into the website
-- [ ] Setup Google Analytics for tracking
+- [ ] Setup Google Tag manager and Analytics for tracking
 - [ ] Setup Google Search Console for SEO
 - [ ] Setup Google Maps for location services
 - [ ] Add Google reCAPTCHA to the contact form for spam protection
