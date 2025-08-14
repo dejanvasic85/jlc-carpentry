@@ -10,7 +10,7 @@ const baseClasses =
 
 const variantClasses = {
   primary: 'bg-slate-900 hover:bg-slate-800 text-white shadow-lg hover:shadow-xl focus:ring-slate-500',
-  outline: 'border-3 border-white text-white hover:bg-white hover:text-jlc-black focus:ring-white',
+  outline: 'border-3 border-jlc-black text-jlc-black hover:bg-jlc-black hover:text-white focus:ring-jlc-black',
 };
 
 const sizeClasses = {

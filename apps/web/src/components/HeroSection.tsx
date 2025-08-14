@@ -86,18 +86,18 @@ export default function HeroSection({
   return (
     <section
       id="home"
-      className={`perf-section relative py-20 bg-gradient-to-br from-jlc-blue-dark via-jlc-blue-dark to-jlc-blue text-white overflow-hidden ${className}`}
+      className={`perf-section relative py-20 bg-gradient-to-br from-jlc-blue via-jlc-blue to-jlc-blue-light text-jlc-black overflow-hidden ${className}`}
     >
-      <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
-      <div className="absolute top-10 right-10 w-64 h-64 bg-white/5 rounded-full blur-xl opacity-60"></div>
-      <div className="absolute bottom-10 left-10 w-48 h-48 bg-jlc-blue-light/10 rounded-full blur-xl opacity-70"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-jlc-black/10 to-transparent"></div>
+      <div className="absolute top-10 right-10 w-64 h-64 bg-jlc-black/5 rounded-full blur-xl opacity-60"></div>
+      <div className="absolute bottom-10 left-10 w-48 h-48 bg-jlc-blue-dark/10 rounded-full blur-xl opacity-70"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         {/* Mobile Heading - Shows first on mobile */}
         <div className="lg:hidden text-center mb-8">
-          <h2 className="font-display text-4xl md:text-6xl mb-4 leading-tight">
+          <h2 className="font-display text-5xl md:text-6xl mb-4 leading-tight">
             <span className="capitalize block">{title.split(' ')[0]}</span>
-            <span className="bg-gradient-to-r from-jlc-blue-light to-white bg-clip-text capitalize block">
+            <span className="bg-gradient-to-r from-jlc-blue-dark to-jlc-black bg-clip-text capitalize block">
               {title.split(' ').slice(1).join(' ')}
             </span>
           </h2>
@@ -110,15 +110,15 @@ export default function HeroSection({
             <div className="hidden lg:block">
               <h2 className="font-display text-4xl md:text-6xl lg:text-7xl mb-6 leading-tight">
                 <span className="capitalize block">{title.split(' ')[0]}</span>
-                <span className="bg-gradient-to-r from-jlc-blue-light to-white bg-clip-text capitalize block">
+                <span className="bg-gradient-to-r from-jlc-blue-dark to-jlc-black bg-clip-text capitalize block">
                   {title.split(' ').slice(1).join(' ')}
                 </span>
               </h2>
             </div>
 
-            <p className="text-xl md:text-2xl lg:text-3xl mb-6 font-light opacity-90">{subtitle}</p>
+            <p className="text-xl md:text-2xl lg:text-3xl mb-6 font-light">{subtitle}</p>
             {description && (
-              <p className="text-base md:text-lg mb-8 max-w-2xl mx-auto lg:mx-0 opacity-80 leading-relaxed">
+              <p className="text-base md:text-lg mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed text-jlc-black">
                 {description}
               </p>
             )}
@@ -165,13 +165,13 @@ export default function HeroSection({
 
         {/* Stats Section - Full Width Below */}
         {showStats && (
-          <div className="mt-16 pt-16 border-t border-white/10">
+          <div className="mt-16 pt-16 border-t border-jlc-black/20">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {stats.map((stat, index) => (
-                <Card key={index} variant="glass-dark" className="p-6 text-center" hover={false}>
-                  <div className="text-3xl md:text-4xl font-bold text-jlc-blue-light mb-2">{stat.number}</div>
-                  <div className="text-white font-semibold mb-1">{stat.label}</div>
-                  <div className="text-xs opacity-75">{stat.subtitle}</div>
+                <Card key={index} variant="glass" className="p-6 text-center" hover={false}>
+                  <div className="text-3xl md:text-4xl font-bold text-jlc-blue-dark mb-2">{stat.number}</div>
+                  <div className="text-jlc-black font-semibold mb-1">{stat.label}</div>
+                  <div className="text-xs opacity-60">{stat.subtitle}</div>
                 </Card>
               ))}
             </div>
