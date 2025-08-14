@@ -224,6 +224,12 @@ export const SiteSettingsSchema = BaseSanitySchema.extend({
       .nullable()
       .optional(),
   }),
+  analytics: z
+    .object({
+      gtmId: z.string().nullable().optional(),
+      ga4MeasurementId: z.string().nullable().optional(),
+    })
+    .optional(),
 });
 
 // Export inferred types

@@ -7,18 +7,19 @@ import license from './license';
 import recentProject from './recentProject';
 
 export const schemaTypes = [
-  // Site-wide settings (singleton)
-  siteSettings,
+  // Pages
+  homepage,
 
   // Reusable components
   heroSection,
   statisticItem,
+
+  // Service and recent projects
   serviceItem,
+  recentProject,
 
   // Content types
   license,
-  recentProject,
-
-  // Pages
-  homepage,
+  // Site-wide settings (singleton)
+  siteSettings,
 ];

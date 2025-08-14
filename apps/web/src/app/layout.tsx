@@ -3,6 +3,7 @@ import { Bebas_Neue, Oswald, Nunito_Sans } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { GoogleTagManager, GoogleTagManagerNoscript } from '@/components/GoogleTagManager';
 import { getSiteSettingsData } from '@/lib/sanity/client';
 
 const bebasNeue = Bebas_Neue({
@@ -39,10 +40,13 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const siteSettings = await getSiteSettingsData();
+  const gtmId = siteSettings.analytics?.gtmId || process.env.NEXT_PUBLIC_GTM_ID;
 
   return (
     <html lang="en">
+      <head>{gtmId && <GoogleTagManager gtmId={gtmId} />}</head>
       <body className={`${bebasNeue.variable} ${oswald.variable} ${nunitoSans.variable}`}>
+        {gtmId && <GoogleTagManagerNoscript gtmId={gtmId} />}
         <div className="min-h-screen bg-slate-50">
           <Header />
           <main>{children}</main>

@@ -4,6 +4,7 @@ import { useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useActionState, useTransition } from 'react';
 import Alert from './Alert';
+import { gtag } from '@/components/GoogleTagManager';
 import { submitContactForm, type ContactFormState } from '@/app/actions/contact';
 
 interface ContactDialogProps {
@@ -40,6 +41,11 @@ export default function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
     if (isOpen) {
       dialog.showModal();
       reset();
+      // Track contact dialog opening
+      gtag.event('contact_dialog_open', {
+        category: 'lead_generation',
+        action: 'dialog_open',
+      });
     } else {
       dialog.close();
     }
@@ -57,6 +63,13 @@ export default function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
   };
 
   const onSubmit = (data: FormData) => {
+    // Track form submission attempt
+    gtag.trackContact('form');
+    gtag.event('form_submit', {
+      form_name: 'contact_dialog',
+      category: 'lead_generation',
+    });
+
     startTransition(() => {
       formAction(data);
     });

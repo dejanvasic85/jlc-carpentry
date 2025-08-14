@@ -221,6 +221,37 @@ export default defineType({
         }),
       ],
     }),
+
+    // Analytics & Tracking
+    defineField({
+      name: 'analytics',
+      title: 'Analytics & Tracking',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'gtmId',
+          title: 'Google Tag Manager ID',
+          type: 'string',
+          description: 'Your GTM container ID (e.g., GTM-XXXXXXX)',
+          validation: (Rule) => 
+            Rule.regex(/^GTM-[A-Z0-9]+$/, {
+              name: 'GTM ID format',
+              invert: false,
+            }).warning('GTM ID should be in format GTM-XXXXXXX'),
+        }),
+        defineField({
+          name: 'ga4MeasurementId',
+          title: 'GA4 Measurement ID (Optional)',
+          type: 'string',
+          description: 'Your GA4 Measurement ID (e.g., G-XXXXXXXXXX) - only needed if not using GTM',
+          validation: (Rule) => 
+            Rule.regex(/^G-[A-Z0-9]+$/, {
+              name: 'GA4 ID format',
+              invert: false,
+            }).warning('GA4 ID should be in format G-XXXXXXXXXX'),
+        }),
+      ],
+    }),
   ],
 
   preview: {

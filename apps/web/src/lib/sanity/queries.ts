@@ -219,6 +219,10 @@ export const siteSettingsQuery = `
           _ref
         }
       }
+    },
+    analytics {
+      gtmId,
+      ga4MeasurementId
     }
   }
 `;
