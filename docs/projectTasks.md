@@ -28,13 +28,13 @@
 ## Google & SEO
 
 - [ ] Integrate Google Business profile into the website
-- [ ] Setup Google Tag manager and Analytics for tracking
+- [x] Setup Google Tag manager and Analytics for tracking
 - [ ] Setup Google Search Console for SEO
+- [ ] Sign up for Bing Developer Tools
 - [ ] Setup Google Maps for location services
 - [ ] Add Google reCAPTCHA to the contact form for spam protection
 - [x] Sitemap integration for SEO
 - [ ] Integrate Google reviews
-- [ ] Sign up for Bing Developer Tools
 
 ## Change requests
 
