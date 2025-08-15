@@ -23,14 +23,14 @@
 - [x] Set up Sanity CMS schema for content management
 - [x] Create a basic content model for services, testimonials, and contact information
 - [x] Load the content from Sanity CMS into the Next.js app
-- [ ] Setup deployment trigger for Sanity CMS to rebuild the Next.js app when content changes
+- [x] Setup deployment trigger for Sanity CMS to rebuild the Next.js app when content changes
 
 ## Google & SEO
 
 - [x] Integrate Google Business profile into the website
 - [x] Setup Google Tag manager and Analytics for tracking
 - [x] Setup Google Search Console for SEO
-- [ ] Sign up for Bing Developer Tools
+- [x] Sign up for Bing Developer Tools
 - [x] Setup Google Maps for location services
 - [ ] Add Google reCAPTCHA to the contact form for spam protection
 - [x] Sitemap integration for SEO
@@ -45,8 +45,5 @@
 - [x] Setup domain with Amazon Web Services and hosting with Vercel
 - [x] Create a new Next.js app under `apps/web`
 - [x] Setup Coding style guide
-- [ ] End to end testing with Playwright including pipeline integration
-- [ ] Accessibility (a11y) AAA compliant testing
-- [ ] Performance testing with Lighthouse
-- [ ] Use classnames for conditional styling
-- [ ] Integrate the prettier plugin for sorting imports
+- [x] Accessibility (a11y) AAA compliant testing
+- [x] Performance testing with Lighthouse
