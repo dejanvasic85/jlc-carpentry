@@ -4,6 +4,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { GoogleTagManager, GoogleTagManagerNoscript } from '@/components/GoogleTagManager';
+import LocalBusinessStructuredData from '@/components/LocalBusinessStructuredData';
 import { getSiteSettingsData } from '@/lib/sanity/client';
 
 const bebasNeue = Bebas_Neue({
@@ -44,7 +45,10 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <head>{gtmId && <GoogleTagManager gtmId={gtmId} />}</head>
+      <head>
+        {gtmId && <GoogleTagManager gtmId={gtmId} />}
+        <LocalBusinessStructuredData siteSettings={siteSettings} />
+      </head>
       <body className={`${bebasNeue.variable} ${oswald.variable} ${nunitoSans.variable}`}>
         {gtmId && <GoogleTagManagerNoscript gtmId={gtmId} />}
         <div className="min-h-screen bg-slate-50">
