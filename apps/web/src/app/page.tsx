@@ -37,11 +37,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  const [homepage, services, heroData, statsData] = await Promise.all([
+  const [homepage, services, heroData, statsData, siteSettings] = await Promise.all([
     getHomepageData(),
     getServicesData(),
     getHeroData(),
     getStatisticsData(),
+    getSiteSettingsData(),
   ]);
 
   return (
@@ -66,7 +67,7 @@ export default async function Home() {
         />
       )}
       <About />
-      <Contact />
+      <Contact siteSettings={siteSettings} />
     </>
   );
 }
