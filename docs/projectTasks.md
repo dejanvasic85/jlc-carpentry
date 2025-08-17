@@ -43,3 +43,4 @@
 - [x] Setup Coding style guide
 - [x] Accessibility (a11y) AAA compliant testing
 - [x] Performance testing with Lighthouse
+- [ ] Favicon
