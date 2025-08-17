@@ -7,6 +7,9 @@ const configSchema = z.object({
   emailEnabled: z.boolean(),
   emailFrom: z.string(),
   emailTo: z.string(),
+  recaptchaSiteKey: z.string(),
+  recaptchaSecretKey: z.string(),
+  googleCloudProjectId: z.string(),
 });
 
 export type Config = z.infer<typeof configSchema>;
@@ -19,6 +22,9 @@ export function getConfig(): Config {
     emailEnabled: process.env.EMAIL_ENABLED === 'true',
     emailFrom: process.env.EMAIL_FROM || '',
     emailTo: process.env.EMAIL_TO || '',
+    recaptchaSiteKey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '',
+    recaptchaSecretKey: process.env.RECAPTCHA_SECRET_KEY || '',
+    googleCloudProjectId: process.env.GOOGLE_CLOUD_PROJECT_ID || '',
   };
 
   return configSchema.parse(config);

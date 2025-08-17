@@ -5,7 +5,9 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { GoogleTagManager, GoogleTagManagerNoscript } from '@/components/GoogleTagManager';
 import LocalBusinessStructuredData from '@/components/LocalBusinessStructuredData';
+import { ReCaptchaScript } from '@/components/ReCaptcha';
 import { getSiteSettingsData } from '@/lib/sanity/client';
+import { getConfig } from '@/lib/config';
 
 const bebasNeue = Bebas_Neue({
   weight: '400',
@@ -41,6 +43,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const siteSettings = await getSiteSettingsData();
+  const config = getConfig();
   const gtmId = siteSettings.analytics?.gtmId || process.env.NEXT_PUBLIC_GTM_ID;
 
   return (
@@ -51,6 +54,7 @@ export default async function RootLayout({
       </head>
       <body className={`${bebasNeue.variable} ${oswald.variable} ${nunitoSans.variable}`}>
         {gtmId && <GoogleTagManagerNoscript gtmId={gtmId} />}
+        {config.recaptchaSiteKey && <ReCaptchaScript siteKey={config.recaptchaSiteKey} />}
         <div className="min-h-screen bg-slate-50">
           <Header />
           <main>{children}</main>

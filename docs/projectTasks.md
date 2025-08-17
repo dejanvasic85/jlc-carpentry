@@ -32,13 +32,9 @@
 - [x] Setup Google Search Console for SEO
 - [x] Sign up for Bing Developer Tools
 - [x] Setup Google Maps for location services
-- [ ] Add Google reCAPTCHA to the contact form for spam protection
+- [x] Add Google reCAPTCHA to the contact form for spam protection
 - [x] Sitemap integration for SEO
 - [ ] Integrate Google reviews
-
-## Change requests
-
-- [x] Lighter colour of blue on the homepage
 
 ## Project Setup and Technical tasks
 

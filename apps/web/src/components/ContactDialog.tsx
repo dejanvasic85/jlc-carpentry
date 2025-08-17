@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { useActionState, useTransition } from 'react';
 import Alert from './Alert';
 import { gtag } from '@/components/GoogleTagManager';
+import { executeReCaptcha } from '@/components/ReCaptcha';
 import { submitContactForm, type ContactFormState } from '@/app/actions/contact';
 
 interface ContactDialogProps {
@@ -15,6 +16,7 @@ interface ContactDialogProps {
 interface FormData {
   contactDetails: string;
   description: string;
+  recaptchaToken?: string;
 }
 
 export default function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
@@ -24,6 +26,9 @@ export default function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
     const data = new FormData();
     data.append('contactDetails', formData.contactDetails);
     data.append('description', formData.description);
+    if (formData.recaptchaToken) {
+      data.append('recaptchaToken', formData.recaptchaToken);
+    }
     return submitContactForm(prevState, data);
   }, null);
 
@@ -62,17 +67,28 @@ export default function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
     }
   };
 
-  const onSubmit = (data: FormData) => {
-    // Track form submission attempt
-    gtag.trackContact('form');
-    gtag.event('form_submit', {
-      form_name: 'contact_dialog',
-      category: 'lead_generation',
-    });
+  const onSubmit = async (data: FormData) => {
+    try {
+      // Execute reCAPTCHA before form submission
+      const recaptchaToken = await executeReCaptcha('contact_form');
+      
+      // Track form submission attempt
+      gtag.trackContact('form');
+      gtag.event('form_submit', {
+        form_name: 'contact_dialog',
+        category: 'lead_generation',
+      });
 
-    startTransition(() => {
-      formAction(data);
-    });
+      startTransition(() => {
+        formAction({ ...data, recaptchaToken });
+      });
+    } catch (error) {
+      console.error('reCAPTCHA error:', error);
+      // Still allow form submission if reCAPTCHA fails (fallback)
+      startTransition(() => {
+        formAction(data);
+      });
+    }
   };
 
   const showForm = !state?.success;
