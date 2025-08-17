@@ -4,7 +4,16 @@
     "build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"],
-      "env": ["AWS_REGION", "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY", "EMAIL_TO", "EMAIL_FROM", "EMAIL_ENABLED"]
+      "env": [
+        "AWS_REGION",
+        "AWS_ACCESS_KEY_ID",
+        "AWS_SECRET_ACCESS_KEY",
+        "EMAIL_TO",
+        "EMAIL_FROM",
+        "EMAIL_ENABLED",
+        "RECAPTCHA_SECRET_KEY",
+        "GOOGLE_CLOUD_PROJECT_ID"
+      ]
     },
     "lint": {
       "dependsOn": ["^lint"]
