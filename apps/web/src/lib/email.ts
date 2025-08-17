@@ -3,6 +3,10 @@ import { z } from 'zod';
 import { getConfig } from './config';
 
 const contactFormSchema = z.object({
+  name: z
+    .string()
+    .min(1, 'Name is required')
+    .max(50, 'Name must be 50 characters or less'),
   contactDetails: z
     .string()
     .min(1, 'Contact details are required')
@@ -27,6 +31,7 @@ export async function sendContactEmail(data: ContactFormData) {
 
   if (!config.emailEnabled) {
     console.log('Email sending is disabled. Contact form data:', {
+      name: data.name,
       contactDetails: data.contactDetails,
       description: data.description,
       timestamp: new Date().toISOString(),
@@ -50,13 +55,14 @@ export async function sendContactEmail(data: ContactFormData) {
     },
     Message: {
       Subject: {
-        Data: 'New Contact Form Submission - JLC Carpentry',
+        Data: `New Contact Form Submission from ${data.name} - JLC Carpentry`,
         Charset: 'UTF-8',
       },
       Body: {
         Text: {
           Data: `New contact form submission received:
 
+Name: ${data.name}
 Contact Details: ${data.contactDetails}
 
 Description:
@@ -68,6 +74,7 @@ Submitted at: ${new Date().toISOString()}`,
         Html: {
           Data: `
             <h2>New Contact Form Submission - JLC Carpentry</h2>
+            <p><strong>Name:</strong> ${data.name}</p>
             <p><strong>Contact Details:</strong> ${data.contactDetails}</p>
             <p><strong>Description:</strong></p>
             <p>${data.description.replace(/\n/g, '<br>')}</p>

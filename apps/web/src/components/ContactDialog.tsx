@@ -4,6 +4,7 @@ import { useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useActionState, useTransition } from 'react';
 import Alert from './Alert';
+import { FormInput, FormTextarea } from './forms';
 import { gtag } from '@/components/GoogleTagManager';
 import { executeReCaptcha } from '@/components/ReCaptcha';
 import { submitContactForm, type ContactFormState } from '@/app/actions/contact';
@@ -14,6 +15,7 @@ interface ContactDialogProps {
 }
 
 interface FormData {
+  name: string;
   contactDetails: string;
   description: string;
   recaptchaToken?: string;
@@ -24,6 +26,7 @@ export default function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
   const [isPending, startTransition] = useTransition();
   const [state, formAction] = useActionState<ContactFormState | null, FormData>(async (prevState, formData) => {
     const data = new FormData();
+    data.append('name', formData.name);
     data.append('contactDetails', formData.contactDetails);
     data.append('description', formData.description);
     if (formData.recaptchaToken) {
@@ -132,61 +135,45 @@ export default function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
 
             {showForm && (
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                <div>
-                  <label htmlFor="contact-details" className="block text-sm font-medium text-slate-700 mb-2">
-                    Contact Details (Email or Phone)
-                  </label>
-                  <input
-                    id="contact-details"
-                    type="text"
-                    placeholder="your.email@example.com or 0400 000 000"
-                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-jlc-blue focus:border-jlc-blue transition-colors ${
-                      errors.contactDetails ? 'border-red-300' : 'border-slate-300'
-                    }`}
-                    aria-invalid={errors.contactDetails ? 'true' : 'false'}
-                    aria-describedby={errors.contactDetails ? 'contact-details-error' : undefined}
-                    {...register('contactDetails', {
-                      required: 'Contact details are required',
-                      maxLength: {
-                        value: 100,
-                        message: 'Contact details must be 100 characters or less',
-                      },
-                    })}
-                  />
-                  {errors.contactDetails && (
-                    <p id="contact-details-error" className="mt-1 text-sm text-red-600">
-                      {errors.contactDetails.message}
-                    </p>
-                  )}
-                </div>
+                <FormInput
+                  label="Name"
+                  placeholder="Your full name"
+                  error={errors.name}
+                  {...register('name', {
+                    required: 'Name is required',
+                    maxLength: {
+                      value: 50,
+                      message: 'Name must be 50 characters or less',
+                    },
+                  })}
+                />
 
-                <div>
-                  <label htmlFor="description" className="block text-sm font-medium text-slate-700 mb-2">
-                    Project Description
-                  </label>
-                  <textarea
-                    id="description"
-                    rows={4}
-                    placeholder="Tell us about your project..."
-                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-jlc-blue focus:border-jlc-blue transition-colors resize-vertical ${
-                      errors.description ? 'border-red-300' : 'border-slate-300'
-                    }`}
-                    aria-invalid={errors.description ? 'true' : 'false'}
-                    aria-describedby={errors.description ? 'description-error' : undefined}
-                    {...register('description', {
-                      required: 'Description is required',
-                      maxLength: {
-                        value: 1000,
-                        message: 'Description must be 1000 characters or less',
-                      },
-                    })}
-                  />
-                  {errors.description && (
-                    <p id="description-error" className="mt-1 text-sm text-red-600">
-                      {errors.description.message}
-                    </p>
-                  )}
-                </div>
+                <FormInput
+                  label="Contact Details (Email or Phone)"
+                  placeholder="your.email@example.com or 0400 000 000"
+                  error={errors.contactDetails}
+                  {...register('contactDetails', {
+                    required: 'Contact details are required',
+                    maxLength: {
+                      value: 100,
+                      message: 'Contact details must be 100 characters or less',
+                    },
+                  })}
+                />
+
+                <FormTextarea
+                  label="Project Description"
+                  rows={4}
+                  placeholder="Tell us about your project..."
+                  error={errors.description}
+                  {...register('description', {
+                    required: 'Description is required',
+                    maxLength: {
+                      value: 1000,
+                      message: 'Description must be 1000 characters or less',
+                    },
+                  })}
+                />
 
                 <div className="flex space-x-3 pt-4">
                   <button
