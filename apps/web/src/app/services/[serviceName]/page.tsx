@@ -1,11 +1,24 @@
 import Image from 'next/image';
 import { Metadata } from 'next';
-import { getSiteSettingsData, getServicePageData } from '@/lib/sanity/client';
+import { getSiteSettingsData, getServicePageData, getServiceSlugs } from '@/lib/sanity/client';
 import { urlFor } from '@/lib/sanity/image';
 import { PortableText } from '@portabletext/react';
 import { notFound } from 'next/navigation';
 import { portableTextComponents } from '@/components/PortableText';
 import ProjectGallery from '@/components/ProjectGallery';
+
+// Configure revalidation
+export const revalidate = false; // Use tag-based revalidation
+export const dynamic = 'force-static';
+
+// Generate static params for all service pages
+export async function generateStaticParams() {
+  const services = await getServiceSlugs();
+  
+  return services.map((service) => ({
+    serviceName: service.slug.current,
+  }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ serviceName: string }> }): Promise<Metadata> {
   const { serviceName } = await params;

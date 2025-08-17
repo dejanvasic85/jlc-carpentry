@@ -5,6 +5,7 @@ import {
   homepageQuery,
   siteSettingsQuery,
   servicesQuery,
+  serviceSlugsQuery,
   heroSectionQuery,
   statisticsQuery,
   serviceBySlugQuery,
@@ -59,11 +60,21 @@ export async function getStatisticsData() {
   });
 }
 
+export async function getServiceSlugs() {
+  return await sanityFetch({
+    query: serviceSlugsQuery,
+    schema: z.array(z.object({ slug: z.object({ current: z.string() }) })),
+    tags: ['service'],
+    revalidate: false, // Use tag-based revalidation
+  });
+}
+
 export async function getServicePageData(slug: string) {
   return await sanityFetch({
     query: serviceBySlugQuery,
     schema: ServiceSchema,
     params: { slug },
     tags: ['service'],
+    revalidate: false, // Use tag-based revalidation
   });
 }

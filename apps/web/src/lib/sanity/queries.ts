@@ -15,12 +15,16 @@ export async function sanityFetch<T>({
   revalidate?: number | false;
   tags?: string[];
 }): Promise<T> {
-  const data = await client.fetch(query, params, {
+  // Use tag-based revalidation if tags are provided and revalidate is false
+  // Otherwise use time-based revalidation
+  const cacheConfig = {
     next: {
-      revalidate: tags.length ? false : revalidate,
-      tags,
+      revalidate: revalidate === false && tags.length > 0 ? false : revalidate,
+      tags: tags.length > 0 ? tags : undefined,
     },
-  });
+  };
+
+  const data = await client.fetch(query, params, cacheConfig);
 
   // Validate with Zod
   return schema.parse(data);
@@ -110,6 +114,15 @@ export const servicesQuery = `
       text,
       url,
       action
+    }
+  }
+`;
+
+// Query for Service Slugs (for generateStaticParams)
+export const serviceSlugsQuery = `
+  *[_type == "service"] {
+    slug {
+      current
     }
   }
 `;
