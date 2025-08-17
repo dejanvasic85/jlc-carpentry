@@ -210,6 +210,7 @@ export const SiteSettingsSchema = BaseSanitySchema.extend({
         type: z.string(),
       }),
     )
+    .nullable()
     .optional(),
   seoDefaults: z.object({
     siteTitle: z.string(),
