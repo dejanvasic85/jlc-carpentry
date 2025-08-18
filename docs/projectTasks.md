@@ -44,3 +44,5 @@
 - [x] Accessibility (a11y) AAA compliant testing
 - [x] Performance testing with Lighthouse
 - [ ] Favicon
+- [ ]  Use an api route for invalidating Sanity content instead of rebuilding the entire App
+
