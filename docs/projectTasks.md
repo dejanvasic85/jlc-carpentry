@@ -16,7 +16,6 @@
 - [x] Basic content form with fields for name, contact and message including validation
 - [x] Domain verification for email sending with Amazon Web Services
 - [x] Integrate email sending functionality using Simple email services from AWS
-- [ ] Rate limiting for contact to prevent spam (nice to have)
 
 ## Content management
 
@@ -34,7 +33,6 @@
 - [x] Setup Google Maps for location services
 - [x] Add Google reCAPTCHA to the contact form for spam protection
 - [x] Sitemap integration for SEO
-- [ ] Integrate Google reviews
 
 ## Project Setup and Technical tasks
 
@@ -43,6 +41,11 @@
 - [x] Setup Coding style guide
 - [x] Accessibility (a11y) AAA compliant testing
 - [x] Performance testing with Lighthouse
-- [ ] Favicon
-- [ ]  Use an api route for invalidating Sanity content instead of rebuilding the entire App
 
+## Fast follow:
+
+- [ ] Investigate and fix the image resolution
+- [ ] Favicon
+- [ ] Integrate Google reviews
+- [ ] Use an api route for invalidating Sanity content instead of rebuilding the entire App
+- [ ] Estimate on the next feature (video uploads)
