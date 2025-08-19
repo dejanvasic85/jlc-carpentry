@@ -45,11 +45,12 @@ export default function ServicesSection({
                 {service.image?.asset && (
                   <div className="relative w-full aspect-video mb-6">
                     <Image
-                      src={urlFor(service.image).width(400).height(225).format('webp').url()}
+                      src={urlFor(service.image).width(800).height(450).format('webp').url()}
                       alt={service.title}
-                      width={400}
-                      height={225}
+                      width={800}
+                      height={450}
                       className="w-full h-full object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
                     />
                   </div>
                 )}
