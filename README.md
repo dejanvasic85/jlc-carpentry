@@ -1,6 +1,9 @@
-# JLC Carpentry & Building solutions marketing website
+# JLC Carpentry & Building Solutions
+
+Marketing website for a local carpentry business in Melbourne Australia
 
 🛠️ Built with [Sanity IO](https://www.sanity.io/) and [Nextjs](https://nextjs.org/)
+
 🚀 Deployed to vercel.
 
 ## Getting started
