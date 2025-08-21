@@ -41,6 +41,9 @@ Here are some commands you can use:
 - Avoid magic numbers and strings, use constants instead
 - Each file should have line break at the end
 - Try to limit components and modules up to 200 lines and split in to different components to manage complexity
+- Typescript files should be camelCases e.g. myService.ts
+- React components should be PascalCase e.g. MyComponent.tsx
+- Npm workspaces should be kebab case
 
 # Workflow
 
