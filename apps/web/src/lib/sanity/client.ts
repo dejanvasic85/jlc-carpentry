@@ -8,9 +8,10 @@ import {
   serviceSlugsQuery,
   heroSectionQuery,
   statisticsQuery,
+  aboutFeaturesQuery,
   serviceBySlugQuery,
 } from './queries';
-import { HomepageSchema, SiteSettingsSchema, ServiceSchema, HeroSectionSchema, StatisticSchema } from './schemas';
+import { HomepageSchema, SiteSettingsSchema, ServiceSchema, HeroSectionSchema, StatisticSchema, AboutFeatureSchema } from './schemas';
 
 export const client = createClient({
   projectId: '365wnpgg',
@@ -57,6 +58,14 @@ export async function getStatisticsData() {
     query: statisticsQuery,
     schema: z.array(StatisticSchema),
     tags: ['statistic'],
+  });
+}
+
+export async function getAboutFeaturesData() {
+  return await sanityFetch({
+    query: aboutFeaturesQuery,
+    schema: z.array(AboutFeatureSchema),
+    tags: ['aboutFeature'],
   });
 }
 

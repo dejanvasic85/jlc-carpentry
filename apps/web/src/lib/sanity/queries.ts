@@ -94,6 +94,16 @@ export const statisticsQuery = `
   }
 `;
 
+// Query for About Features
+export const aboutFeaturesQuery = `
+  *[_type == "aboutFeature" && isActive == true] | order(displayOrder asc) {
+    title,
+    description,
+    icon,
+    displayOrder
+  }
+`;
+
 // Query for Services
 export const servicesQuery = `
   *[_type == "service"] | order(_createdAt asc) {

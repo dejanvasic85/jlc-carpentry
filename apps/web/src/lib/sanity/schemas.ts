@@ -51,6 +51,15 @@ export const StatisticSchema = BaseSanitySchema.extend({
   color: z.enum(['blue', 'green', 'purple', 'orange', 'red', 'teal']).optional(),
 });
 
+// About Feature Schema
+export const AboutFeatureSchema = BaseSanitySchema.extend({
+  _type: z.literal('aboutFeature').optional(),
+  title: z.string(),
+  description: z.string(),
+  icon: z.string(),
+  displayOrder: z.number(),
+});
+
 // Homepage Schema - make more flexible
 export const HomepageSchema = BaseSanitySchema.extend({
   seo: z.object({
@@ -238,6 +247,7 @@ export type Homepage = z.infer<typeof HomepageSchema>;
 export type HeroSection = z.infer<typeof HeroSectionSchema>;
 export type ButtonAction = z.infer<typeof ButtonActionSchema>;
 export type Statistic = z.infer<typeof StatisticSchema>;
+export type AboutFeature = z.infer<typeof AboutFeatureSchema>;
 export type Service = z.infer<typeof ServiceSchema>;
 export type SiteSettings = z.infer<typeof SiteSettingsSchema>;
 export type RecentProject = z.infer<typeof RecentProjectSchema>;

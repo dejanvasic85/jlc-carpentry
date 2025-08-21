@@ -8,6 +8,7 @@ import {
   getServicesData,
   getHeroData,
   getStatisticsData,
+  getAboutFeaturesData,
 } from '@/lib/sanity/client';
 import { Metadata } from 'next';
 
@@ -37,11 +38,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  const [homepage, services, heroData, statsData, siteSettings] = await Promise.all([
+  const [homepage, services, heroData, statsData, aboutFeatures, siteSettings] = await Promise.all([
     getHomepageData(),
     getServicesData(),
     getHeroData(),
     getStatisticsData(),
+    getAboutFeaturesData(),
     getSiteSettingsData(),
   ]);
 
@@ -66,7 +68,7 @@ export default async function Home() {
           services={services}
         />
       )}
-      <About />
+      <About features={aboutFeatures} />
       <Contact siteSettings={siteSettings} />
     </>
   );
