@@ -24,13 +24,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
             hasError ? 'border-red-300' : 'border-slate-300'
           } ${className}`}
           aria-invalid={hasError ? 'true' : 'false'}
-          aria-describedby={
-            hasError 
-              ? `${inputId}-error` 
-              : helperText 
-                ? `${inputId}-helper` 
-                : undefined
-          }
+          aria-describedby={hasError ? `${inputId}-error` : helperText ? `${inputId}-helper` : undefined}
           {...props}
         />
         {hasError && (
@@ -45,7 +39,7 @@ const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 FormInput.displayName = 'FormInput';

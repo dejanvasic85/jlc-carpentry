@@ -24,13 +24,7 @@ const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
             hasError ? 'border-red-300' : 'border-slate-300'
           } ${className}`}
           aria-invalid={hasError ? 'true' : 'false'}
-          aria-describedby={
-            hasError 
-              ? `${textareaId}-error` 
-              : helperText 
-                ? `${textareaId}-helper` 
-                : undefined
-          }
+          aria-describedby={hasError ? `${textareaId}-error` : helperText ? `${textareaId}-helper` : undefined}
           {...props}
         />
         {hasError && (
@@ -45,7 +39,7 @@ const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 FormTextarea.displayName = 'FormTextarea';

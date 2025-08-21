@@ -4,9 +4,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import { SiteSettings } from '@/lib/sanity/schemas';
 
 interface HeaderProps {
   className?: string;
+  siteSettings: SiteSettings;
 }
 
 interface NavigationItem {
@@ -31,7 +33,7 @@ const BREAKPOINTS = {
 const HEADER_HEIGHT = 80 as const;
 const MOBILE_OFFSET_HEIGHT = 260 as const; // Additional offset for better alignment
 
-export default function Header({ className = '' }: HeaderProps) {
+export default function Header({ className = '', siteSettings }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const pathname = usePathname();
@@ -161,26 +163,28 @@ export default function Header({ className = '' }: HeaderProps) {
             </nav>
 
             {/* Phone Call Icon - visible on all screen sizes */}
-            <a
-              href="tel:+61400000000"
-              className="flex items-center justify-center w-10 h-10 hover:bg-jlc-blue-dark rounded-full transition-colors"
-              aria-label="Call JLC Carpentry"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="size-6"
+            {siteSettings.contact?.phone && (
+              <a
+                href={`tel:${siteSettings.contact.phone}`}
+                className="flex items-center justify-center w-10 h-10 hover:bg-jlc-blue-dark rounded-full transition-colors"
+                aria-label="Call JLC Carpentry"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"
-                />
-              </svg>
-            </a>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"
+                  />
+                </svg>
+              </a>
+            )}
 
             {/* Mobile Hamburger Button */}
             <button

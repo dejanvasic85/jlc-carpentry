@@ -74,7 +74,7 @@ export default function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
     try {
       // Execute reCAPTCHA before form submission
       const recaptchaToken = await executeReCaptcha('contact_form');
-      
+
       // Track form submission attempt
       gtag.trackContact('form');
       gtag.event('form_submit', {

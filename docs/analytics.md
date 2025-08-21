@@ -117,12 +117,14 @@ The GTM ID is now managed through the Sanity CMS instead of environment variable
 When running GTM on localhost (`http://localhost:3000`), be aware that:
 
 #### ✅ What Works
+
 - **GTM Script Loads** - The GTM container loads normally
 - **Tags Fire** - All configured tags will attempt to execute
 - **Events Trigger** - Custom events from your code are sent to the data layer
 - **Preview Mode** - GTM Preview mode works with localhost URLs
 
 #### ⚠️ Potential Issues
+
 - **Data Pollution** - Development activity appears in your production analytics
 - **Hostname Data** - Analytics will show `localhost:3000` as the source
 - **CORS Restrictions** - Some third-party tags may not work on localhost
@@ -131,49 +133,57 @@ When running GTM on localhost (`http://localhost:3000`), be aware that:
 #### 🔍 Debugging Tools
 
 **Browser Console Inspection:**
+
 ```javascript
 // Check data layer contents
 console.log(window.dataLayer);
 
 // Monitor new events
-window.dataLayer.push = function(data) {
+window.dataLayer.push = function (data) {
   console.log('GTM Event:', data);
   Array.prototype.push.call(this, data);
 };
 ```
 
 **Network Tab Monitoring:**
+
 - Look for requests to `googletagmanager.com`
 - Verify GA4 events being sent to `google-analytics.com`
 
 ### Best Practices for Development
 
 #### Option 1: Separate GTM Containers
+
 Create different containers for each environment:
+
 - **Development**: `GTM-DEV1234` (points to test GA4 property)
 - **Production**: `GTM-PROD5678` (points to live GA4 property)
 
 Configure in Sanity Studio:
+
 - Development site settings use development GTM ID
 - Production site settings use production GTM ID
 
 #### Option 2: Environment-Based Loading
+
 Conditionally load GTM based on environment:
 
 ```typescript
 // In layout.tsx - only load GTM in production
-const shouldLoadGTM = process.env.NODE_ENV === 'production' || 
-                     process.env.ENABLE_GTM === 'true';
+const shouldLoadGTM = process.env.NODE_ENV === 'production' || process.env.ENABLE_GTM === 'true';
 const finalGtmId = shouldLoadGTM ? gtmId : undefined;
 ```
 
 Add to your `.env.local` for development testing:
+
 ```
 ENABLE_GTM=true
 ```
 
 #### Option 3: GTM Preview Mode Only
+
 For development, use GTM Preview mode instead of live tracking:
+
 1. Don't set GTM ID in development Sanity settings
 2. Use GTM Preview mode to connect to localhost when testing
 3. This prevents data pollution while allowing full testing
@@ -186,6 +196,7 @@ For development, use GTM Preview mode instead of live tracking:
 4. **Production**: Monitor real-time reports after deployment
 
 ## Custom Events
+
 3. Navigate through your website
 4. Verify that tags are firing correctly
 
@@ -207,15 +218,18 @@ For development, use GTM Preview mode instead of live tracking:
 The website automatically tracks the following events:
 
 ### Lead Generation Events
+
 - `contact_dialog_open` - When contact form opens
 - `form_submit` - When contact form is submitted
 - `contact_attempt` - Successful form submissions
 
 ### Service Engagement Events
+
 - `service_interaction` - When users view service pages
 - `page_view` - Custom page view tracking for service pages
 
 ### Portfolio Engagement Events
+
 - `project_view` - When users view project galleries (ready for implementation)
 
 ## GTM Data Layer Events
@@ -227,14 +241,14 @@ The implementation pushes events to the GTM Data Layer that you can use to creat
 dataLayer.push({
   event: 'contact_dialog_open',
   category: 'lead_generation',
-  action: 'dialog_open'
+  action: 'dialog_open',
 });
 
 dataLayer.push({
   event: 'service_interaction',
   service_name: 'Decking',
   action: 'view',
-  category: 'carpentry_services'
+  category: 'carpentry_services',
 });
 ```
 
@@ -264,7 +278,7 @@ import { gtag } from '@/components/GoogleTagManager';
 // Track custom events
 gtag.event('custom_event_name', {
   custom_parameter: 'value',
-  category: 'custom_category'
+  category: 'custom_category',
 });
 
 // Track conversions with values
@@ -274,16 +288,19 @@ gtag.conversion('quote_request', 500, 'AUD');
 ## Troubleshooting
 
 ### GTM Not Loading
+
 - Verify `NEXT_PUBLIC_GTM_ID` is correctly set
 - Check browser console for JavaScript errors
 - Ensure GTM container is published
 
 ### Events Not Firing
+
 - Use GTM Preview mode to debug
 - Check that dataLayer events are being pushed
 - Verify trigger conditions in GTM
 
 ### GA4 Data Not Appearing
+
 - Allow 24-48 hours for data to appear in standard reports
 - Use Real-time reports for immediate verification
 - Check that GA4 configuration tag is firing on all pages
@@ -314,7 +331,7 @@ gtag.conversion('quote_request', 500, 'AUD');
 // Send custom events
 gtag.event('custom_action', {
   category: 'engagement',
-  value: 1
+  value: 1,
 });
 ```
 
@@ -345,22 +362,26 @@ const handleSubmit = async (formData) => {
 ### Common Issues
 
 #### GTM Not Loading
+
 - Check GTM ID format in Sanity Studio (should be `GTM-XXXXXXX`)
 - Verify Sanity Studio data is published
 - Check browser console for JavaScript errors
 
 #### Events Not Firing
+
 - Use GTM Preview mode to debug
 - Check `window.dataLayer` in browser console
 - Verify event names match GTM trigger configuration
 
 #### Data Not Appearing in GA4
+
 - Check GTM tags are configured correctly
 - Verify GA4 Measurement ID is correct
 - Allow up to 24 hours for data to appear in standard reports
 - Use Real-time reports for immediate verification
 
 #### Development Data Pollution
+
 - Implement environment-based GTM loading
 - Use separate GTM containers for development
 - Filter out localhost traffic in GA4 views
@@ -377,7 +398,7 @@ console.log(window.dataLayer);
 // Manual event testing
 window.dataLayer.push({
   event: 'test_event',
-  custom_parameter: 'test_value'
+  custom_parameter: 'test_value',
 });
 ```
 

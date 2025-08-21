@@ -3,10 +3,7 @@ import { z } from 'zod';
 import { getConfig } from './config';
 
 const contactFormSchema = z.object({
-  name: z
-    .string()
-    .min(1, 'Name is required')
-    .max(50, 'Name must be 50 characters or less'),
+  name: z.string().min(1, 'Name is required').max(50, 'Name must be 50 characters or less'),
   contactDetails: z
     .string()
     .min(1, 'Contact details are required')

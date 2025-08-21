@@ -233,7 +233,7 @@ export default defineType({
           title: 'Google Tag Manager ID',
           type: 'string',
           description: 'Your GTM container ID (e.g., GTM-XXXXXXX)',
-          validation: (Rule) => 
+          validation: (Rule) =>
             Rule.regex(/^GTM-[A-Z0-9]+$/, {
               name: 'GTM ID format',
               invert: false,
@@ -244,7 +244,7 @@ export default defineType({
           title: 'GA4 Measurement ID (Optional)',
           type: 'string',
           description: 'Your GA4 Measurement ID (e.g., G-XXXXXXXXXX) - only needed if not using GTM',
-          validation: (Rule) => 
+          validation: (Rule) =>
             Rule.regex(/^G-[A-Z0-9]+$/, {
               name: 'GA4 ID format',
               invert: false,

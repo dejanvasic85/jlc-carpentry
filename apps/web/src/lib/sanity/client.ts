@@ -11,7 +11,14 @@ import {
   aboutFeaturesQuery,
   serviceBySlugQuery,
 } from './queries';
-import { HomepageSchema, SiteSettingsSchema, ServiceSchema, HeroSectionSchema, StatisticSchema, AboutFeatureSchema } from './schemas';
+import {
+  HomepageSchema,
+  SiteSettingsSchema,
+  ServiceSchema,
+  HeroSectionSchema,
+  StatisticSchema,
+  AboutFeatureSchema,
+} from './schemas';
 
 export const client = createClient({
   projectId: '365wnpgg',

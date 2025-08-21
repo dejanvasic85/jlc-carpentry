@@ -29,9 +29,7 @@ export default function ContactSection({ className = '', siteSettings }: Contact
         {siteSettings?.location?.address && (
           <div className="mb-12">
             <div className="text-center mb-8">
-              <h3 className="font-heading text-2xl md:text-3xl mb-2 text-jlc-blue-dark uppercase">
-                Find Us
-              </h3>
+              <h3 className="font-heading text-2xl md:text-3xl mb-2 text-jlc-blue-dark uppercase">Find Us</h3>
               <p className="text-lg text-jlc-black">
                 Based in {siteSettings.location.address.suburb}, serving all Melbourne areas
               </p>

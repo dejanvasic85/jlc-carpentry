@@ -7,12 +7,7 @@ interface ReCaptchaProps {
 }
 
 export function ReCaptchaScript({ siteKey }: ReCaptchaProps) {
-  return (
-    <Script
-      src={`https://www.google.com/recaptcha/enterprise.js?render=${siteKey}`}
-      strategy="lazyOnload"
-    />
-  );
+  return <Script src={`https://www.google.com/recaptcha/enterprise.js?render=${siteKey}`} strategy="lazyOnload" />;
 }
 
 export function executeReCaptcha(action: string, siteKey?: string): Promise<string> {

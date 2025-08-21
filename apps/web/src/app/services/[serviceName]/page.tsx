@@ -14,7 +14,7 @@ export const dynamic = 'force-static';
 // Generate static params for all service pages
 export async function generateStaticParams() {
   const services = await getServiceSlugs();
-  
+
   return services.map((service) => ({
     serviceName: service.slug.current,
   }));
