@@ -1,4 +1,5 @@
 import type { SiteSettings } from '@/lib/sanity/schemas';
+import { googleReviews } from 'reviews';
 
 interface LocalBusinessStructuredDataProps {
   siteSettings: SiteSettings;
@@ -113,6 +114,29 @@ const LocalBusinessStructuredData = ({ siteSettings }: LocalBusinessStructuredDa
       name: siteSettings.company.name,
     },
     foundingDate: new Date().getFullYear() - (siteSettings.company.yearsOfExperience || 0),
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: googleReviews.overallRatingValue,
+      reviewCount: parseInt(googleReviews.numberOfReviews.split(' ')[0]), // Extract number from "16 reviews"
+      bestRating: 5,
+      worstRating: 1,
+    },
+    review: googleReviews.reviews.slice(0, 5).map((review) => ({
+      '@type': 'Review',
+      author: {
+        '@type': 'Person',
+        name: review.reviewer.displayName,
+      },
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: review.starRating,
+        bestRating: 5,
+        worstRating: 1,
+      },
+      reviewBody: review.comment,
+      datePublished: review.date,
+      url: review.url,
+    })),
   };
 
   // Remove undefined values
