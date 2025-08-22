@@ -1,0 +1,32 @@
+name: Google reviews
+on:
+  schedule:
+    - cron: 0 18 * * *
+  workflow_dispatch:
+
+jobs:
+  update-reviews:
+    name: Update google rating data
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Install volta
+        uses: volta-cli/action@v4
+      - name: Install
+        run: npm install
+      - name: Run
+        run: |
+          npm run update:rating -w reviews
+          npm run update:reviews -w reviews
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: feat/update-google-reviews
+          title: 'feat: Google ratings updates'
+          body: |
+            This is an automated pull request to update the google reviews.
+          commit-message: 'feat: Google ratings updates'
+          labels: 'content'
