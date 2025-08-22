@@ -1,0 +1,17 @@
+{
+  "name": "reviews",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "update:rating": "node ./scrapeRating.mjs",
+    "update:reviews": "node ./scrapeReviews.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "puppeteer": "24.11.2"
+  }
+}
