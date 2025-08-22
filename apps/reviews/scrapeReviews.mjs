@@ -56,7 +56,7 @@ import { URL } from './constants.mjs';
       // Wait for potential new reviews to load
       await new Promise((resolve) => setTimeout(resolve, 3000));
       
-      currentReviewCount = await page.$$eval('div[data-review-id]', (reviews) => reviews.length);
+      currentReviewCount = await page.$$eval('div[data-review-id][aria-label]', (reviews) => reviews.length);
       console.log(`Found ${currentReviewCount} reviews`);
       
       // If count hasn't changed, increment stable counter
