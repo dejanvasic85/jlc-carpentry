@@ -1,6 +1,7 @@
 import HeroSection from '@/components/HeroSection';
 import ServicesSection from '@/components/ServicesSection';
 import About from '@/components/About';
+import GoogleReviews from '@/components/GoogleReviews';
 import Contact from '@/components/Contact';
 import {
   getHomepageData,
@@ -69,6 +70,7 @@ export default async function Home() {
         />
       )}
       <About features={aboutFeatures} />
+      <GoogleReviews />
       <Contact siteSettings={siteSettings} />
     </>
   );
