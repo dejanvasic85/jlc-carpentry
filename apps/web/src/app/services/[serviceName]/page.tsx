@@ -6,6 +6,8 @@ import { PortableText } from '@portabletext/react';
 import { notFound } from 'next/navigation';
 import { portableTextComponents } from '@/components/PortableText';
 import ProjectGallery from '@/components/ProjectGallery';
+import ReviewTestimonial from '@/components/ReviewTestimonial';
+import { getServiceReview } from '@/lib/reviewDistribution';
 
 // Configure revalidation
 export const revalidate = false; // Use tag-based revalidation
@@ -61,6 +63,10 @@ export default async function ServicePage({ params }: { params: Promise<{ servic
     return notFound();
   }
 
+  // Get the assigned review for this service
+  const review = getServiceReview(serviceName);
+  console.log('🎯 Service page review assignment:', { serviceName, hasReview: !!review });
+
   return (
     <article className="pb-20">
       {/* Hero Section */}
@@ -102,17 +108,8 @@ export default async function ServicePage({ params }: { params: Promise<{ servic
         </div>
       </section>
 
-      {/* Quote Section */}
-      {serviceData.testimonial && (
-        <section className="py-16 bg-jlc-blue-light/10">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <blockquote className="text-2xl md:text-3xl font-light text-jlc-black mb-6 italic">
-              &quot;{serviceData.testimonial.quote}&quot;
-            </blockquote>
-            <cite className="text-lg text-gray-600 font-semibold">— {serviceData.testimonial.author}</cite>
-          </div>
-        </section>
-      )}
+      {/* Customer Review Section */}
+      {review && <ReviewTestimonial review={review} />}
 
       {/* Recent Projects Gallery */}
       {serviceData.recentProjects && serviceData.recentProjects.length > 0 && (
