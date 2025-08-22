@@ -137,13 +137,6 @@ export const ServiceSchema = BaseSanitySchema.extend({
     .nullable()
     .optional(),
   mainContent: z.array(z.any()).nullable().optional(), // Rich text content
-  testimonial: z
-    .object({
-      quote: z.string(),
-      author: z.string(),
-    })
-    .nullable()
-    .optional(),
   recentProjects: z.array(RecentProjectSchema).nullable().optional(),
   seo: z
     .object({

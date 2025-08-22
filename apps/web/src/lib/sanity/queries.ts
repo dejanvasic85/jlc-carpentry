@@ -158,10 +158,6 @@ export const serviceBySlugQuery = `
       }
     },
     mainContent,
-    testimonial {
-      quote,
-      author
-    },
     recentProjects[]-> {
       _id,
       title,

@@ -21,7 +21,7 @@ This project makes use of the npm workspaces so each sub repo has scripts for bu
 Starting the sanity studio editor:
 
 ```sh
-npm run dev -w content-studio
+npm run dev -w content
 ```
 
 Running the nextjs app:

@@ -127,26 +127,6 @@ export default defineType({
       ],
     }),
     defineField({
-      name: 'testimonial',
-      title: 'Customer Testimonial',
-      type: 'object',
-      description: 'Optional customer testimonial to display on the service page',
-      fields: [
-        {
-          name: 'quote',
-          title: 'Quote',
-          type: 'text',
-          validation: (Rule) => Rule.required(),
-        },
-        {
-          name: 'author',
-          title: 'Customer Name',
-          type: 'string',
-          validation: (Rule) => Rule.required(),
-        },
-      ],
-    }),
-    defineField({
       name: 'recentProjects',
       title: 'Recent Projects',
       type: 'array',
