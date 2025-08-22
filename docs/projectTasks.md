@@ -47,6 +47,6 @@
 - [x] Investigate and fix the image resolution
 - [x] Favicon
 - [x] About section should be content editable
-- [ ] Integrate Google reviews
+- [x] Integrate Google reviews
 - [ ] Use an api route for invalidating Sanity content instead of rebuilding the entire App
-- [ ] Estimate on the next feature (video uploads)
+- [x] Estimate on the next feature (video uploads)
