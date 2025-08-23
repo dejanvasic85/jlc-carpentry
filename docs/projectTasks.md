@@ -48,5 +48,5 @@
 - [x] Favicon
 - [x] About section should be content editable
 - [x] Integrate Google reviews
-- [ ] Use an api route for invalidating Sanity content instead of rebuilding the entire App
+- [x] Use an api route for invalidating Sanity content instead of rebuilding the entire App
 - [x] Estimate on the next feature (video uploads)
