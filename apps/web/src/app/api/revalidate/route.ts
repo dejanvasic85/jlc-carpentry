@@ -3,21 +3,16 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    revalidateTag('content');
-
-    // Extract the document type from the webhook payload
-    const documentType = body._type || body.documentType;
-
-    if (!documentType) {
-      return NextResponse.json({ error: 'No document type provided' }, { status: 400 });
+    const contentType = request.headers.get('x-content-type');
+    if (!contentType) {
+      return NextResponse.json({ error: 'x-content-type header required' }, { status: 400 });
     }
 
-    revalidateTag(documentType);
+    revalidateTag(contentType);
 
     return NextResponse.json({
       revalidated: true,
-      documentType,
+      contentType,
       timestamp: new Date().toISOString(),
     });
   } catch (error) {
@@ -38,8 +33,8 @@ export async function GET() {
     message: 'Revalidation API is working',
     endpoint: '/api/revalidate',
     method: 'POST',
-    expectedPayload: {
-      _type: 'service | siteSettings | homepage | heroSection | statistic',
+    expectedHeaders: {
+      'x-content-type': 'content',
     },
   });
 }
