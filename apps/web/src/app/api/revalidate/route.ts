@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function POST(request: NextRequest) {
   try {
     const contentType = request.headers.get('x-content-type');
+    console.log('Revalidation request received. Content Type', contentType);
     if (!contentType) {
       return NextResponse.json({ error: 'x-content-type header required' }, { status: 400 });
     }
