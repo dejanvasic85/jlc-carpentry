@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
+    revalidateTag('content');
 
     // Extract the document type from the webhook payload
     const documentType = body._type || body.documentType;
@@ -12,32 +13,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'No document type provided' }, { status: 400 });
     }
 
-    // Revalidate based on document type
-    switch (documentType) {
-      case 'service':
-        revalidateTag('service');
-        console.log('Revalidated service pages');
-        break;
-      case 'siteSettings':
-        revalidateTag('siteSettings');
-        console.log('Revalidated site settings');
-        break;
-      case 'homepage':
-        revalidateTag('homepage');
-        console.log('Revalidated homepage');
-        break;
-      case 'heroSection':
-        revalidateTag('heroSection');
-        console.log('Revalidated hero section');
-        break;
-      case 'statistic':
-        revalidateTag('statistic');
-        console.log('Revalidated statistics');
-        break;
-      default:
-        console.log(`Unknown document type: ${documentType}`);
-        break;
-    }
+    revalidateTag(documentType);
 
     return NextResponse.json({
       revalidated: true,

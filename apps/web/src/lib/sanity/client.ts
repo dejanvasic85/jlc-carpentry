@@ -27,12 +27,14 @@ export const client = createClient({
   useCdn: true, // Set to false for ISR or tag-based revalidation
 });
 
+const tags = ['content'];
+
 // Data fetching functions
 export async function getHomepageData() {
   return await sanityFetch({
     query: homepageQuery,
     schema: HomepageSchema,
-    tags: ['homepage'],
+    tags,
   });
 }
 
@@ -40,7 +42,7 @@ export async function getSiteSettingsData() {
   return await sanityFetch({
     query: siteSettingsQuery,
     schema: SiteSettingsSchema,
-    tags: ['siteSettings'],
+    tags,
   });
 }
 
@@ -48,7 +50,7 @@ export async function getServicesData() {
   return await sanityFetch({
     query: servicesQuery,
     schema: z.array(ServiceSchema),
-    tags: ['service'],
+    tags,
   });
 }
 
@@ -56,7 +58,7 @@ export async function getHeroData() {
   return await sanityFetch({
     query: heroSectionQuery,
     schema: HeroSectionSchema,
-    tags: ['heroSection'],
+    tags,
   });
 }
 
@@ -64,7 +66,7 @@ export async function getStatisticsData() {
   return await sanityFetch({
     query: statisticsQuery,
     schema: z.array(StatisticSchema),
-    tags: ['statistic'],
+    tags,
   });
 }
 
@@ -72,7 +74,7 @@ export async function getAboutFeaturesData() {
   return await sanityFetch({
     query: aboutFeaturesQuery,
     schema: z.array(AboutFeatureSchema),
-    tags: ['aboutFeature'],
+    tags,
   });
 }
 
@@ -80,7 +82,7 @@ export async function getServiceSlugs() {
   return await sanityFetch({
     query: serviceSlugsQuery,
     schema: z.array(z.object({ slug: z.object({ current: z.string() }) })),
-    tags: ['service'],
+    tags,
     revalidate: false, // Use tag-based revalidation
   });
 }
@@ -90,7 +92,7 @@ export async function getServicePageData(slug: string) {
     query: serviceBySlugQuery,
     schema: ServiceSchema,
     params: { slug },
-    tags: ['service'],
+    tags,
     revalidate: false, // Use tag-based revalidation
   });
 }
