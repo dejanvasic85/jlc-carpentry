@@ -25,8 +25,8 @@
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "5.0.2",
-    "@types/react": "19.1.10",
-    "eslint": "9.33.0",
+    "@types/react": "19.1.11",
+    "eslint": "9.34.0",
     "typescript": "5.9.2"
   }
 }
