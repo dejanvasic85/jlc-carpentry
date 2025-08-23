@@ -96,7 +96,7 @@ export default function Footer({ className = '', siteSettings }: FooterProps) {
                   )}
                   {siteSettings?.socialMedia?.instagram && (
                     <a
-                      href={`https://instagram.com/${siteSettings.socialMedia.instagram}`}
+                      href={siteSettings.socialMedia.instagram}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-white hover:text-jlc-blue-light transition-colors font-medium flex gap-1 items-center"
