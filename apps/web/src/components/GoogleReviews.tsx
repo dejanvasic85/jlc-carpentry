@@ -9,7 +9,7 @@ export default function GoogleReviews() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="font-heading text-3xl md:text-4xl mb-4 tracking-tight uppercase text-slate-900">
-            What our <span className="text-jlc-blue">customers say</span>
+            What our <span className="text-jlc-blue-dark">customers say</span>
           </h2>
           <div className="flex items-center justify-center gap-2 mb-4">
             <span className="text-2xl font-bold text-slate-900">{googleReviews.overallRatingValue}</span>
