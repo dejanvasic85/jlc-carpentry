@@ -8,7 +8,8 @@ export interface ContactFormState {
   message: string;
   errors?: {
     name?: string[];
-    contactDetails?: string[];
+    email?: string[];
+    phone?: string[];
     description?: string[];
   };
 }
@@ -44,7 +45,8 @@ export async function submitContactForm(
 
     const data: ContactFormData = {
       name: formData.get('name') as string,
-      contactDetails: formData.get('contactDetails') as string,
+      email: formData.get('email') as string,
+      phone: formData.get('phone') as string,
       description: formData.get('description') as string,
     };
 
@@ -61,7 +63,8 @@ export async function submitContactForm(
         message: 'Please check your input and try again.',
         errors: {
           name: error.message.includes('Name') ? [error.message] : undefined,
-          contactDetails: error.message.includes('Contact details') ? [error.message] : undefined,
+          email: error.message.includes('Email') ? [error.message] : undefined,
+          phone: error.message.includes('Phone') ? [error.message] : undefined,
           description: error.message.includes('Description') ? [error.message] : undefined,
         },
       };

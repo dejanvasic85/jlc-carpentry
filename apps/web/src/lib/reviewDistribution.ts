@@ -20,7 +20,7 @@ function simpleHash(str: string): number {
   let hash = 0;
   for (let i = 0; i < str.length; i++) {
     const char = str.charCodeAt(i);
-    hash = ((hash << 5) - hash) + char;
+    hash = (hash << 5) - hash + char;
     hash = hash & hash; // Convert to 32-bit integer
   }
   return Math.abs(hash);
@@ -33,7 +33,7 @@ function simpleHash(str: string): number {
 export function getServiceReview(serviceName: string): Review | null {
   console.log('🔍 getServiceReview called with serviceName:', serviceName);
   console.log('📊 Total reviews available:', googleReviews.reviews.length);
-  
+
   if (!googleReviews.reviews || googleReviews.reviews.length === 0) {
     console.warn('⚠️ No reviews available in googleReviews.reviews');
     return null;
@@ -42,13 +42,13 @@ export function getServiceReview(serviceName: string): Review | null {
   // Predefined service slugs that should match your actual service pages
   const services = [
     'deck-construction',
-    'pergola-installation', 
+    'pergola-installation',
     'wall-construction',
     'door-installation',
     'cladding-services',
     'general-renovations',
     'bathroom-renovations',
-    'kitchen-renovations'
+    'kitchen-renovations',
   ];
 
   console.log('📋 Available services:', services);
@@ -72,7 +72,10 @@ export function getServiceReview(serviceName: string): Review | null {
     return hashA - hashB;
   });
 
-  console.log('🔀 Shuffled reviews order (first 3 IDs):', shuffledReviews.slice(0, 3).map(r => r.id));
+  console.log(
+    '🔀 Shuffled reviews order (first 3 IDs):',
+    shuffledReviews.slice(0, 3).map((r) => r.id),
+  );
 
   // Get the review for this service index, cycling through if needed
   const reviewIndex = serviceIndex % shuffledReviews.length;
@@ -82,7 +85,7 @@ export function getServiceReview(serviceName: string): Review | null {
     id: selectedReview.id,
     author: selectedReview.reviewer.displayName,
     starRating: selectedReview.starRating,
-    commentLength: selectedReview.comment.length
+    commentLength: selectedReview.comment.length,
   });
 
   return selectedReview;
@@ -94,18 +97,18 @@ export function getServiceReview(serviceName: string): Review | null {
 export function getAllServiceReviews(): Record<string, Review | null> {
   const services = [
     'deck-construction',
-    'pergola-installation', 
+    'pergola-installation',
     'wall-construction',
     'door-installation',
     'cladding-services',
     'general-renovations',
     'bathroom-renovations',
-    'kitchen-renovations'
+    'kitchen-renovations',
   ];
 
   const assignments: Record<string, Review | null> = {};
-  
-  services.forEach(service => {
+
+  services.forEach((service) => {
     assignments[service] = getServiceReview(service);
   });
 
@@ -119,15 +122,15 @@ export function validateReviewDistribution(): { isValid: boolean; duplicates: st
   const assignments = getAllServiceReviews();
   const reviewIds = Object.values(assignments)
     .filter((review): review is Review => review !== null)
-    .map(review => review.id);
-  
+    .map((review) => review.id);
+
   const uniqueIds = new Set(reviewIds);
   const isValid = reviewIds.length === uniqueIds.size;
-  
+
   const duplicates: string[] = [];
   if (!isValid) {
     const seen = new Set<string>();
-    reviewIds.forEach(id => {
+    reviewIds.forEach((id) => {
       if (seen.has(id)) {
         duplicates.push(id);
       }
@@ -136,6 +139,6 @@ export function validateReviewDistribution(): { isValid: boolean; duplicates: st
   }
 
   console.log('🔍 Distribution validation:', { isValid, duplicates, totalAssignments: reviewIds.length });
-  
+
   return { isValid, duplicates };
 }

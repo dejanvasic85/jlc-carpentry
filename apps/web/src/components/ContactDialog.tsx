@@ -16,7 +16,8 @@ interface ContactDialogProps {
 
 interface FormData {
   name: string;
-  contactDetails: string;
+  email: string;
+  phone?: string;
   description: string;
   recaptchaToken?: string;
 }
@@ -27,7 +28,8 @@ export default function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
   const [state, formAction] = useActionState<ContactFormState | null, FormData>(async (prevState, formData) => {
     const data = new FormData();
     data.append('name', formData.name);
-    data.append('contactDetails', formData.contactDetails);
+    data.append('email', formData.email);
+    data.append('phone', formData.phone || '');
     data.append('description', formData.description);
     if (formData.recaptchaToken) {
       data.append('recaptchaToken', formData.recaptchaToken);
@@ -149,14 +151,32 @@ export default function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
                 />
 
                 <FormInput
-                  label="Contact Details (Email or Phone)"
-                  placeholder="your.email@example.com or 0400 000 000"
-                  error={errors.contactDetails}
-                  {...register('contactDetails', {
-                    required: 'Contact details are required',
+                  label="Email"
+                  type="email"
+                  placeholder="your.email@example.com"
+                  error={errors.email}
+                  {...register('email', {
+                    required: 'Email is required',
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                      message: 'Please enter a valid email address',
+                    },
                     maxLength: {
                       value: 100,
-                      message: 'Contact details must be 100 characters or less',
+                      message: 'Email must be 100 characters or less',
+                    },
+                  })}
+                />
+
+                <FormInput
+                  label="Phone (Optional)"
+                  type="tel"
+                  placeholder="0400 000 000"
+                  error={errors.phone}
+                  {...register('phone', {
+                    maxLength: {
+                      value: 20,
+                      message: 'Phone must be 20 characters or less',
                     },
                   })}
                 />
