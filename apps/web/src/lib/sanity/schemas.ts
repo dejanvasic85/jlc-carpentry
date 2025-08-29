@@ -136,6 +136,31 @@ export const ServiceSchema = BaseSanitySchema.extend({
     })
     .nullable()
     .optional(),
+  featuredVideo: z
+    .object({
+      title: z.string(),
+      description: z.string().nullable().optional(),
+      transcript: z.string().nullable().optional(),
+      duration: z.number().nullable().optional(),
+      video: z.object({
+        asset: z.object({
+          _id: z.string(),
+          url: z.string(),
+          mimeType: z.string(),
+          originalFilename: z.string(),
+        }),
+      }),
+      thumbnail: z
+        .object({
+          asset: z.object({
+            _ref: z.string(),
+          }),
+        })
+        .nullable()
+        .optional(),
+    })
+    .nullable()
+    .optional(),
   mainContent: z.array(z.any()).nullable().optional(), // Rich text content
   recentProjects: z.array(RecentProjectSchema).nullable().optional(),
   seo: z

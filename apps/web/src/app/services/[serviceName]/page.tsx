@@ -8,6 +8,7 @@ import { portableTextComponents } from '@/components/PortableText';
 import ProjectGallery from '@/components/ProjectGallery';
 import ReviewTestimonial from '@/components/ReviewTestimonial';
 import { getServiceReview } from '@/lib/reviewDistribution';
+import { VideoPlayer } from '@/components/VideoPlayer';
 
 // Configure revalidation
 export const revalidate = false; // Use tag-based revalidation
@@ -35,6 +36,23 @@ export async function generateMetadata({ params }: { params: Promise<{ serviceNa
   const description =
     serviceData.seo?.metaDescription || `Professional ${serviceData.title.toLowerCase()} services in Melbourne.`;
 
+  // Video structured data
+  const videoStructuredData = serviceData.featuredVideo
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'VideoObject',
+        name: serviceData.featuredVideo.title,
+        description: serviceData.featuredVideo.description || description,
+        uploadDate: new Date().toISOString(),
+        contentUrl: serviceData.featuredVideo.video.asset.url,
+        thumbnailUrl: serviceData.featuredVideo.thumbnail 
+          ? urlFor(serviceData.featuredVideo.thumbnail).width(800).url()
+          : undefined,
+        duration: serviceData.featuredVideo.duration ? `PT${serviceData.featuredVideo.duration}S` : undefined,
+        transcript: serviceData.featuredVideo.transcript || undefined,
+      }
+    : undefined;
+
   return {
     title,
     description,
@@ -45,12 +63,25 @@ export async function generateMetadata({ params }: { params: Promise<{ serviceNa
       type: 'website',
       locale: 'en_AU',
       siteName: businessName,
+      videos: serviceData.featuredVideo
+        ? [
+            {
+              url: serviceData.featuredVideo.video.asset.url,
+              type: serviceData.featuredVideo.video.asset.mimeType,
+            },
+          ]
+        : undefined,
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
     },
+    other: videoStructuredData
+      ? {
+          'application/ld+json': JSON.stringify(videoStructuredData),
+        }
+      : undefined,
   };
 }
 
@@ -58,6 +89,7 @@ export default async function ServicePage({ params }: { params: Promise<{ servic
   const { serviceName } = await params;
 
   const serviceData = await getServicePageData(serviceName);
+  console.log('serviceData', serviceData);
 
   if (!serviceData) {
     return notFound();
@@ -98,15 +130,37 @@ export default async function ServicePage({ params }: { params: Promise<{ servic
       </section>
 
       {/* Main Content */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-6">
-          {serviceData.mainContent && (
+      {serviceData.mainContent && (
+        <section className="py-16">
+          <div className="max-w-4xl mx-auto px-6">
             <div className="prose prose-lg max-w-none">
               <PortableText value={serviceData.mainContent} components={portableTextComponents} />
             </div>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
+
+      {/* Featured Video Section */}
+      {serviceData.featuredVideo && (
+        <section className="py-16">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="bg-white rounded-2xl p-8 md:p-12">
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-jlc-black mb-8 text-center">
+                {serviceData.featuredVideo.title || 'Featured Video'}
+              </h2>
+              <VideoPlayer
+                src={serviceData.featuredVideo.video.asset.url}
+                title={serviceData.featuredVideo.title}
+                description={serviceData.featuredVideo.description || undefined}
+                transcript={serviceData.featuredVideo.transcript || undefined}
+                poster={serviceData.featuredVideo.thumbnail ? urlFor(serviceData.featuredVideo.thumbnail).width(800).url() : undefined}
+                aspectRatio={16 / 9}
+                className="shadow-lg"
+              />
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Customer Review Section */}
       {review && <ReviewTestimonial review={review} />}
