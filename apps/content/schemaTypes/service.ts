@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity';
+import { defineVideoField } from 'sanity/media-library';
 
 export default defineType({
   name: 'service',
@@ -164,6 +165,10 @@ export default defineType({
           description: 'SEO keywords for this service',
         },
       ],
+    }),
+    defineVideoField({
+      name: 'featuredVideo',
+      title: 'Featured Video',
     }),
   ],
   preview: {
