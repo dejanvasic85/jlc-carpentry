@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'jlc-carpentry',
   projectId: '365wnpgg',
-  dataset: 'staging',
+  dataset: 'production',
 
   plugins: [structureTool(), visionTool()],
 
