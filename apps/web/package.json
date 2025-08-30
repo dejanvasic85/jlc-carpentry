@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-ses": "3.873.0",
+    "@mux/mux-player-react": "3.5.3",
     "@portabletext/react": "4.0.1",
     "@sanity/image-url": "1.1.0",
     "@tailwindcss/forms": "0.5.10",
@@ -21,10 +22,10 @@
     "next-sanity": "10.0.14",
     "next-seo": "6.8.0",
     "postcss": "8.5.6",
-    "reviews": "*",
     "react": "19.1.1",
     "react-dom": "19.1.1",
     "react-hook-form": "7.62.0",
+    "reviews": "*",
     "tailwindcss": "4.1.12",
     "zod": "4.1.3"
   },

@@ -10,6 +10,8 @@ const configSchema = z.object({
   recaptchaSiteKey: z.string(),
   recaptchaSecretKey: z.string(),
   googleCloudProjectId: z.string(),
+  sanityProjectId: z.string(),
+  sanityDataset: z.string(),
 });
 
 export type Config = z.infer<typeof configSchema>;
@@ -25,6 +27,8 @@ export function getConfig(): Config {
     recaptchaSiteKey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '',
     recaptchaSecretKey: process.env.RECAPTCHA_SECRET_KEY || '',
     googleCloudProjectId: process.env.GOOGLE_CLOUD_PROJECT_ID || '',
+    sanityProjectId: process.env.SANITY_PROJECT_ID || '',
+    sanityDataset: process.env.SANITY_DATASET || '',
   };
 
   return configSchema.parse(config);

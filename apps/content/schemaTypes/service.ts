@@ -165,6 +165,56 @@ export default defineType({
         },
       ],
     }),
+    defineField({
+      name: 'featuredVideo',
+      title: 'Featured Video',
+      type: 'object',
+      fields: [
+        {
+          name: 'video',
+          title: 'Video File',
+          type: 'file',
+          options: {
+            accept: 'video/*',
+          },
+          validation: (Rule) => Rule.required(),
+        },
+        {
+          name: 'title',
+          title: 'Video Title',
+          type: 'string',
+          description: 'Descriptive title for the video (for SEO and accessibility)',
+          validation: (Rule) => Rule.required(),
+        },
+        {
+          name: 'description',
+          title: 'Video Description',
+          type: 'text',
+          description: 'Brief description of the video content (for SEO)',
+        },
+        {
+          name: 'transcript',
+          title: 'Video Transcript',
+          type: 'text',
+          description: 'Full transcript of the video (for accessibility and SEO)',
+        },
+        {
+          name: 'duration',
+          title: 'Duration (seconds)',
+          type: 'number',
+          description: 'Video duration in seconds (for SEO schema)',
+        },
+        {
+          name: 'thumbnail',
+          title: 'Custom Thumbnail',
+          type: 'image',
+          description: 'Optional custom thumbnail image',
+          options: {
+            hotspot: true,
+          },
+        },
+      ],
+    }),
   ],
   preview: {
     select: {

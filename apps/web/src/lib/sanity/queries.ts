@@ -157,6 +157,25 @@ export const serviceBySlugQuery = `
         _ref
       }
     },
+    featuredVideo {
+      title,
+      description,
+      transcript,
+      duration,
+      video {
+        asset-> {
+          _id,
+          url,
+          mimeType,
+          originalFilename
+        }
+      },
+      thumbnail {
+        asset {
+          _ref
+        }
+      }
+    },
     mainContent,
     recentProjects[]-> {
       _id,
