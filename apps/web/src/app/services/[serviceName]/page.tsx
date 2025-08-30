@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: { params: Promise<{ serviceNa
         description: serviceData.featuredVideo.description || description,
         uploadDate: new Date().toISOString(),
         contentUrl: serviceData.featuredVideo.video.asset.url,
-        thumbnailUrl: serviceData.featuredVideo.thumbnail 
+        thumbnailUrl: serviceData.featuredVideo.thumbnail
           ? urlFor(serviceData.featuredVideo.thumbnail).width(800).url()
           : undefined,
         duration: serviceData.featuredVideo.duration ? `PT${serviceData.featuredVideo.duration}S` : undefined,
@@ -89,7 +89,6 @@ export default async function ServicePage({ params }: { params: Promise<{ servic
   const { serviceName } = await params;
 
   const serviceData = await getServicePageData(serviceName);
-  console.log('serviceData', serviceData);
 
   if (!serviceData) {
     return notFound();
@@ -153,7 +152,11 @@ export default async function ServicePage({ params }: { params: Promise<{ servic
                 title={serviceData.featuredVideo.title}
                 description={serviceData.featuredVideo.description || undefined}
                 transcript={serviceData.featuredVideo.transcript || undefined}
-                poster={serviceData.featuredVideo.thumbnail ? urlFor(serviceData.featuredVideo.thumbnail).width(800).url() : undefined}
+                poster={
+                  serviceData.featuredVideo.thumbnail
+                    ? urlFor(serviceData.featuredVideo.thumbnail).width(800).url()
+                    : undefined
+                }
                 aspectRatio={16 / 9}
                 className="shadow-lg"
               />

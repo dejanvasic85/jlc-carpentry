@@ -1,5 +1,6 @@
 import { createClient } from 'next-sanity';
 import { z } from 'zod';
+import { getConfig } from '@/lib/config';
 import {
   sanityFetch,
   homepageQuery,
@@ -20,9 +21,11 @@ import {
   AboutFeatureSchema,
 } from './schemas';
 
+const config = getConfig();
+
 export const client = createClient({
-  projectId: '365wnpgg',
-  dataset: 'production',
+  projectId: config.sanityProjectId,
+  dataset: config.sanityDataset,
   apiVersion: '2025-01-01', // Use current date
   useCdn: true, // Set to false for ISR or tag-based revalidation
 });
