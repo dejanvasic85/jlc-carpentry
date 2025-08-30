@@ -22,6 +22,7 @@ import {
 } from './schemas';
 
 const config = getConfig();
+console.log('config', config);
 
 export const client = createClient({
   projectId: config.sanityProjectId,
