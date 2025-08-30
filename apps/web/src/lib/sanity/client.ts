@@ -22,11 +22,10 @@ import {
 } from './schemas';
 
 const config = getConfig();
-console.log('config', config);
 
 export const client = createClient({
-  projectId: config.sanityProjectId,
-  dataset: config.sanityDataset,
+  projectId: config.sanityProjectId ?? '365wnpgg',
+  dataset: config.sanityDataset ?? 'production',
   apiVersion: '2025-01-01', // Use current date
   useCdn: true, // Set to false for ISR or tag-based revalidation
 });
