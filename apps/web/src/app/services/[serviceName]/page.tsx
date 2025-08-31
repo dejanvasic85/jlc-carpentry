@@ -159,6 +159,7 @@ export default async function ServicePage({ params }: { params: Promise<{ servic
                 }
                 aspectRatio={16 / 9}
                 className="shadow-lg"
+                serviceName={serviceName}
               />
             </div>
           </div>
