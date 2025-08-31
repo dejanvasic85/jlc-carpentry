@@ -38,20 +38,39 @@ export default function ServicesSection({
               <Card className="p-0 h-full border-l-4 border-jlc-blue overflow-hidden">
                 <div className="p-6 pb-4">
                   <div className="flex items-center space-x-3 mb-4">
-                    <h3 className="font-heading text-xl uppercase sm:text-2xl text-jlc-black">{service.title}</h3>
+                    {service.slug ? (
+                      <Link href={`/services/${service.slug.current}`} className="hover:text-jlc-blue transition-colors">
+                        <h3 className="font-heading text-xl uppercase sm:text-2xl text-jlc-black">{service.title}</h3>
+                      </Link>
+                    ) : (
+                      <h3 className="font-heading text-xl uppercase sm:text-2xl text-jlc-black">{service.title}</h3>
+                    )}
                   </div>
                 </div>
 
                 {service.image?.asset && (
                   <div className="relative w-full aspect-video mb-6">
-                    <Image
-                      src={urlFor(service.image).width(800).height(450).format('webp').url()}
-                      alt={service.title}
-                      width={800}
-                      height={450}
-                      className="w-full h-full object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
-                    />
+                    {service.slug ? (
+                      <Link href={`/services/${service.slug.current}`} className="block group-hover:opacity-90 transition-opacity">
+                        <Image
+                          src={urlFor(service.image).width(800).height(450).format('webp').url()}
+                          alt={service.title}
+                          width={800}
+                          height={450}
+                          className="w-full h-full object-cover"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
+                        />
+                      </Link>
+                    ) : (
+                      <Image
+                        src={urlFor(service.image).width(800).height(450).format('webp').url()}
+                        alt={service.title}
+                        width={800}
+                        height={450}
+                        className="w-full h-full object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
+                      />
+                    )}
                   </div>
                 )}
 
