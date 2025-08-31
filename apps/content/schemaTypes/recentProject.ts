@@ -92,8 +92,8 @@ export default defineType({
           ],
         },
       ],
-      validation: (Rule) => Rule.required().min(1).max(10),
-      description: 'Upload 1-10 images showcasing this project',
+      validation: (Rule) => Rule.required().min(1).max(20),
+      description: 'Upload 1-20 images showcasing this project',
     }),
   ],
   preview: {
