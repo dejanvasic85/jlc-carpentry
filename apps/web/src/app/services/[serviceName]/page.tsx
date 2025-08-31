@@ -165,13 +165,13 @@ export default async function ServicePage({ params }: { params: Promise<{ servic
         </section>
       )}
 
-      {/* Customer Review Section */}
-      {review && <ReviewTestimonial review={review} />}
-
       {/* Recent Projects Gallery */}
       {serviceData.recentProjects && serviceData.recentProjects.length > 0 && (
         <ProjectGallery projects={serviceData.recentProjects} serviceTitle={serviceData.title} />
       )}
+
+      {/* Customer Review Section */}
+      {review && <ReviewTestimonial review={review} />}
     </article>
   );
 }
