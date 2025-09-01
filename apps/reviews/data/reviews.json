@@ -85,22 +85,10 @@
       "date": "2 months ago"
     },
     {
-      "id": "Ci9DQUlRQUNvZENodHljRjlvT2xFNVZXRmZTWG93V25sTFpXNDFYM0p3WVhwTFFuYxAB",
-      "url": "https://www.google.com/maps/reviews/@-37.7862088,145.0225649,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2xFNVZXRmZTWG93V25sTFpXNDFYM0p3WVhwTFFuYxAB!2m1!1s0x8d3692fc1ab6fb9d:0x48b70fe108ef8a0c?hl=en&entry=ttu",
-      "reviewer": {
-        "profileUrl": "https://www.google.com/maps/contrib/118383466089335038489/reviews?hl=en-US",
-        "profilePhotoUrl": "https://lh3.googleusercontent.com/a-/ALV-UjUxOR7wWpDgsCVsB0ccuHwj_cSwuYtexbwCSMHLPOgZE-m2K83d=w36-h36-p-rp-mo-br100",
-        "displayName": "Lesley Makovere"
-      },
-      "comment": "Had a great experience! He mounted a couple of TVs for me and did an excellent job, everything is straight, secure, and looks clean. He was quick, efficient, and knew what he was doing. Bonus points for being professional, respectful, and not weird or creepy (which, let’s be honest, is a big deal when someone’s working in your home haha). Highly recommend!",
-      "starRating": 5,
-      "date": "2 weeks ago"
-    },
-    {
       "id": "ChdDSUhNMG9nS0VJQ0FnTURJeV9QTC1nRRAB",
       "url": "https://www.google.com/maps/reviews/@-37.7862088,145.0225649,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnTURJeV9QTC1nRRAB!2m1!1s0x8d3692fc1ab6fb9d:0x48b70fe108ef8a0c?hl=en&entry=ttu",
       "reviewer": {
-        "profileUrl": "https://www.google.com/maps/contrib/113688287307466299466/reviews?hl=en",
+        "profileUrl": "https://www.google.com/maps/contrib/113688287307466299466/reviews?hl=en-US",
         "profilePhotoUrl": "https://lh3.googleusercontent.com/a/ACg8ocKN9rsht7jRDlTkGdZUPV4dexXADviwfATxgiwFjcIfaMpDbA=w36-h36-p-rp-mo-br100",
         "displayName": "Jermaine Bell"
       },
@@ -133,18 +121,6 @@
       "date": "3 months ago"
     },
     {
-      "id": "ChdDSUhNMG9nS0VJblN6YzdabE9UQTRRRRAB",
-      "url": "https://www.google.com/maps/reviews/@-37.7862088,145.0225649,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJblN6YzdabE9UQTRRRRAB!2m1!1s0x8d3692fc1ab6fb9d:0x48b70fe108ef8a0c?hl=en&entry=ttu",
-      "reviewer": {
-        "profileUrl": "https://www.google.com/maps/contrib/115148104939942457172/reviews?hl=en",
-        "profilePhotoUrl": "https://lh3.googleusercontent.com/a/ACg8ocKdzLbjzNee-BCLDCyUvdb5ScnUOR8MI5Q4RAkLxQWrgSpdgw=w36-h36-p-rp-mo-br100",
-        "displayName": "Helen Ioannou"
-      },
-      "comment": "Thank you James for your excellent craftsmanship and efficiency, from start to finish. Great pricing and workmanship. Highly recommend James.",
-      "starRating": 5,
-      "date": "2 months ago"
-    },
-    {
       "id": "ChdDSUhNMG9nS0VJQ0FnTURJdGRqU2xnRRAB",
       "url": "https://www.google.com/maps/reviews/@-37.7862088,145.0225649,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnTURJdGRqU2xnRRAB!2m1!1s0x8d3692fc1ab6fb9d:0x48b70fe108ef8a0c?hl=en&entry=ttu",
       "reviewer": {
@@ -164,9 +140,21 @@
         "profilePhotoUrl": "https://lh3.googleusercontent.com/a-/ALV-UjUxOR7wWpDgsCVsB0ccuHwj_cSwuYtexbwCSMHLPOgZE-m2K83d=w36-h36-p-rp-mo-br100",
         "displayName": "Lesley Makovere"
       },
-      "comment": "Had a great experience! He mounted a couple of TVs for me and did an excellent job, everything is straight, secure, and looks clean. He was quick, efficient, and knew what he was doing. Bonus points for being professional, respectful, and …",
+      "comment": "Had a great experience! He mounted a couple of TVs for me and did an excellent job, everything is straight, secure, and looks clean. He was quick, efficient, and knew what he was doing. Bonus points for being professional, respectful, and not weird or creepy (which, let’s be honest, is a big deal when someone’s working in your home haha). Highly recommend!",
       "starRating": 5,
-      "date": "2 weeks ago"
+      "date": "3 weeks ago"
+    },
+    {
+      "id": "ChdDSUhNMG9nS0VJblN6YzdabE9UQTRRRRAB",
+      "url": "https://www.google.com/maps/reviews/@-37.7862088,145.0225649,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJblN6YzdabE9UQTRRRRAB!2m1!1s0x8d3692fc1ab6fb9d:0x48b70fe108ef8a0c?hl=en&entry=ttu",
+      "reviewer": {
+        "profileUrl": "https://www.google.com/maps/contrib/115148104939942457172/reviews?hl=en",
+        "profilePhotoUrl": "https://lh3.googleusercontent.com/a/ACg8ocKdzLbjzNee-BCLDCyUvdb5ScnUOR8MI5Q4RAkLxQWrgSpdgw=w36-h36-p-rp-mo-br100",
+        "displayName": "Helen Ioannou"
+      },
+      "comment": "Thank you James for your excellent craftsmanship and efficiency, from start to finish. Great pricing and workmanship. Highly recommend James.",
+      "starRating": 5,
+      "date": "2 months ago"
     },
     {
       "id": "ChZDSUhNMG9nS0VNYXV4c3pnaE4tbEdREAE",
@@ -202,7 +190,7 @@
       },
       "comment": "James and his team renovated my bathroom.  They were dependable and performed solid work.  When circumstances demanded improvisation, James was highly adaptable--suggesting beneficial changes to the original plans.  His useful advice received my quick approval.  James finished on time and on budget and he provided frequent informative updates (with photos).  Throughout the project, there were prompt responses to questions and easy communication in general.  I have no hesitation in strongly recommending JLC for similar renovations.",
       "starRating": 5,
-      "date": "6 days ago"
+      "date": "a week ago"
     },
     {
       "id": "ChZDSUhNMG9nS0VJQ0FnTUNZOXVfbkVREAE",
