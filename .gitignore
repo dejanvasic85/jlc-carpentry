@@ -112,3 +112,5 @@ cache/
 
 # turbo
 .turbo
+
+playwright-report/
