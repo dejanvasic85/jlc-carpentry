@@ -14,6 +14,8 @@ concurrency:
 jobs:
   test-preview:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.55.0-jammy
     timeout-minutes: 10
     
     steps:
@@ -36,15 +38,12 @@ jobs:
           max_timeout: 300
           check_interval: 10
 
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
-        working-directory: ./apps/web
-
       - name: Run Playwright tests
         run: npm run test:e2e
         working-directory: ./apps/web
         env:
           PLAYWRIGHT_TEST_BASE_URL: ${{ steps.vercel-deployment.outputs.url }}
+          HOME: /root
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
