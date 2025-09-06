@@ -7,6 +7,10 @@ on:
       - 'apps/web/**'
       - 'packages/**'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test-preview:
     runs-on: ubuntu-latest
