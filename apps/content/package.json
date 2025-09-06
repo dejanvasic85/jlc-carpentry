@@ -19,16 +19,16 @@
     "sanity"
   ],
   "dependencies": {
-    "@sanity/vision": "4.6.0",
+    "@sanity/vision": "4.6.1",
     "react": "19.1.1",
     "react-dom": "19.1.1",
-    "sanity": "4.6.0",
+    "sanity": "4.6.1",
     "styled-components": "6.1.19"
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "5.0.2",
     "@types/react": "19.1.12",
-    "eslint": "9.34.0",
+    "eslint": "9.35.0",
     "typescript": "5.9.2"
   }
 }
