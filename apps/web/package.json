@@ -13,7 +13,7 @@
     "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
-    "@aws-sdk/client-ses": "3.886.0",
+    "@aws-sdk/client-ses": "3.887.0",
     "@mux/mux-player-react": "3.6.0",
     "@playwright/test": "1.55.0",
     "@portabletext/react": "4.0.3",
@@ -30,7 +30,7 @@
     "react-hook-form": "7.62.0",
     "reviews": "*",
     "tailwindcss": "4.1.13",
-    "zod": "4.1.7"
+    "zod": "4.1.8"
   },
   "devDependencies": {
     "@eslint/eslintrc": "3.3.1",
