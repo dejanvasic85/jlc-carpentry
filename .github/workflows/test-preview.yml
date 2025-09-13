@@ -3,9 +3,6 @@ name: Test Preview Deployment
 on:
   pull_request:
     types: [opened, synchronize, reopened]
-    paths:
-      - 'apps/web/**'
-      - 'packages/**'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
