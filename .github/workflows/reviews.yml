@@ -4,6 +4,7 @@ on:
     - cron: 0 18 * * *
   workflow_dispatch:
 
+
 jobs:
   update-reviews:
     name: Update google rating data
