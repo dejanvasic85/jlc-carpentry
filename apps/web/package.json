@@ -13,7 +13,7 @@
     "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
-    "@aws-sdk/client-ses": "3.890.0",
+    "@aws-sdk/client-ses": "3.891.0",
     "@mux/mux-player-react": "3.6.0",
     "@playwright/test": "1.55.0",
     "@portabletext/react": "4.0.3",
@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "3.3.1",
-    "@types/node": "22.18.5",
+    "@types/node": "22.18.6",
     "@types/react": "19.1.13",
     "@types/react-dom": "19.1.9",
     "eslint": "9.35.0",
