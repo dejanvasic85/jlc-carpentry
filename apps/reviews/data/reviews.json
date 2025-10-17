@@ -13,18 +13,6 @@
       "date": "5 months ago"
     },
     {
-      "id": "ChZDSUhNMG9nS0VJQ0FnTURJclpMWlVBEAE",
-      "url": "https://www.google.com/maps/reviews/@-37.7862088,145.0225649,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnTURJclpMWlVBEAE!2m1!1s0x8d3692fc1ab6fb9d:0x48b70fe108ef8a0c?hl=en&entry=ttu",
-      "reviewer": {
-        "profileUrl": "https://www.google.com/maps/contrib/107765335082356354212/reviews?hl=en-US",
-        "profilePhotoUrl": "https://lh3.googleusercontent.com/a/ACg8ocKTB2XFkK25glrq_EG5Bax36462HYAr1qBBg5eGM_l4DCmBoA=w36-h36-p-rp-mo-br100",
-        "displayName": "Dylan Ibeas"
-      },
-      "comment": "James from JLC Carpentry is the epitome of professionalism. He was punctual, efficient, and built an outstanding pergola that exceeded my expectations. The final product showcases his exceptional craftsmanship and attention to detail. I couldn’t be happier and highly recommend JLC Carpentry for top-notch work! Will definitely be using James again for any future work at my property.",
-      "starRating": 5,
-      "date": "6 months ago"
-    },
-    {
       "id": "Ci9DQUlRQUNvZENodHljRjlvT2t0RlVHbGlTVGxMUjJSWmVXTmpjVGxQWTFKQmQzYxAB",
       "url": "https://www.google.com/maps/reviews/@-37.7862088,145.0225649,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2t0RlVHbGlTVGxMUjJSWmVXTmpjVGxQWTFKQmQzYxAB!2m1!1s0x8d3692fc1ab6fb9d:0x48b70fe108ef8a0c?hl=en&entry=ttu",
       "reviewer": {
@@ -47,6 +35,18 @@
       "comment": "James and his team renovated my bathroom.  They were dependable and performed solid work.  When circumstances demanded improvisation, James was highly adaptable--suggesting beneficial changes to the original plans.  His useful advice received my quick approval.  James finished on time and on budget and he provided frequent informative updates (with photos).  Throughout the project, there were prompt responses to questions and easy communication in general.  I have no hesitation in strongly recommending JLC for similar renovations.",
       "starRating": 5,
       "date": "a month ago"
+    },
+    {
+      "id": "ChZDSUhNMG9nS0VJQ0FnTURJclpMWlVBEAE",
+      "url": "https://www.google.com/maps/reviews/@-37.7862088,145.0225649,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChZDSUhNMG9nS0VJQ0FnTURJclpMWlVBEAE!2m1!1s0x8d3692fc1ab6fb9d:0x48b70fe108ef8a0c?hl=en&entry=ttu",
+      "reviewer": {
+        "profileUrl": "https://www.google.com/maps/contrib/107765335082356354212/reviews?hl=en-US",
+        "profilePhotoUrl": "https://lh3.googleusercontent.com/a/ACg8ocKTB2XFkK25glrq_EG5Bax36462HYAr1qBBg5eGM_l4DCmBoA=w36-h36-p-rp-mo-br100",
+        "displayName": "Dylan Ibeas"
+      },
+      "comment": "James from JLC Carpentry is the epitome of professionalism. He was punctual, efficient, and built an outstanding pergola that exceeded my expectations. The final product showcases his exceptional craftsmanship and attention to detail. I couldn’t be happier and highly recommend JLC Carpentry for top-notch work! Will definitely be using James again for any future work at my property.",
+      "starRating": 5,
+      "date": "6 months ago"
     },
     {
       "id": "Ci9DQUlRQUNvZENodHljRjlvT2twcVFsaEZaMTkyTWw5WFNFaDJaemw2YjNRME9HYxAB",
