@@ -39,7 +39,10 @@ export default function ServicesSection({
                 <div className="p-6 pb-4">
                   <div className="flex items-center space-x-3 mb-4">
                     {service.slug ? (
-                      <Link href={`/services/${service.slug.current}`} className="hover:text-jlc-blue transition-colors">
+                      <Link
+                        href={`/services/${service.slug.current}`}
+                        className="hover:text-jlc-blue transition-colors"
+                      >
                         <h3 className="font-heading text-xl uppercase sm:text-2xl text-jlc-black">{service.title}</h3>
                       </Link>
                     ) : (
@@ -51,7 +54,10 @@ export default function ServicesSection({
                 {service.image?.asset && (
                   <div className="relative w-full aspect-video mb-6">
                     {service.slug ? (
-                      <Link href={`/services/${service.slug.current}`} className="block group-hover:opacity-90 transition-opacity">
+                      <Link
+                        href={`/services/${service.slug.current}`}
+                        className="block group-hover:opacity-90 transition-opacity"
+                      >
                         <Image
                           src={urlFor(service.image).width(800).height(450).format('webp').url()}
                           alt={service.title}
