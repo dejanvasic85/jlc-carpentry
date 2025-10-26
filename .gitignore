@@ -114,3 +114,4 @@ cache/
 .turbo
 
 playwright-report/
+test-results/
