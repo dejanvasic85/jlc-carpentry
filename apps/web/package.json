@@ -13,7 +13,7 @@
     "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
-    "@aws-sdk/client-ses": "3.921.0",
+    "@aws-sdk/client-ses": "3.922.0",
     "@mux/mux-player-react": "3.8.0",
     "@playwright/test": "1.56.1",
     "@portabletext/react": "4.0.3",
@@ -27,7 +27,7 @@
     "postcss": "8.5.6",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "react-hook-form": "7.65.0",
+    "react-hook-form": "7.66.0",
     "reviews": "*",
     "tailwindcss": "4.1.16",
     "zod": "4.1.12"
@@ -37,7 +37,7 @@
     "@types/node": "22.18.13",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
-    "eslint": "9.38.0",
+    "eslint": "9.39.0",
     "eslint-config-next": "16.0.1",
     "typescript": "5.9.3"
   }
