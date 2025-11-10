@@ -61,18 +61,6 @@
       "date": "4 months ago"
     },
     {
-      "id": "ChdDSUhNMG9nS0VJQ0FnTURJcWI3SzF3RRAB",
-      "url": "https://www.google.com/maps/reviews/@-37.7862088,145.0225649,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnTURJcWI3SzF3RRAB!2m1!1s0x8d3692fc1ab6fb9d:0x48b70fe108ef8a0c?hl=en&entry=ttu",
-      "reviewer": {
-        "profileUrl": "https://www.google.com/maps/contrib/112908279472056939935/reviews?hl=en-US",
-        "profilePhotoUrl": "https://lh3.googleusercontent.com/a-/ALV-UjWkldVHmIg6BMm-lGI-FHI5nptqoNng4usVSr9_iuMSKZqaSV4gRg=w36-h36-p-rp-mo-br100",
-        "displayName": "Megan Kennedy"
-      },
-      "comment": "Many thanks to James for all his hard work he put in to help us finish our dream home. His professionalism was evident from his first visit to confirm measurements & advice us on what needed to be done. He was hard working, punctual & managed to finish what we needed done in a short time frame.  His work ethic, communication & skill set was fantastic & I can’t recommend James highly enough.",
-      "starRating": 5,
-      "date": "6 months ago"
-    },
-    {
       "id": "Ci9DQUlRQUNvZENodHljRjlvT21aSU9HMU9lVU5RTmxWRWVEZzNjVFkyWjBoMGFtYxAB",
       "url": "https://www.google.com/maps/reviews/@-37.7862088,145.0225649,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT21aSU9HMU9lVU5RTmxWRWVEZzNjVFkyWjBoMGFtYxAB!2m1!1s0x8d3692fc1ab6fb9d:0x48b70fe108ef8a0c?hl=en&entry=ttu",
       "reviewer": {
@@ -100,13 +88,25 @@
       "id": "Ci9DQUlRQUNvZENodHljRjlvT2xFNVZXRmZTWG93V25sTFpXNDFYM0p3WVhwTFFuYxAB",
       "url": "https://www.google.com/maps/reviews/@-37.7862088,145.0225649,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT2xFNVZXRmZTWG93V25sTFpXNDFYM0p3WVhwTFFuYxAB!2m1!1s0x8d3692fc1ab6fb9d:0x48b70fe108ef8a0c?hl=en&entry=ttu",
       "reviewer": {
-        "profileUrl": "https://www.google.com/maps/contrib/118383466089335038489/reviews?hl=en",
+        "profileUrl": "https://www.google.com/maps/contrib/118383466089335038489/reviews?hl=en-US",
         "profilePhotoUrl": "https://lh3.googleusercontent.com/a-/ALV-UjUxOR7wWpDgsCVsB0ccuHwj_cSwuYtexbwCSMHLPOgZE-m2K83d=w36-h36-p-rp-mo-br100",
         "displayName": "Lesley Makovere"
       },
       "comment": "Had a great experience! He mounted a couple of TVs for me and did an excellent job, everything is straight, secure, and looks clean. He was quick, efficient, and knew what he was doing. Bonus points for being professional, respectful, and not weird or creepy (which, let’s be honest, is a big deal when someone’s working in your home haha). Highly recommend!",
       "starRating": 5,
-      "date": "2 months ago"
+      "date": "3 months ago"
+    },
+    {
+      "id": "ChdDSUhNMG9nS0VJQ0FnTURJcWI3SzF3RRAB",
+      "url": "https://www.google.com/maps/reviews/@-37.7862088,145.0225649,17z/data=!3m1!4b1!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnTURJcWI3SzF3RRAB!2m1!1s0x8d3692fc1ab6fb9d:0x48b70fe108ef8a0c?hl=en&entry=ttu",
+      "reviewer": {
+        "profileUrl": "https://www.google.com/maps/contrib/112908279472056939935/reviews?hl=en",
+        "profilePhotoUrl": "https://lh3.googleusercontent.com/a-/ALV-UjWkldVHmIg6BMm-lGI-FHI5nptqoNng4usVSr9_iuMSKZqaSV4gRg=w36-h36-p-rp-mo-br100",
+        "displayName": "Megan Kennedy"
+      },
+      "comment": "Many thanks to James for all his hard work he put in to help us finish our dream home. His professionalism was evident from his first visit to confirm measurements & advice us on what needed to be done. He was hard working, punctual & managed to finish what we needed done in a short time frame.  His work ethic, communication & skill set was fantastic & I can’t recommend James highly enough.",
+      "starRating": 5,
+      "date": "6 months ago"
     },
     {
       "id": "ChdDSUhNMG9nS0VJQ0FnTUNZakxybWtnRRAB",
