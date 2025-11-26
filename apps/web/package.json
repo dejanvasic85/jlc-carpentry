@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-ses": "3.940.0",
-    "@mux/mux-player-react": "3.9.0",
+    "@mux/mux-player-react": "3.9.1",
     "@playwright/test": "1.57.0",
     "@portabletext/react": "5.0.0",
     "@sanity/image-url": "1.2.0",
