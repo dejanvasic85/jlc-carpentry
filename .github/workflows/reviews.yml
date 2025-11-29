@@ -4,7 +4,6 @@ on:
     - cron: 0 18 * * *
   workflow_dispatch:
 
-
 jobs:
   update-reviews:
     name: Update google rating data
@@ -33,7 +32,7 @@ jobs:
           commit-message: 'feat: Google ratings updates'
           labels: 'content'
           token: ${{ secrets.ACTIONS_TOKEN }}
-      
+
       - name: Enable auto-merge for PR
         if: steps.cpr.outputs.pull-request-operation == 'created'
         run: gh pr merge --auto --squash ${{ steps.cpr.outputs.pull-request-number }}
