@@ -1,7 +1,6 @@
-import imageUrlBuilder from '@sanity/image-url';
-import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { createImageUrlBuilder, type SanityImageSource } from '@sanity/image-url';
 
-const builder = imageUrlBuilder({
+const builder = createImageUrlBuilder({
   projectId: '365wnpgg',
   dataset: 'production',
 });
