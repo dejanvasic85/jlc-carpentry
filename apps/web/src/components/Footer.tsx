@@ -146,9 +146,20 @@ export default function Footer({ className = '', siteSettings }: FooterProps) {
         </div>
 
         {siteSettings?.company?.name && (
-          <div className="border-t border-slate-700 pt-8 text-center">
+          <div className="border-t border-slate-700 pt-8 text-center space-y-2">
             <p className="text-gray-400">
               © {new Date().getFullYear()} {siteSettings.company.name}. All rights reserved.
+            </p>
+            <p className="text-gray-400">
+              Developed by:{' '}
+              <a
+                href="https://dejan.vasic.com.au"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-jlc-blue-light hover:underline transition-colors"
+              >
+                Dejan Vasic
+              </a>
             </p>
           </div>
         )}

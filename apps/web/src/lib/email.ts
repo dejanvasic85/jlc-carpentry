@@ -99,7 +99,6 @@ export async function sendContactEmail(data: ContactFormData) {
     },
   });
 
-
   const emailParams = {
     Source: config.emailFrom,
     Destination: {
