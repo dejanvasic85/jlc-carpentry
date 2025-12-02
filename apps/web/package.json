@@ -13,8 +13,8 @@
     "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
-    "@aws-sdk/client-ses": "3.940.0",
-    "@mux/mux-player-react": "3.9.1",
+    "@aws-sdk/client-ses": "3.943.0",
+    "@mux/mux-player-react": "3.9.2",
     "@playwright/test": "1.57.0",
     "@portabletext/react": "5.0.0",
     "@sanity/image-url": "2.0.1",
