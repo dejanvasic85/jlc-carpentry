@@ -19,7 +19,7 @@
     "@portabletext/react": "6.0.0",
     "@sanity/image-url": "2.0.2",
     "@tailwindcss/forms": "0.5.10",
-    "@tailwindcss/postcss": "4.1.17",
+    "@tailwindcss/postcss": "4.1.18",
     "autoprefixer": "10.4.22",
     "next": "16.0.8",
     "next-sanity": "11.6.10",
@@ -28,7 +28,7 @@
     "react-dom": "19.2.1",
     "react-hook-form": "7.68.0",
     "reviews": "*",
-    "tailwindcss": "4.1.17",
+    "tailwindcss": "4.1.18",
     "zod": "4.1.13"
   },
   "devDependencies": {
