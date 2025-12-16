@@ -29,7 +29,7 @@
     "react-hook-form": "7.68.0",
     "reviews": "*",
     "tailwindcss": "4.1.18",
-    "zod": "4.2.0"
+    "zod": "4.2.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "3.3.3",
