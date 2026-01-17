@@ -17,7 +17,7 @@
     "@mux/mux-player-react": "3.10.2",
     "@playwright/test": "1.57.0",
     "@portabletext/react": "6.0.2",
-    "@sanity/image-url": "2.0.2",
+    "@sanity/image-url": "2.0.3",
     "@tailwindcss/forms": "0.5.11",
     "@tailwindcss/postcss": "4.1.18",
     "autoprefixer": "10.4.23",
