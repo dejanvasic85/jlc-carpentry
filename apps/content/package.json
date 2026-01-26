@@ -20,8 +20,8 @@
   ],
   "dependencies": {
     "@sanity/vision": "5.6.0",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
     "sanity": "5.6.0",
     "styled-components": "6.3.8"
   },
