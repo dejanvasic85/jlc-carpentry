@@ -17,6 +17,16 @@
   "prNotPendingHours": 1,
   "semanticCommitScope": "",
   "semanticCommitType": "deps",
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true,
+    "recreateWhen": "always",
+    "rebaseStalePrs": true,
+    "schedule": ["before 4am on monday"],
+    "prBodyDefinitions": {
+      "Change": "All locks refreshed"
+    }
+  },
   "packageRules": [
     {
       "extends": "monorepo:nextjs",
@@ -24,9 +34,11 @@
       "matchUpdateTypes": ["digest", "patch", "minor", "major"]
     },
     {
-      "matchPackageNames": "@types/node",
-      "groupName": "node types",
-      "allowedVersions": "< 23"
+      "description": "Node and types - LTS versions only",
+      "matchPackageNames": ["node", "@types/node"],
+      "groupName": "node and types",
+      "matchManagers": ["volta", "npm"],
+      "allowedVersions": "/^(20|22|24|26|28|30|32|34|36|38|40)\\./"
     }
   ]
 }
