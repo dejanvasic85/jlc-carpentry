@@ -13,14 +13,14 @@
     "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
-    "@aws-sdk/client-ses": "3.997.0",
+    "@aws-sdk/client-ses": "3.998.0",
     "@mux/mux-player-react": "3.11.4",
     "@playwright/test": "1.58.2",
     "@portabletext/react": "6.0.2",
     "@sanity/image-url": "2.0.3",
     "@tailwindcss/forms": "0.5.11",
     "@tailwindcss/postcss": "4.2.1",
-    "autoprefixer": "10.4.24",
+    "autoprefixer": "10.4.27",
     "next": "16.1.6",
     "next-sanity": "12.1.0",
     "postcss": "8.5.6",
