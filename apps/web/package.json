@@ -16,7 +16,7 @@
     "@aws-sdk/client-ses": "3.1001.0",
     "@mux/mux-player-react": "3.11.5",
     "@playwright/test": "1.58.2",
-    "@portabletext/react": "6.0.2",
+    "@portabletext/react": "6.0.3",
     "@sanity/image-url": "2.0.3",
     "@tailwindcss/forms": "0.5.11",
     "@tailwindcss/postcss": "4.2.1",
