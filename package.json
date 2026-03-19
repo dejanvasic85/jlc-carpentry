@@ -25,10 +25,10 @@
     "node": "24.13.1"
   },
   "dependencies": {
-    "turbo": "2.8.18"
+    "turbo": "2.8.19"
   },
   "devDependencies": {
     "prettier": "3.8.1"
   },
-  "packageManager": "npm@11.11.1"
+  "packageManager": "npm@11.12.0"
 }
