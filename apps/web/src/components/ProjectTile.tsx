@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { urlFor } from '@/lib/sanity/image';
+import { sanityImageLoader } from '@/lib/sanityImageLoader';
 import { RecentProject } from '@/lib/sanity/schemas';
 
 interface ProjectTileProps {
@@ -21,7 +22,8 @@ export default function ProjectTile({ project, onClick }: ProjectTileProps) {
     >
       {/* Main Image */}
       <Image
-        src={urlFor(primaryImage).width(600).height(450).url()}
+        loader={sanityImageLoader}
+        src={urlFor(primaryImage).url()}
         alt={primaryImage.alt || `${project.title || project.suburb} project`}
         fill
         className="object-cover group-hover:scale-105 transition-transform duration-300"

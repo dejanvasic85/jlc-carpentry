@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useState, useCallback, useEffect } from 'react';
 import { urlFor } from '@/lib/sanity/image';
+import { sanityImageLoader } from '@/lib/sanityImageLoader';
 import { RecentProject } from '@/lib/sanity/schemas';
 
 interface ImageCarouselProps {
@@ -105,11 +106,11 @@ export default function ImageCarousel({ project }: ImageCarouselProps) {
                 data-carousel-item={index === currentIndex ? 'active' : ''}
               >
                 <Image
-                  src={urlFor(image).width(2400).height(1600).format('webp').quality(90).url()}
+                  loader={sanityImageLoader}
+                  src={urlFor(image).url()}
                   alt={image.alt || `${project.suburb} project image ${index + 1}`}
                   fill
                   className="object-cover"
-                  quality={95}
                   priority={index === currentIndex}
                   sizes="100vw"
                 />

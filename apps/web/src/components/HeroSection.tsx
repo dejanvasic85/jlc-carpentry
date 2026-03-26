@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import type { Statistic } from '@/lib/sanity/schemas';
 import { urlFor } from '@/lib/sanity/image';
+import { sanityImageLoader } from '@/lib/sanityImageLoader';
 
 interface ButtonData {
   text: string;
@@ -138,14 +139,14 @@ export default function HeroSection({
           {/* Image Column - Only render if heroImage exists or fallback is available */}
           {(heroImage || true) && (
             <div className="relative order-2 lg:order-2">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-black/20">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-black/20 h-[400px] md:h-[500px] lg:h-[600px]">
                 <div className="absolute inset-0 bg-gradient-to-tr from-jlc-blue-dark/20 to-transparent z-10"></div>
                 <Image
-                  src={heroImage ? urlFor(heroImage).width(800).height(600).url() : '/hero.webp'}
+                  loader={heroImage ? sanityImageLoader : undefined}
+                  src={heroImage ? urlFor(heroImage).url() : '/hero.webp'}
                   alt={heroImage?.alt || 'JLC Carpentry professional work showcase'}
-                  width={800}
-                  height={600}
-                  className="w-full h-[400px] md:h-[500px] lg:h-[600px] object-cover"
+                  fill
+                  className="object-cover"
                   priority
                 />
                 <div className="absolute bottom-6 left-6 right-6 z-20">
