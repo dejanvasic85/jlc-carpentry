@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Metadata } from 'next';
 import { getSiteSettingsData, getServicePageData, getServiceSlugs } from '@/lib/sanity/client';
 import { urlFor } from '@/lib/sanity/image';
+import { sanityImageLoader } from '@/lib/sanityImageLoader';
 import { PortableText } from '@portabletext/react';
 import { notFound } from 'next/navigation';
 import { portableTextComponents } from '@/components/PortableText';
@@ -105,7 +106,8 @@ export default async function ServicePage({ params }: { params: Promise<{ servic
         {/* Background Image */}
         {serviceData.heroImage && (
           <Image
-            src={urlFor(serviceData.heroImage).width(1920).url()}
+            loader={sanityImageLoader}
+            src={urlFor(serviceData.heroImage).url()}
             alt={`${serviceData.title} background`}
             fill
             className="object-cover"

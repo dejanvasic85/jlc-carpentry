@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { urlFor } from '@/lib/sanity/image';
+import { sanityImageLoader } from '@/lib/sanityImageLoader';
 import { PropsWithChildren } from 'react';
 
 interface LinkProps extends PropsWithChildren {
@@ -61,7 +62,8 @@ export const portableTextComponents = {
       <div className="my-8">
         {value?.asset && (
           <Image
-            src={urlFor(value).width(800).url()}
+            loader={sanityImageLoader}
+            src={urlFor(value).url()}
             alt={value.alt || 'Service image'}
             width={800}
             height={600}

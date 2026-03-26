@@ -2,6 +2,7 @@ import Card from '@/components/Card';
 import { Service } from '@/lib/sanity/schemas';
 import { urlFor } from '@/lib/sanity/image';
 import Image from 'next/image';
+import { sanityImageLoader } from '@/lib/sanityImageLoader';
 import Link from 'next/link';
 
 interface ServicesSectionProps {
@@ -59,7 +60,8 @@ export default function ServicesSection({
                         className="block group-hover:opacity-90 transition-opacity"
                       >
                         <Image
-                          src={urlFor(service.image).width(800).height(450).format('webp').url()}
+                          loader={sanityImageLoader}
+                          src={urlFor(service.image).url()}
                           alt={service.title}
                           width={800}
                           height={450}

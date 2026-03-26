@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { type SiteSettings } from '@/lib/sanity/schemas';
 import { urlFor } from '@/lib/sanity/image';
+import { sanityImageLoader } from '@/lib/sanityImageLoader';
 
 interface FooterProps {
   className?: string;
@@ -17,7 +18,8 @@ export default function Footer({ className = '', siteSettings }: FooterProps) {
               <div className="flex items-center space-x-4 mb-6">
                 {siteSettings.company.logo && (
                   <Image
-                    src={urlFor(siteSettings.company.logo).width(60).height(60).url()}
+                    loader={sanityImageLoader}
+                    src={urlFor(siteSettings.company.logo).url()}
                     alt={`${siteSettings.company.name} Logo`}
                     width={60}
                     height={60}
