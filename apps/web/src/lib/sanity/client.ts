@@ -27,7 +27,7 @@ export const client = createClient({
   projectId: config.sanityProjectId ?? '365wnpgg',
   dataset: config.sanityDataset ?? 'production',
   apiVersion: '2025-01-01', // Use current date
-  useCdn: true, // Set to false for ISR or tag-based revalidation
+  useCdn: false, // Must be false for tag-based revalidation
 });
 
 const tags = ['content'];

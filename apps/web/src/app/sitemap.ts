@@ -47,5 +47,4 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 }
 
-// Export the revalidate time for ISR (optional)
-export const revalidate = 86400; // Revalidate sitemap once per day (24 hours)
+export const revalidate = false;

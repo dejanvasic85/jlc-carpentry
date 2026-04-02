@@ -6,7 +6,7 @@ export async function sanityFetch<T>({
   query,
   params = {},
   schema,
-  revalidate = 60,
+  revalidate = false,
   tags = [],
 }: {
   query: string;
@@ -19,7 +19,7 @@ export async function sanityFetch<T>({
   // Otherwise use time-based revalidation
   const cacheConfig = {
     next: {
-      revalidate: revalidate === false && tags.length > 0 ? false : revalidate,
+      revalidate: tags.length > 0 ? false : revalidate,
       tags: tags.length > 0 ? tags : undefined,
     },
   };
