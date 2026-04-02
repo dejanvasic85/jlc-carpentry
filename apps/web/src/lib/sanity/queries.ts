@@ -6,7 +6,7 @@ export async function sanityFetch<T>({
   query,
   params = {},
   schema,
-  revalidate = 60,
+  revalidate = false,
   tags = [],
 }: {
   query: string;
