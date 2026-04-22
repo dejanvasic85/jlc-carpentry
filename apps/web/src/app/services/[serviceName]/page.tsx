@@ -126,7 +126,16 @@ export default async function ServicePage({ params }: { params: Promise<{ servic
                     Explore our latest {serviceData.title.toLowerCase()} projects across Melbourne
                   </p>
                 </div>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" aria-label="Recent projects">
+                <ul
+                  className={`grid gap-6 ${
+                    linkedProjects.length === 1
+                      ? 'grid-cols-1 max-w-md mx-auto'
+                      : linkedProjects.length === 2
+                        ? 'grid-cols-1 sm:grid-cols-2 max-w-2xl mx-auto'
+                        : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
+                  }`}
+                  aria-label="Recent projects"
+                >
                   {linkedProjects.map((project) => {
                     const summary = {
                       _id: project._id ?? '',
