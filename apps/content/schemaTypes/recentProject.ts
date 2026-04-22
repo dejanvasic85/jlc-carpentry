@@ -121,6 +121,53 @@ export default defineType({
       validation: (Rule) => Rule.required().min(1).max(20),
       description: 'Upload 1-20 images showcasing this project',
     }),
+    defineField({
+      name: 'videoGallery',
+      title: 'Video Gallery',
+      type: 'array',
+      description: 'Upload project videos (MP4 recommended). Max 5.',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'video',
+              title: 'Video File',
+              type: 'file',
+              options: { accept: 'video/*' },
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'title',
+              title: 'Video Title',
+              type: 'string',
+              description: 'Short label shown under the video thumbnail',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'thumbnail',
+              title: 'Thumbnail Image',
+              type: 'image',
+              description: 'Optional custom thumbnail; shown as poster image',
+              options: { hotspot: true },
+            }),
+            defineField({
+              name: 'description',
+              title: 'Description',
+              type: 'text',
+              description: 'Screen reader description for accessibility',
+            }),
+            defineField({
+              name: 'transcript',
+              title: 'Transcript',
+              type: 'text',
+              description: 'For accessibility and SEO',
+            }),
+          ],
+        },
+      ],
+      validation: (Rule) => Rule.max(5),
+    }),
   ],
   preview: {
     select: {

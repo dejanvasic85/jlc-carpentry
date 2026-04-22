@@ -54,6 +54,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
   const heroImage = project.featuredImage ?? project.imageGallery?.[0];
   const galleryImages = project.imageGallery ?? [];
+  const videoGallery = project.videoGallery ?? [];
+  const hasVideos = videoGallery.length > 0;
+  const totalGalleryItems = galleryImages.length + videoGallery.length;
 
   return (
     <article>
@@ -129,16 +132,18 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       </section>
 
       {/* Gallery — large images on white, 2-col grid so photos are substantial */}
-      {galleryImages.length > 0 && (
+      {totalGalleryItems > 0 && (
         <section className="bg-white py-12 md:py-16" aria-label="Project gallery">
           <div className="max-w-7xl mx-auto px-6 md:px-12">
             <div className="flex items-center gap-4 mb-10">
-              <h2 className="font-heading text-2xl md:text-3xl text-jlc-black tracking-wide">Photos</h2>
+              <h2 className="font-heading text-2xl md:text-3xl text-jlc-black tracking-wide">
+                {hasVideos ? 'Gallery' : 'Photos'}
+              </h2>
               <span className="text-gray-400 text-sm font-medium">
-                {galleryImages.length} image{galleryImages.length !== 1 ? 's' : ''}
+                {totalGalleryItems} item{totalGalleryItems !== 1 ? 's' : ''}
               </span>
             </div>
-            <ProjectGalleryClient images={galleryImages} />
+            <ProjectGalleryClient images={galleryImages} videos={videoGallery} />
           </div>
         </section>
       )}

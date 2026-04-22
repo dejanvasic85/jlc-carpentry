@@ -126,6 +126,28 @@ const ProjectFeaturedImageSchema = z
   .nullable()
   .optional();
 
+const ProjectVideoSchema = z.object({
+  title: z.string(),
+  description: z.string().nullable().optional(),
+  transcript: z.string().nullable().optional(),
+  video: z.object({
+    asset: z.object({
+      _id: z.string(),
+      url: z.string(),
+      mimeType: z.string(),
+      originalFilename: z.string(),
+    }),
+  }),
+  thumbnail: z
+    .object({
+      asset: z.object({
+        _ref: z.string(),
+      }),
+    })
+    .nullable()
+    .optional(),
+});
+
 // Summary schema for listing page (first image only)
 export const ProjectSummarySchema = z.object({
   _id: z.string(),
@@ -149,6 +171,7 @@ export const ProjectDetailSchema = z
     description: z.string(),
     featuredImage: ProjectFeaturedImageSchema,
     imageGallery: z.array(ProjectImageSchema).nullable().optional(),
+    videoGallery: z.array(ProjectVideoSchema).nullable().optional(),
   })
   .nullable();
 
@@ -174,31 +197,6 @@ export const ServiceSchema = BaseSanitySchema.extend({
       asset: z.object({
         _ref: z.string(),
       }),
-    })
-    .nullable()
-    .optional(),
-  featuredVideo: z
-    .object({
-      title: z.string(),
-      description: z.string().nullable().optional(),
-      transcript: z.string().nullable().optional(),
-      duration: z.number().nullable().optional(),
-      video: z.object({
-        asset: z.object({
-          _id: z.string(),
-          url: z.string(),
-          mimeType: z.string(),
-          originalFilename: z.string(),
-        }),
-      }),
-      thumbnail: z
-        .object({
-          asset: z.object({
-            _ref: z.string(),
-          }),
-        })
-        .nullable()
-        .optional(),
     })
     .nullable()
     .optional(),
@@ -312,3 +310,4 @@ export type SiteSettings = z.infer<typeof SiteSettingsSchema>;
 export type RecentProject = z.infer<typeof RecentProjectSchema>;
 export type ProjectSummary = z.infer<typeof ProjectSummarySchema>;
 export type ProjectDetail = z.infer<typeof ProjectDetailSchema>;
+export type ProjectVideo = z.infer<typeof ProjectVideoSchema>;
