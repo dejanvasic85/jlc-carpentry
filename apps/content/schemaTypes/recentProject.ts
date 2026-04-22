@@ -13,6 +13,17 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      description: 'URL-friendly identifier for this project page',
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'suburb',
       title: 'Suburb',
       type: 'string',
@@ -64,6 +75,21 @@ export default defineType({
       type: 'text',
       description: 'A detailed description of the work completed, materials used, and special features',
       validation: (Rule) => Rule.required().max(500),
+    }),
+    defineField({
+      name: 'featuredImage',
+      title: 'Featured Image',
+      type: 'image',
+      description: 'Hero image for the project page. Falls back to the first gallery image if not set.',
+      options: { hotspot: true },
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alt Text',
+          type: 'string',
+          description: 'Describe the image for accessibility',
+        }),
+      ],
     }),
     defineField({
       name: 'imageGallery',

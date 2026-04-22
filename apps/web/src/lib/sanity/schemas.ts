@@ -94,6 +94,7 @@ const ServiceLinkSchema = z.object({
 // Recent Project Schema
 export const RecentProjectSchema = BaseSanitySchema.extend({
   title: z.string(),
+  slug: z.object({ current: z.string() }).nullable().optional(),
   suburb: z.string(),
   date: z.object({
     month: z.string(),
@@ -109,6 +110,34 @@ export const RecentProjectSchema = BaseSanitySchema.extend({
       caption: z.string().nullable().optional(),
     }),
   ),
+});
+
+const ProjectImageSchema = z.object({
+  asset: z.object({ _ref: z.string() }),
+  alt: z.string(),
+  caption: z.string().nullable().optional(),
+});
+
+// Summary schema for listing page (first image only)
+export const ProjectSummarySchema = z.object({
+  _id: z.string(),
+  title: z.string(),
+  slug: z.object({ current: z.string() }),
+  suburb: z.string(),
+  date: z.object({ month: z.string(), year: z.number() }),
+  description: z.string(),
+  imageGallery: ProjectImageSchema.nullable().optional(),
+});
+
+// Detail schema for the individual project page (full gallery)
+export const ProjectDetailSchema = z.object({
+  _id: z.string(),
+  title: z.string(),
+  slug: z.object({ current: z.string() }),
+  suburb: z.string(),
+  date: z.object({ month: z.string(), year: z.number() }),
+  description: z.string(),
+  imageGallery: z.array(ProjectImageSchema).nullable().optional(),
 });
 
 // Service Schema
@@ -269,3 +298,5 @@ export type AboutFeature = z.infer<typeof AboutFeatureSchema>;
 export type Service = z.infer<typeof ServiceSchema>;
 export type SiteSettings = z.infer<typeof SiteSettingsSchema>;
 export type RecentProject = z.infer<typeof RecentProjectSchema>;
+export type ProjectSummary = z.infer<typeof ProjectSummarySchema>;
+export type ProjectDetail = z.infer<typeof ProjectDetailSchema>;
