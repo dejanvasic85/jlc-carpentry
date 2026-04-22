@@ -9,7 +9,7 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
-  const image = project.imageGallery;
+  const image = project.featuredImage ?? project.imageGallery;
 
   return (
     <Link
@@ -21,7 +21,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <Image
           loader={sanityImageLoader}
           src={urlFor(image).url()}
-          alt={image.alt}
+          alt={image.alt ?? project.title}
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-300"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -32,7 +32,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </div>
       )}
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent transition-opacity duration-300" />
 
       <div className="absolute bottom-0 left-0 right-0 p-5 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
         <h3 className="font-heading text-lg leading-tight mb-0.5">{project.title}</h3>

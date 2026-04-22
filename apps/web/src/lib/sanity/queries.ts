@@ -228,6 +228,12 @@ export const allProjectsQuery = `
       year
     },
     description,
+    featuredImage {
+      asset {
+        _ref
+      },
+      alt
+    },
     imageGallery[0] {
       asset {
         _ref
@@ -251,6 +257,12 @@ export const projectBySlugQuery = `
       year
     },
     description,
+    featuredImage {
+      asset {
+        _ref
+      },
+      alt
+    },
     imageGallery[] {
       asset {
         _ref

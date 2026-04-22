@@ -23,8 +23,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const businessName = siteSettings.company.name;
   const title = `${project.title} | ${businessName}`;
   const description = project.description;
-  const firstImage = project.imageGallery?.[0];
-  const ogImageUrl = firstImage ? urlFor(firstImage).width(1200).height(630).url() : undefined;
+  const ogSource = project.featuredImage ?? project.imageGallery?.[0];
+  const ogImageUrl = ogSource ? urlFor(ogSource).width(1200).height(630).url() : undefined;
 
   return {
     title,
@@ -51,7 +51,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
   if (!project) return notFound();
 
-  const heroImage = project.imageGallery?.[0];
+  const heroImage = project.featuredImage ?? project.imageGallery?.[0];
 
   return (
     <article className="pb-20">
@@ -61,7 +61,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <Image
             loader={sanityImageLoader}
             src={urlFor(heroImage).url()}
-            alt={heroImage.alt}
+            alt={heroImage.alt ?? project.title}
             fill
             className="object-cover"
             priority

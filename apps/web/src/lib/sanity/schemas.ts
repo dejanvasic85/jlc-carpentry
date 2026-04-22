@@ -118,6 +118,14 @@ const ProjectImageSchema = z.object({
   caption: z.string().nullable().optional(),
 });
 
+const ProjectFeaturedImageSchema = z
+  .object({
+    asset: z.object({ _ref: z.string() }),
+    alt: z.string().nullable().optional(),
+  })
+  .nullable()
+  .optional();
+
 // Summary schema for listing page (first image only)
 export const ProjectSummarySchema = z.object({
   _id: z.string(),
@@ -126,19 +134,23 @@ export const ProjectSummarySchema = z.object({
   suburb: z.string(),
   date: z.object({ month: z.string(), year: z.number() }),
   description: z.string(),
+  featuredImage: ProjectFeaturedImageSchema,
   imageGallery: ProjectImageSchema.nullable().optional(),
 });
 
 // Detail schema for the individual project page (full gallery)
-export const ProjectDetailSchema = z.object({
-  _id: z.string(),
-  title: z.string(),
-  slug: z.object({ current: z.string() }),
-  suburb: z.string(),
-  date: z.object({ month: z.string(), year: z.number() }),
-  description: z.string(),
-  imageGallery: z.array(ProjectImageSchema).nullable().optional(),
-});
+export const ProjectDetailSchema = z
+  .object({
+    _id: z.string(),
+    title: z.string(),
+    slug: z.object({ current: z.string() }),
+    suburb: z.string(),
+    date: z.object({ month: z.string(), year: z.number() }),
+    description: z.string(),
+    featuredImage: ProjectFeaturedImageSchema,
+    imageGallery: z.array(ProjectImageSchema).nullable().optional(),
+  })
+  .nullable();
 
 // Service Schema
 export const ServiceSchema = BaseSanitySchema.extend({

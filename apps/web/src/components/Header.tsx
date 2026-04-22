@@ -36,8 +36,9 @@ const MOBILE_OFFSET_HEIGHT = 260 as const; // Additional offset for better align
 
 function getActiveSectionFromPathname(pathname: string): string | null {
   if (pathname === '/') return null; // Let the IntersectionObserver handle homepage
-  const match = navigationItemsValue.find((item) => item.href !== '/' && pathname.startsWith(item.href));
-  return match?.id ?? null;
+  if (pathname === '/services' || pathname.startsWith('/services/')) return 'services';
+  if (pathname === '/projects' || pathname.startsWith('/projects/')) return 'projects';
+  return null;
 }
 
 export default function Header({ className = '', siteSettings }: HeaderProps) {
