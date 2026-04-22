@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { Metadata } from 'next';
 import { getSiteSettingsData, getServicePageData, getServiceSlugs } from '@/lib/sanity/client';
 import { urlFor } from '@/lib/sanity/image';
@@ -6,10 +7,9 @@ import { sanityImageLoader } from '@/lib/sanityImageLoader';
 import { PortableText } from '@portabletext/react';
 import { notFound } from 'next/navigation';
 import { portableTextComponents } from '@/components/PortableText';
-import ProjectGallery from '@/components/ProjectGallery';
 import ReviewTestimonial from '@/components/ReviewTestimonial';
 import { getServiceReview } from '@/lib/reviewDistribution';
-import { VideoPlayer } from '@/components/VideoPlayer';
+import ProjectCard from '@/components/ProjectCard';
 
 // Configure revalidation
 export const revalidate = false; // Use tag-based revalidation
@@ -37,23 +37,6 @@ export async function generateMetadata({ params }: { params: Promise<{ serviceNa
   const description =
     serviceData.seo?.metaDescription || `Professional ${serviceData.title.toLowerCase()} services in Melbourne.`;
 
-  // Video structured data
-  const videoStructuredData = serviceData.featuredVideo
-    ? {
-        '@context': 'https://schema.org',
-        '@type': 'VideoObject',
-        name: serviceData.featuredVideo.title,
-        description: serviceData.featuredVideo.description || description,
-        uploadDate: new Date().toISOString(),
-        contentUrl: serviceData.featuredVideo.video.asset.url,
-        thumbnailUrl: serviceData.featuredVideo.thumbnail
-          ? urlFor(serviceData.featuredVideo.thumbnail).width(800).url()
-          : undefined,
-        duration: serviceData.featuredVideo.duration ? `PT${serviceData.featuredVideo.duration}S` : undefined,
-        transcript: serviceData.featuredVideo.transcript || undefined,
-      }
-    : undefined;
-
   return {
     title,
     description,
@@ -64,25 +47,12 @@ export async function generateMetadata({ params }: { params: Promise<{ serviceNa
       type: 'website',
       locale: 'en_AU',
       siteName: businessName,
-      videos: serviceData.featuredVideo
-        ? [
-            {
-              url: serviceData.featuredVideo.video.asset.url,
-              type: serviceData.featuredVideo.video.asset.mimeType,
-            },
-          ]
-        : undefined,
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
     },
-    other: videoStructuredData
-      ? {
-          'application/ld+json': JSON.stringify(videoStructuredData),
-        }
-      : undefined,
   };
 }
 
@@ -141,37 +111,71 @@ export default async function ServicePage({ params }: { params: Promise<{ servic
         </section>
       )}
 
-      {/* Featured Video Section */}
-      {serviceData.featuredVideo && (
-        <section className="py-16">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="bg-white rounded-2xl p-8 md:p-12">
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-jlc-black mb-8 text-center">
-                {serviceData.featuredVideo.title || 'Featured Video'}
-              </h2>
-              <VideoPlayer
-                src={serviceData.featuredVideo.video.asset.url}
-                title={serviceData.featuredVideo.title}
-                description={serviceData.featuredVideo.description || undefined}
-                transcript={serviceData.featuredVideo.transcript || undefined}
-                poster={
-                  serviceData.featuredVideo.thumbnail
-                    ? urlFor(serviceData.featuredVideo.thumbnail).width(800).url()
-                    : undefined
-                }
-                aspectRatio={16 / 9}
-                className="shadow-lg"
-                serviceName={serviceName}
-              />
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Recent Projects Gallery */}
-      {serviceData.recentProjects && serviceData.recentProjects.length > 0 && (
-        <ProjectGallery projects={serviceData.recentProjects} serviceTitle={serviceData.title} />
-      )}
+      {/* Recent Projects */}
+      {serviceData.recentProjects &&
+        serviceData.recentProjects.length > 0 &&
+        (() => {
+          const linkedProjects = serviceData.recentProjects!.filter((p) => p.slug?.current).slice(0, 6);
+          if (linkedProjects.length === 0) return null;
+          return (
+            <section className="py-20">
+              <div className="max-w-7xl mx-auto px-6">
+                <div className="text-center mb-12">
+                  <h2 className="font-heading text-3xl md:text-4xl mb-4 text-jlc-black">Recent Projects</h2>
+                  <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Explore our latest {serviceData.title.toLowerCase()} projects across Melbourne
+                  </p>
+                </div>
+                <ul
+                  className={`grid gap-6 ${
+                    linkedProjects.length === 1
+                      ? 'grid-cols-1 max-w-md mx-auto'
+                      : linkedProjects.length === 2
+                        ? 'grid-cols-1 sm:grid-cols-2 max-w-2xl mx-auto'
+                        : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
+                  }`}
+                  aria-label="Recent projects"
+                >
+                  {linkedProjects.map((project) => {
+                    const summary = {
+                      _id: project._id ?? '',
+                      title: project.title,
+                      slug: { current: project.slug!.current },
+                      suburb: project.suburb,
+                      date: project.date,
+                      description: project.description,
+                      imageGallery: project.imageGallery?.[0] ?? null,
+                    };
+                    return (
+                      <li key={project._id}>
+                        <ProjectCard project={summary} />
+                      </li>
+                    );
+                  })}
+                </ul>
+                <div className="text-center mt-10">
+                  <Link
+                    href="/projects"
+                    className="inline-flex items-center gap-2 text-jlc-blue font-medium hover:underline focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-jlc-blue rounded"
+                  >
+                    View all projects
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={2}
+                      stroke="currentColor"
+                      className="w-4 h-4"
+                      aria-hidden="true"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            </section>
+          );
+        })()}
 
       {/* Customer Review Section */}
       {review && <ReviewTestimonial review={review} />}

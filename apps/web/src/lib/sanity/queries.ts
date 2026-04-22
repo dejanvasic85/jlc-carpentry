@@ -180,6 +180,9 @@ export const serviceBySlugQuery = `
     recentProjects[]-> {
       _id,
       title,
+      slug {
+        current
+      },
       suburb,
       date {
         month,
@@ -198,6 +201,74 @@ export const serviceBySlugQuery = `
       metaTitle,
       metaDescription,
       keywords
+    }
+  }
+`;
+
+// Query for all project slugs (for generateStaticParams)
+export const projectSlugsQuery = `
+  *[_type == "recentProject" && defined(slug.current)] {
+    slug {
+      current
+    }
+  }
+`;
+
+// Query for all projects listing
+export const allProjectsQuery = `
+  *[_type == "recentProject" && defined(slug.current)] | order(date.year desc, date.month desc) {
+    _id,
+    title,
+    slug {
+      current
+    },
+    suburb,
+    date {
+      month,
+      year
+    },
+    description,
+    featuredImage {
+      asset {
+        _ref
+      },
+      alt
+    },
+    imageGallery[0] {
+      asset {
+        _ref
+      },
+      alt
+    }
+  }
+`;
+
+// Query for single project by slug
+export const projectBySlugQuery = `
+  *[_type == "recentProject" && slug.current == $slug][0] {
+    _id,
+    title,
+    slug {
+      current
+    },
+    suburb,
+    date {
+      month,
+      year
+    },
+    description,
+    featuredImage {
+      asset {
+        _ref
+      },
+      alt
+    },
+    imageGallery[] {
+      asset {
+        _ref
+      },
+      alt,
+      caption
     }
   }
 `;

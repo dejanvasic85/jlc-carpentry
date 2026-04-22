@@ -22,6 +22,7 @@ const navigationItemsValue: readonly NavigationItem[] = [
   { id: 'services', label: 'SERVICES', href: '/#services' },
   { id: 'about', label: 'ABOUT', href: '/#about' },
   { id: 'contact', label: 'CONTACT', href: '/#contact' },
+  { id: 'projects', label: 'PROJECTS', href: '/projects' },
 ] as const;
 
 const sectionsOrder = ['home', 'services', 'about', 'contact'];
@@ -33,10 +34,18 @@ const BREAKPOINTS = {
 const HEADER_HEIGHT = 80 as const;
 const MOBILE_OFFSET_HEIGHT = 260 as const; // Additional offset for better alignment
 
+function getActiveSectionFromPathname(pathname: string): string | null {
+  if (pathname === '/') return null; // Let the IntersectionObserver handle homepage
+  if (pathname === '/services' || pathname.startsWith('/services/')) return 'services';
+  if (pathname === '/projects' || pathname.startsWith('/projects/')) return 'projects';
+  return null;
+}
+
 export default function Header({ className = '', siteSettings }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const pathname = usePathname();
+  const pathnameActive = getActiveSectionFromPathname(pathname);
 
   useEffect(() => {
     const observerOptions = {
@@ -95,6 +104,12 @@ export default function Header({ className = '', siteSettings }: HeaderProps) {
       return;
     }
 
+    // If it's a non-hash route (e.g. /projects), let the browser navigate normally
+    if (!href.includes('#')) {
+      setIsMenuOpen(false);
+      return;
+    }
+
     // If we're not on the homepage, navigate to homepage first
     if (pathname !== '/') {
       setIsMenuOpen(false);
@@ -148,18 +163,21 @@ export default function Header({ className = '', siteSettings }: HeaderProps) {
           <div className="flex items-center space-x-4">
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex space-x-8">
-              {navigationItemsValue.map((item) => (
-                <a
-                  key={item.id}
-                  href={item.href}
-                  onClick={(e) => handleNavClick(e, item.href)}
-                  className={`font-nav hover:text-white transition-colors ${
-                    activeSection === item.id ? 'text-white border-b-2 border-jlc-blue-light pb-1' : 'text-white'
-                  }`}
-                >
-                  {item.label}
-                </a>
-              ))}
+              {navigationItemsValue.map((item) => {
+                const isActive = pathnameActive ? pathnameActive === item.id : activeSection === item.id;
+                return (
+                  <a
+                    key={item.id}
+                    href={item.href}
+                    onClick={(e) => handleNavClick(e, item.href)}
+                    className={`font-nav hover:text-white transition-colors ${
+                      isActive ? 'text-white border-b-2 border-jlc-blue-light pb-1' : 'text-white'
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                );
+              })}
             </nav>
 
             {/* Phone Call Icon - visible on all screen sizes */}
@@ -208,18 +226,21 @@ export default function Header({ className = '', siteSettings }: HeaderProps) {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="lg:hidden mt-6 glass-dark rounded-xl px-6 py-6 space-y-4 border border-white/20">
-            {navigationItemsValue.map((item, index) => (
-              <a
-                key={item.id}
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                className={`block font-nav hover:text-white py-3 transition-colors ${
-                  activeSection === item.id ? 'text-white border-b-2 border-jlc-blue-light pb-1' : 'text-white'
-                } ${index < navigationItemsValue.length - 1 ? 'border-b border-white/10' : ''}`}
-              >
-                {item.label}
-              </a>
-            ))}
+            {navigationItemsValue.map((item, index) => {
+              const isActive = pathnameActive ? pathnameActive === item.id : activeSection === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className={`block font-nav hover:text-white py-3 transition-colors ${
+                    isActive ? 'text-white border-b-2 border-jlc-blue-light pb-1' : 'text-white'
+                  } ${index < navigationItemsValue.length - 1 ? 'border-b border-white/10' : ''}`}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
           </div>
         )}
       </div>

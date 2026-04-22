@@ -94,6 +94,7 @@ const ServiceLinkSchema = z.object({
 // Recent Project Schema
 export const RecentProjectSchema = BaseSanitySchema.extend({
   title: z.string(),
+  slug: z.object({ current: z.string() }).nullable().optional(),
   suburb: z.string(),
   date: z.object({
     month: z.string(),
@@ -110,6 +111,46 @@ export const RecentProjectSchema = BaseSanitySchema.extend({
     }),
   ),
 });
+
+const ProjectImageSchema = z.object({
+  asset: z.object({ _ref: z.string() }),
+  alt: z.string(),
+  caption: z.string().nullable().optional(),
+});
+
+const ProjectFeaturedImageSchema = z
+  .object({
+    asset: z.object({ _ref: z.string() }),
+    alt: z.string().nullable().optional(),
+  })
+  .nullable()
+  .optional();
+
+// Summary schema for listing page (first image only)
+export const ProjectSummarySchema = z.object({
+  _id: z.string(),
+  title: z.string(),
+  slug: z.object({ current: z.string() }),
+  suburb: z.string(),
+  date: z.object({ month: z.string(), year: z.number() }),
+  description: z.string(),
+  featuredImage: ProjectFeaturedImageSchema,
+  imageGallery: ProjectImageSchema.nullable().optional(),
+});
+
+// Detail schema for the individual project page (full gallery)
+export const ProjectDetailSchema = z
+  .object({
+    _id: z.string(),
+    title: z.string(),
+    slug: z.object({ current: z.string() }),
+    suburb: z.string(),
+    date: z.object({ month: z.string(), year: z.number() }),
+    description: z.string(),
+    featuredImage: ProjectFeaturedImageSchema,
+    imageGallery: z.array(ProjectImageSchema).nullable().optional(),
+  })
+  .nullable();
 
 // Service Schema
 export const ServiceSchema = BaseSanitySchema.extend({
@@ -269,3 +310,5 @@ export type AboutFeature = z.infer<typeof AboutFeatureSchema>;
 export type Service = z.infer<typeof ServiceSchema>;
 export type SiteSettings = z.infer<typeof SiteSettingsSchema>;
 export type RecentProject = z.infer<typeof RecentProjectSchema>;
+export type ProjectSummary = z.infer<typeof ProjectSummarySchema>;
+export type ProjectDetail = z.infer<typeof ProjectDetailSchema>;

@@ -11,6 +11,9 @@ import {
   statisticsQuery,
   aboutFeaturesQuery,
   serviceBySlugQuery,
+  projectSlugsQuery,
+  allProjectsQuery,
+  projectBySlugQuery,
 } from './queries';
 import {
   HomepageSchema,
@@ -19,6 +22,8 @@ import {
   HeroSectionSchema,
   StatisticSchema,
   AboutFeatureSchema,
+  ProjectSummarySchema,
+  ProjectDetailSchema,
 } from './schemas';
 
 const config = getConfig();
@@ -97,5 +102,33 @@ export async function getServicePageData(slug: string) {
     params: { slug },
     tags,
     revalidate: false, // Use tag-based revalidation
+  });
+}
+
+export async function getProjectSlugs() {
+  return await sanityFetch({
+    query: projectSlugsQuery,
+    schema: z.array(z.object({ slug: z.object({ current: z.string() }) })),
+    tags,
+    revalidate: false,
+  });
+}
+
+export async function getAllProjects() {
+  return await sanityFetch({
+    query: allProjectsQuery,
+    schema: z.array(ProjectSummarySchema),
+    tags,
+    revalidate: false,
+  });
+}
+
+export async function getProjectBySlug(slug: string) {
+  return await sanityFetch({
+    query: projectBySlugQuery,
+    schema: ProjectDetailSchema,
+    params: { slug },
+    tags,
+    revalidate: false,
   });
 }
