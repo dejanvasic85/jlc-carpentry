@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { getServicesData, getSiteSettingsData } from '@/lib/sanity/client';
+import { getServicesData, getSiteSettingsData, getProjectSlugs } from '@/lib/sanity/client';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let baseUrl = 'https://www.jlccarpentrybuildingservices.com.au';
@@ -19,30 +19,42 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     {
       url: baseUrl,
       lastModified: new Date(),
-      changeFrequency: 'weekly', // Homepage changes more frequently
-      priority: 1.0, // Highest priority for homepage
+      changeFrequency: 'weekly',
+      priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/projects`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
     },
   ];
 
   try {
-    // Fetch dynamic service routes from Sanity
-    const services = await getServicesData();
+    // Fetch dynamic service and project routes from Sanity
+    const [services, projectSlugs] = await Promise.all([getServicesData(), getProjectSlugs()]);
 
     const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({
       url: `${baseUrl}/services/${service.slug.current}`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
-      priority: 0.8, // High priority for service pages
+      priority: 0.8,
+    }));
+
+    const projectRoutes: MetadataRoute.Sitemap = projectSlugs.map((item) => ({
+      url: `${baseUrl}/projects/${item.slug.current}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
     }));
 
     console.log(
-      `Generated sitemap with ${staticRoutes.length} static routes and ${serviceRoutes.length} service routes`,
+      `Generated sitemap with ${staticRoutes.length} static, ${serviceRoutes.length} service, and ${projectRoutes.length} project routes`,
     );
 
-    return [...staticRoutes, ...serviceRoutes];
+    return [...staticRoutes, ...serviceRoutes, ...projectRoutes];
   } catch (error) {
     console.error('Error generating sitemap:', error);
-    // Return static routes only if there's an error fetching services
     return staticRoutes;
   }
 }
