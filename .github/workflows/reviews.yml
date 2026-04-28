@@ -15,8 +15,10 @@ jobs:
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - name: Check out repository code
         uses: actions/checkout@v6
-      - name: Install volta
-        uses: volta-cli/action@v5
+      - name: Setup mise
+        uses: jdx/mise-action@v3
+      - name: Install tools
+        run: mise install
       - name: Install
         run: npm install
       - name: Run

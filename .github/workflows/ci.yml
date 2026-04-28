@@ -19,11 +19,11 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: '24.14.1'
-          cache: 'npm'
+      - name: Setup mise
+        uses: jdx/mise-action@v3
+
+      - name: Install tools
+        run: mise install
 
       - name: Install dependencies
         run: npm ci

@@ -8,9 +8,12 @@ Marketing website for a local carpentry business in Melbourne Australia
 
 ## Getting started
 
-Ensure you have volta installed and run
+Install `mise`, trust this repo config, install tools, and then install dependencies:
 
 ```sh
+brew install mise
+mise trust
+mise install
 npm install
 ```
 
