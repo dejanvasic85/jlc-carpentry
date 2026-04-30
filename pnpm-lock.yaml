@@ -94,8 +94,8 @@ importers:
         specifier: 7.72.0
         version: 7.72.0(react@19.2.4)
       reviews:
-        specifier: '*'
-        version: 0.1.0
+        specifier: workspace:*
+        version: link:../reviews
       swiper:
         specifier: ^12.1.3
         version: 12.1.4
@@ -5512,9 +5512,6 @@ packages:
   reusify@1.1.0:
     resolution: {integrity: sha512-g6QUff04oZpHs0eG5p83rFLhHeV00ug/Yf9nZM6fLeUrPguBTkTQOdpAWWspMh55TZfVQDPaN3NQJfbVRAxdIw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
-
-  reviews@0.1.0:
-    resolution: {integrity: sha512-BfTTWnrbNT+/1s9szT0kVknbariptVBGQGed5ha7XgZAJycb47gB9BbhYPX0hghiAckSej9+nmp9XWy12ZyMJQ==}
 
   rollup@4.60.2:
     resolution: {integrity: sha512-J9qZyW++QK/09NyN/zeO0dG/1GdGfyp9lV8ajHnRVLfo/uFsbji5mHnDgn/qYdUHyCkM2N+8VyspgZclfAh0eQ==}
@@ -12760,8 +12757,6 @@ snapshots:
       signal-exit: 4.1.0
 
   reusify@1.1.0: {}
-
-  reviews@0.1.0: {}
 
   rollup@4.60.2:
     dependencies:
