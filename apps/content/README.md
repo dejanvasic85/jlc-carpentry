@@ -13,7 +13,7 @@ Now you can do the following things:
 You can export a dataset from Sanity using the following command:
 
 ```bash
-npm run export -w content -- <dataset> <output-file>.tar.gz
+pnpm --filter content run export -- <dataset> <output-file>.tar.gz
 ```
 
 This will create a backup of your dataset that you can import later if needed.
@@ -23,7 +23,7 @@ This will create a backup of your dataset that you can import later if needed.
 You can import a dataset into Sanity using the following command:
 
 ```bash
-npm run import -w content -- <input-file>.tar.gz <dataset>
+pnpm --filter content run import -- <input-file>.tar.gz <dataset>
 ```
 
 This will restore your dataset from the backup file.

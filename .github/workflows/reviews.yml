@@ -20,10 +20,10 @@ jobs:
       - name: Install tools
         run: mise install
       - name: Install
-        run: npm install
+        run: pnpm install --frozen-lockfile
       - name: Run
         run: |
-          npm run update:reviews -w reviews
+          pnpm --filter reviews run update:reviews
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v8

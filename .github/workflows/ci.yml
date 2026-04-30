@@ -26,7 +26,7 @@ jobs:
         run: mise install
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Wait for Vercel deployment
         id: vercel-deployment
@@ -37,7 +37,7 @@ jobs:
           check_interval: 10
 
       - name: Run Playwright tests
-        run: npm run test:e2e
+        run: pnpm run test:e2e
         working-directory: ./apps/web
         env:
           PLAYWRIGHT_TEST_BASE_URL: ${{ steps.vercel-deployment.outputs.url }}
