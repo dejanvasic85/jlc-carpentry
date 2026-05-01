@@ -25,8 +25,13 @@ jobs:
       - name: Install tools
         run: mise install
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.5.2
+
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Wait for Vercel deployment
         id: vercel-deployment
@@ -37,7 +42,7 @@ jobs:
           check_interval: 10
 
       - name: Run Playwright tests
-        run: npm run test:e2e
+        run: pnpm run test:e2e
         working-directory: ./apps/web
         env:
           PLAYWRIGHT_TEST_BASE_URL: ${{ steps.vercel-deployment.outputs.url }}

@@ -14,23 +14,23 @@ Install `mise`, trust this repo config, install tools, and then install dependen
 brew install mise
 mise trust
 mise install
-npm install
+pnpm install
 ```
 
 ### Running locally
 
-This project makes use of the npm workspaces so each sub repo has scripts for building and running.
+This project uses pnpm workspaces so each sub repo has scripts for building and running.
 
 Starting the sanity studio editor:
 
 ```sh
-npm run dev -w content
+pnpm --filter content run dev
 ```
 
 Running the nextjs app:
 
 ```sh
-npm run dev -w web
+pnpm --filter web run dev
 ```
 
 ## Deploying
@@ -43,7 +43,7 @@ The sanity studio is deployed manually using the sanity cli.
 Make the required schema changes in the content project and then deploy it straight to production using the following command.
 
 ```sh
-npm run deploy -w content-studio
+pnpm --filter content run deploy
 ```
 
 ## Google reviews
@@ -53,7 +53,7 @@ The google reviews are not managed by content and instead they need to be fetche
 To update reviews run the following command:
 
 ```sh
-npm run update:reviews
+pnpm --filter reviews run update:reviews
 ```
 
 This should update the data.json file in the reviews workspace which is then used by the nextjs App during build time to update the google reviews content.

@@ -37,7 +37,7 @@
       "description": "Node and types - LTS versions only",
       "matchPackageNames": ["node", "@types/node"],
       "groupName": "node and types",
-      "matchManagers": ["mise", "npm"],
+      "matchManagers": ["mise", "npm", "pnpm"],
       "allowedVersions": "/^(20|22|24|26|28|30|32|34|36|38|40)\\./"
     }
   ]
