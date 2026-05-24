@@ -1,7 +1,15 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    return [
+      {
+        source: '/llms',
+        destination: '/llms.txt',
+        permanent: true,
+      },
+    ];
+  },
   images: {
     deviceSizes: [640, 828, 1200],
     imageSizes: [48, 128, 256],
