@@ -11,6 +11,7 @@
     "group:allNonMajor"
   ],
   "automerge": true,
+  "mode": "full",
   "commitMessageAction": "",
   "labels": ["dependencies"],
   "prConcurrentLimit": 3,
