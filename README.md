@@ -4,8 +4,6 @@ Marketing website for a local carpentry business in Melbourne Australia
 
 🛠️ Built with [Sanity IO](https://www.sanity.io/) and [Nextjs](https://nextjs.org/)
 
-🚀 Deployed to vercel.
-
 ## Getting started
 
 Install `mise`, trust this repo config, install tools, and then install dependencies:
