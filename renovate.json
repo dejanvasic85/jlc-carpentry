@@ -22,7 +22,7 @@
     "enabled": true,
     "automerge": true,
     "recreateWhen": "always",
-    "rebaseStalePrs": true,
+    "rebaseWhen": "behind-base-branch",
     "schedule": ["before 4am on monday"],
     "prBodyDefinitions": {
       "Change": "All locks refreshed"
@@ -30,7 +30,7 @@
   },
   "packageRules": [
     {
-      "extends": "monorepo:nextjs",
+      "extends": ["monorepo:nextjs"],
       "groupName": "nextjs monorepo",
       "matchUpdateTypes": ["digest", "patch", "minor", "major"]
     },
