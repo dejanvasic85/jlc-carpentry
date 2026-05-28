@@ -13,6 +13,7 @@ We also need a redirect so `/llms` → `/llms.txt` for convenience.
 ### 1. New route: `apps/web/src/app/llms.txt/route.ts`
 
 A Next.js Route Handler that:
+
 - Fetches `siteSettings` and `services` from Sanity in parallel using the existing `sanityFetch` helper and Zod schemas
 - Builds a plain-text document and returns it as `text/plain; charset=utf-8`
 - Uses `export const dynamic = 'force-static'` and `export const revalidate = 86400` (24h, matching the reference)
@@ -64,6 +65,7 @@ ABN: {company.abn}
 Fields are conditionally included (skip if null/undefined), matching the pattern in ses-next.
 
 **Reuse existing utilities:**
+
 - `sanityFetch` from `@/lib/sanity/queries`
 - `SiteSettingsSchema`, `SiteSettings` type, `ServiceSchema`, `Service` type from `@/lib/sanity/schemas`
 - `siteSettingsQuery`, `servicesQuery` GROQ queries from `@/lib/sanity/queries`
@@ -89,10 +91,10 @@ async redirects() {
 
 ## Files to Create / Modify
 
-| Action | File |
-|--------|------|
+| Action     | File                                 |
+| ---------- | ------------------------------------ |
 | **Create** | `apps/web/src/app/llms.txt/route.ts` |
-| **Modify** | `apps/web/next.config.ts` |
+| **Modify** | `apps/web/next.config.ts`            |
 
 ---
 
