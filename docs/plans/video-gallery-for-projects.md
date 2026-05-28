@@ -3,11 +3,13 @@
 ## Context
 
 The client wants to move video content from service pages to project pages. Currently:
+
 - Services have a `featuredVideo` field (schema + GROQ exists, but **never rendered** on the frontend)
 - Projects have no video support — only an image gallery
 - The `VideoPlayer` component already exists and is analytics-ready
 
 The goal is to:
+
 1. Add a `videoGallery` array field to the `recentProject` Sanity schema
 2. Remove `featuredVideo` from the `service` schema (it was never rendered so no data migration risk)
 3. Extend the project detail page to render videos alongside images in the gallery section
@@ -161,7 +163,7 @@ In the gallery section, pass both `images` and `videos` to a refactored gallery 
 ```tsx
 const videoGallery = project.videoGallery ?? [];
 // ...
-<ProjectGalleryClient images={galleryImages} videos={videoGallery} />
+<ProjectGalleryClient images={galleryImages} videos={videoGallery} />;
 ```
 
 ---
@@ -171,6 +173,7 @@ const videoGallery = project.videoGallery ?? [];
 **Files:** `apps/web/src/components/ProjectGalleryClient.tsx`, `apps/web/src/components/ProjectVideoModal.tsx`
 
 This is the most significant UI change. **Use the `frontend-design` skill** to design and implement these two components, providing it with the following context:
+
 - The existing `ProjectGalleryClient` layout (featured full-width image + 2-column grid)
 - The existing `ProjectImageLightbox` as a structural reference for the modal
 - The existing `VideoPlayer` component to embed inside the modal
@@ -178,6 +181,7 @@ This is the most significant UI change. **Use the `frontend-design` skill** to d
 - Must be AAA accessible and mobile-first
 
 **Design approach to feed into the skill:**
+
 - Videos appear in the same 2-column grid as photos (same visual weight)
 - Video grid items show a thumbnail (or dark placeholder) with a semi-transparent play-button circle overlay
 - Clicking a video item opens `ProjectVideoModal` — a full-screen dialog wrapping `VideoPlayer`
@@ -185,6 +189,7 @@ This is the most significant UI change. **Use the `frontend-design` skill** to d
 - Close modal on Escape / backdrop click
 
 **Implementation details:**
+
 - `ProjectGalleryClient` accepts new prop `videos: ProjectVideo[]`
 - Union type: `GalleryItem = { type: 'image'; data: GalleryImage } | { type: 'video'; data: ProjectVideo }`
 - Combined array: images first, then videos; featured slot is always `images[0]`
@@ -202,19 +207,21 @@ Verify the `featuredVideo` was not being consumed (confirmed — it wasn't rende
 
 ## Files to Modify
 
-| File | Change |
-|---|---|
-| `apps/content/schemaTypes/recentProject.ts` | Add `videoGallery` array field |
-| `apps/content/schemaTypes/service.ts` | Remove `featuredVideo` field |
-| `apps/web/src/lib/sanity/queries.ts` | Add videos to `projectBySlugQuery`, remove from `serviceBySlugQuery` |
-| `apps/web/src/lib/sanity/schemas.ts` | Add `ProjectVideoSchema`, update `ProjectDetailSchema`, remove from `ServiceSchema` |
-| `apps/web/src/app/projects/[slug]/page.tsx` | Pass `videoGallery` to gallery client |
-| `apps/web/src/components/ProjectGalleryClient.tsx` | Support mixed image+video items |
+| File                                               | Change                                                                              |
+| -------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `apps/content/schemaTypes/recentProject.ts`        | Add `videoGallery` array field                                                      |
+| `apps/content/schemaTypes/service.ts`              | Remove `featuredVideo` field                                                        |
+| `apps/web/src/lib/sanity/queries.ts`               | Add videos to `projectBySlugQuery`, remove from `serviceBySlugQuery`                |
+| `apps/web/src/lib/sanity/schemas.ts`               | Add `ProjectVideoSchema`, update `ProjectDetailSchema`, remove from `ServiceSchema` |
+| `apps/web/src/app/projects/[slug]/page.tsx`        | Pass `videoGallery` to gallery client                                               |
+| `apps/web/src/components/ProjectGalleryClient.tsx` | Support mixed image+video items                                                     |
 
 **New file:**
+
 - `apps/web/src/components/ProjectVideoModal.tsx` — video lightbox modal
 
 **Reuse existing:**
+
 - `VideoPlayer` component (`apps/web/src/components/VideoPlayer.tsx`) — no changes needed
 - `ProjectImageLightbox` patterns for modal structure
 

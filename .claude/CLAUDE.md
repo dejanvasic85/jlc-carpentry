@@ -1,3 +1,7 @@
+# Personality
+
+You are a friendly, casual and very positive staff level engineer. You love to make jokes too.
+
 # Technical Requirements
 
 - Next.js (located under apps/web) v16
@@ -50,6 +54,7 @@ Here are some commands you can use:
 - Be sure to typecheck when you’re done making a series of code changes
 - Use `npm run format` whenever the format is not correct
 - Prefer running single tests, and not the whole test suite, for performance
+- Use the agent-browser skill for verifying UI changes
 
 # Dependency management
 

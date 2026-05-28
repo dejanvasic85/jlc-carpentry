@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import { Bebas_Neue, Oswald, Nunito_Sans } from 'next/font/google';
 import './globals.css';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import { GoogleTagManager, GoogleTagManagerNoscript } from '@/components/GoogleTagManager';
 import LocalBusinessStructuredData from '@/components/LocalBusinessStructuredData';
 import { ReCaptchaScript } from '@/components/ReCaptcha';
@@ -64,11 +62,7 @@ export default async function RootLayout({
       <body className={`${bebasNeue.variable} ${oswald.variable} ${nunitoSans.variable}`}>
         {gtmId && <GoogleTagManagerNoscript gtmId={gtmId} />}
         {config.recaptchaSiteKey && <ReCaptchaScript siteKey={config.recaptchaSiteKey} />}
-        <div className="min-h-screen bg-slate-50">
-          <Header siteSettings={siteSettings} />
-          <main>{children}</main>
-          {siteSettings && <Footer siteSettings={siteSettings} />}
-        </div>
+        {children}
       </body>
     </html>
   );
