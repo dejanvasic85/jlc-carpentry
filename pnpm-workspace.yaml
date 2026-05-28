@@ -1,3 +1,13 @@
 packages:
   - apps/*
   - packages/*
+allowBuilds:
+  esbuild: true
+  sharp: true
+  unrs-resolver: true
+minimumReleaseAgeExclude:
+  - '@aws-sdk/client-ses@3.1055.0'
+  - '@sanity/presentation-comlink@2.1.0'
+  - '@sanity/visual-editing@5.4.2'
+  - next-sanity@13.0.6
+  - swiper@12.2.0
