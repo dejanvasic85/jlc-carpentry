@@ -11,11 +11,11 @@ import PhoneCallLink from '@/components/landing/PhoneCallLink';
 export const metadata: Metadata = {
   title: 'Get a Free Quote | JLC Carpentry & Building Services Melbourne',
   description:
-    'Licensed Melbourne carpenter. Custom decks, pergolas, kitchen and bathroom renovations. 5-star Google rated. 7-year structural warranty. Free quotes with no obligation.',
+    'Melbourne carpenter. Custom decks, pergolas, kitchen and bathroom renovations. 5-star Google rated. 7-year structural warranty. Free quotes with no obligation.',
   openGraph: {
     title: 'Get a Free Quote | JLC Carpentry & Building Services Melbourne',
     description:
-      'Licensed Melbourne carpenter. Custom decks, pergolas, kitchen and bathroom renovations. 5-star Google rated. 7-year structural warranty.',
+      'Melbourne carpenter. Custom decks, pergolas, kitchen and bathroom renovations. 5-star Google rated. 7-year structural warranty.',
     type: 'website',
     locale: 'en_AU',
     siteName: 'JLC Carpentry & Building Services',
@@ -144,7 +144,6 @@ const trustStats = [
   { value: '30+', label: 'Projects Completed' },
   { value: '5-Star', label: 'Google Rated' },
   { value: '7-Year', label: 'Structural Warranty' },
-  { value: 'Licensed', label: 'Builder VIC' },
 ] as const;
 
 export default async function FreeQuotePage() {
@@ -172,12 +171,12 @@ export default async function FreeQuotePage() {
         </div>
 
         <div className="relative z-20 max-w-5xl mx-auto px-6 pt-14 pb-10">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl mx-auto text-center">
             <p className="text-jlc-blue font-semibold text-sm uppercase tracking-widest mb-3">
               Melbourne&apos;s Trusted Carpenter
             </p>
             <h1 className="font-display text-5xl sm:text-6xl md:text-7xl leading-none mb-4">
-              LICENSED MELBOURNE CARPENTER.
+              MELBOURNE CARPENTER.
             </h1>
             <p className="text-xl sm:text-2xl font-light text-white/90 mb-3">
               Quality workmanship backed by a 7-year structural warranty.
@@ -188,7 +187,7 @@ export default async function FreeQuotePage() {
 
             <TrustBadges />
 
-            <div className="flex flex-col sm:flex-row gap-3 mt-8">
+            <div className="flex flex-col sm:flex-row gap-3 mt-8 justify-center">
               <a
                 href="#quote-form"
                 className="flex items-center justify-center gap-2 bg-jlc-blue hover:bg-jlc-blue-dark text-white font-bold text-base px-8 py-4 rounded-lg transition-colors shadow-lg"
