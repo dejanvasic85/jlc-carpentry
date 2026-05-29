@@ -55,7 +55,7 @@ const badges: TrustBadge[] = [
 
 export default function TrustBadges() {
   return (
-    <div className="flex flex-wrap justify-center gap-3 sm:gap-4" role="list" aria-label="Trust credentials">
+    <div className="grid grid-cols-2 justify-items-start gap-3 sm:gap-4" role="list" aria-label="Trust credentials">
       {badges.map((badge) => (
         <div
           key={badge.label}
