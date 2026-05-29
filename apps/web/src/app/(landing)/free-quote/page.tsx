@@ -171,7 +171,7 @@ export default async function FreeQuotePage() {
         </div>
 
         <div className="relative z-20 max-w-5xl mx-auto px-6 pt-14 pb-10">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl mx-auto text-center">
             <p className="text-jlc-blue font-semibold text-sm uppercase tracking-widest mb-3">
               Melbourne&apos;s Trusted Carpenter
             </p>
@@ -187,7 +187,7 @@ export default async function FreeQuotePage() {
 
             <TrustBadges />
 
-            <div className="flex flex-col sm:flex-row gap-3 mt-8">
+            <div className="flex flex-col sm:flex-row gap-3 mt-8 justify-center">
               <a
                 href="#quote-form"
                 className="flex items-center justify-center gap-2 bg-jlc-blue hover:bg-jlc-blue-dark text-white font-bold text-base px-8 py-4 rounded-lg transition-colors shadow-lg"
