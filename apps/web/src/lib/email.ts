@@ -2,6 +2,8 @@ import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import { z } from 'zod';
 import { getConfig } from './config';
 
+const devEmail = 'dejanvasic24@gmail.com';
+
 const contactFormSchema = z.object({
   name: z.string().min(1, 'Name is required').max(50, 'Name must be 50 characters or less'),
   email: z
@@ -99,11 +101,13 @@ export async function sendContactEmail(data: ContactFormData) {
     },
   });
 
+  const isDevSubmission = data.email.toLowerCase() === devEmail.toLowerCase();
+
   const emailParams = {
     Source: config.emailFrom,
     Destination: {
       ToAddresses: [config.emailTo],
-      BccAddresses: ['dejanvasic24@gmail.com'],
+      ...(isDevSubmission ? {} : { BccAddresses: [devEmail] }),
     },
     Message: {
       Subject: {
@@ -144,8 +148,10 @@ Submitted at: ${new Date().toISOString()}`,
     const command = new SendEmailCommand(emailParams);
     const result = await sesClient.send(command);
 
-    // Send confirmation email to user
-    await sendConfirmationEmail(data, sesClient, config);
+    // Send confirmation email to user (skip for dev/owner submissions)
+    if (!isDevSubmission) {
+      await sendConfirmationEmail(data, sesClient, config);
+    }
 
     return {
       success: true,
