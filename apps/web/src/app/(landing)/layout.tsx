@@ -4,19 +4,17 @@ import { getSiteSettingsData } from '@/lib/sanity/client';
 import StickyCallBar from '@/components/landing/StickyCallBar';
 import { ReCaptchaScript } from '@/components/ReCaptcha';
 import { getConfig } from '@/lib/config';
+import { MetaScript } from '@/components/MetaScript';
+import { PropsWithChildren } from 'react';
 
-export default async function LandingLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default async function LandingLayout({ children }: PropsWithChildren) {
   const [siteSettings, config] = await Promise.all([getSiteSettingsData(), Promise.resolve(getConfig())]);
   const phone = siteSettings.contact?.phone ?? '';
 
   return (
     <div className="min-h-screen bg-white">
       {config.recaptchaSiteKey && <ReCaptchaScript siteKey={config.recaptchaSiteKey} />}
-
+      <MetaScript />
       {/* Minimal sticky header: logo + tap-to-call only */}
       <header className="sticky top-0 z-40 bg-jlc-black text-white shadow-md">
         <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
