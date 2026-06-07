@@ -23,7 +23,7 @@
   "lockFileMaintenance": {
     "enabled": true,
     "automerge": true,
-    "recreateWhen": "always",
+    "recreateWhen": "auto",
     "rebaseWhen": "behind-base-branch",
     "schedule": ["before 4am on monday"],
     "prBodyDefinitions": {
