@@ -16,7 +16,7 @@
   "commitMessageAction": "",
   "labels": ["dependencies"],
   "dependencyDashboardOSVVulnerabilitySummary": "none",
-  "prConcurrentLimit": 3,
+  "prConcurrentLimit": 2,
   "prNotPendingHours": 1,
   "semanticCommitScope": "",
   "semanticCommitType": "deps",
