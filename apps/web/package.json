@@ -25,7 +25,7 @@
     "postcss": "8.5.15",
     "react": "19.2.7",
     "react-dom": "19.2.7",
-    "react-hook-form": "7.77.0",
+    "react-hook-form": "7.78.0",
     "reviews": "workspace:*",
     "swiper": "12.2.0",
     "tailwindcss": "4.3.0",
