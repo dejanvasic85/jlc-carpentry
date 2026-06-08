@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { type SiteSettings } from '@/lib/sanity/schemas';
 import { urlFor } from '@/lib/sanity/image';
 import { sanityImageLoader } from '@/lib/sanityImageLoader';
@@ -147,24 +148,38 @@ export default function Footer({ className = '', siteSettings }: FooterProps) {
             )}
         </div>
 
-        {siteSettings?.company?.name && (
-          <div className="border-t border-slate-700 pt-8 text-center space-y-2">
+        <div className="border-t border-slate-700 pt-8 text-center space-y-3">
+          <nav aria-label="Legal" className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+            <Link
+              href="/privacy-policy"
+              className="text-gray-300 hover:text-jlc-blue-light transition-colors font-medium focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-jlc-blue rounded"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/terms"
+              className="text-gray-300 hover:text-jlc-blue-light transition-colors font-medium focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-jlc-blue rounded"
+            >
+              Terms &amp; Conditions
+            </Link>
+          </nav>
+          {siteSettings?.company?.name && (
             <p className="text-gray-400">
               © {new Date().getFullYear()} {siteSettings.company.name}. All rights reserved.
             </p>
-            <p className="text-gray-400">
-              Developed by:{' '}
-              <a
-                href="https://dejan.vasic.com.au"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-jlc-blue-light hover:underline transition-colors"
-              >
-                Dejan Vasic
-              </a>
-            </p>
-          </div>
-        )}
+          )}
+          <p className="text-gray-400">
+            Developed by:{' '}
+            <a
+              href="https://dejan.vasic.com.au"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-jlc-blue-light hover:underline transition-colors"
+            >
+              Dejan Vasic
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );

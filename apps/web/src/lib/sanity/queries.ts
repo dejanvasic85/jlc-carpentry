@@ -272,6 +272,16 @@ export const projectBySlugQuery = `
   }
 `;
 
+// Query for a Legal Page (terms or privacy-policy) by its type
+export const legalPageByTypeQuery = `
+  *[_type == "legalPage" && pageType == $pageType][0] {
+    title,
+    pageType,
+    content,
+    lastUpdated
+  }
+`;
+
 // Query for Site Settings
 export const siteSettingsQuery = `
   *[_type == "siteSettings"][0] {

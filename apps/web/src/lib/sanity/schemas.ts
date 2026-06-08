@@ -213,6 +213,16 @@ export const ServiceSchema = BaseSanitySchema.extend({
   link: ServiceLinkSchema.nullable().optional(),
 });
 
+// Legal Page Schema (terms & privacy policy)
+export const LegalPageSchema = z
+  .object({
+    title: z.string(),
+    pageType: z.enum(['terms', 'privacy-policy']),
+    content: z.array(z.any()), // Rich text content
+    lastUpdated: z.string().nullable().optional(),
+  })
+  .nullable();
+
 // Site Settings Schema
 export const SiteSettingsSchema = BaseSanitySchema.extend({
   company: z.object({
@@ -311,3 +321,4 @@ export type RecentProject = z.infer<typeof RecentProjectSchema>;
 export type ProjectSummary = z.infer<typeof ProjectSummarySchema>;
 export type ProjectDetail = z.infer<typeof ProjectDetailSchema>;
 export type ProjectVideo = z.infer<typeof ProjectVideoSchema>;
+export type LegalPage = z.infer<typeof LegalPageSchema>;

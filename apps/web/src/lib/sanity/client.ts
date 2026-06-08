@@ -14,6 +14,7 @@ import {
   projectSlugsQuery,
   allProjectsQuery,
   projectBySlugQuery,
+  legalPageByTypeQuery,
 } from './queries';
 import {
   HomepageSchema,
@@ -24,6 +25,7 @@ import {
   AboutFeatureSchema,
   ProjectSummarySchema,
   ProjectDetailSchema,
+  LegalPageSchema,
 } from './schemas';
 
 const config = getConfig();
@@ -128,6 +130,16 @@ export async function getProjectBySlug(slug: string) {
     query: projectBySlugQuery,
     schema: ProjectDetailSchema,
     params: { slug },
+    tags,
+    revalidate: false,
+  });
+}
+
+export async function getLegalPageData(pageType: 'terms' | 'privacy-policy') {
+  return await sanityFetch({
+    query: legalPageByTypeQuery,
+    schema: LegalPageSchema,
+    params: { pageType },
     tags,
     revalidate: false,
   });
