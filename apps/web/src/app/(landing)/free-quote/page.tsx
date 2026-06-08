@@ -175,9 +175,7 @@ export default async function FreeQuotePage() {
             <p className="text-jlc-blue font-semibold text-sm uppercase tracking-widest mb-3">
               Melbourne&apos;s Trusted Carpenter
             </p>
-            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl leading-none mb-4">
-              MELBOURNE CARPENTER.
-            </h1>
+            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl leading-none mb-4">MELBOURNE CARPENTER.</h1>
             <p className="text-xl sm:text-2xl font-light text-white/90 mb-3">
               Quality workmanship backed by a 7-year structural warranty.
             </p>
