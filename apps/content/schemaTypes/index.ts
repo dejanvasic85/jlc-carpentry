@@ -6,6 +6,7 @@ import aboutFeature from './aboutFeature';
 import serviceItem from './service';
 import license from './license';
 import recentProject from './recentProject';
+import legalPage from './legalPage';
 
 export const schemaTypes = [
   // Pages
@@ -22,6 +23,7 @@ export const schemaTypes = [
 
   // Content types
   license,
+  legalPage,
   // Site-wide settings (singleton)
   siteSettings,
 ];
