@@ -25,7 +25,7 @@
     "turbo": "2.10.4"
   },
   "devDependencies": {
-    "prettier": "3.9.4"
+    "prettier": "3.9.5"
   },
-  "packageManager": "pnpm@11.10.0"
+  "packageManager": "pnpm@11.11.0"
 }
