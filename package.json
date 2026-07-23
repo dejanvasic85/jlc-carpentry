@@ -22,10 +22,10 @@
   "license": "MIT",
   "homepage": "https://github.com/dejanvasic85/jlc-carpentry#readme",
   "dependencies": {
-    "turbo": "2.10.5"
+    "turbo": "2.10.6"
   },
   "devDependencies": {
-    "prettier": "3.9.5"
+    "prettier": "3.9.6"
   },
-  "packageManager": "pnpm@11.15.1"
+  "packageManager": "pnpm@11.16.0"
 }
