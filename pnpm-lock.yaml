@@ -58,8 +58,8 @@ importers:
         specifier: 3.13.0
         version: 3.13.0(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@portabletext/react':
-        specifier: 6.2.0
-        version: 6.2.0(react@19.2.8)
+        specifier: 7.0.1
+        version: 7.0.1(react@19.2.8)
       '@sanity/image-url':
         specifier: 2.1.1
         version: 2.1.1
