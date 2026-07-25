@@ -13,8 +13,8 @@
     "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
-    "@aws-sdk/client-ses": "3.1094.0",
-    "@mux/mux-player-react": "3.13.0",
+    "@aws-sdk/client-ses": "3.1095.0",
+    "@mux/mux-player-react": "3.13.2",
     "@portabletext/react": "7.0.1",
     "@sanity/image-url": "2.1.1",
     "@tailwindcss/forms": "0.5.11",
@@ -22,7 +22,7 @@
     "autoprefixer": "10.5.4",
     "next": "16.2.11",
     "next-sanity": "13.2.1",
-    "postcss": "8.5.22",
+    "postcss": "8.5.23",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "react-hook-form": "7.82.0",
