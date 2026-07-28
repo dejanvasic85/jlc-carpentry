@@ -21,6 +21,10 @@
   "author": "Dejan Vasic",
   "license": "MIT",
   "homepage": "https://github.com/dejanvasic85/jlc-carpentry#readme",
+  "engines": {
+    "node": ">=24",
+    "pnpm": ">=11.17.0"
+  },
   "dependencies": {
     "turbo": "2.10.7"
   },
