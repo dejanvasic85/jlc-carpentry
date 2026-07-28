@@ -6,12 +6,9 @@ Marketing website for a local carpentry business in Melbourne Australia
 
 ## Getting started
 
-Install `mise`, trust this repo config, install tools, and then install dependencies:
+Install [pnpm](https://pnpm.io/installation) (matching the version in `package.json#packageManager`) and Node (matching `.nvmrc`), then install dependencies:
 
 ```sh
-brew install mise
-mise trust
-mise install
 pnpm install
 ```
 
