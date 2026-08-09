@@ -1,6 +1,19 @@
 {
   "reviews": [
     {
+      "id": "places/ChIJnfu2GvySNo0RDIrvCOEPt0g/reviews/Ci9DQUlRQUNvZENodHljRjlvT2xoVmFtVTROR3RuVmsxbVpHRmZhVWRvUjBkNWRsRRAB",
+      "url": "https://www.google.com/maps/contrib/106983476375030976449/reviews",
+      "reviewer": {
+        "profileUrl": "https://www.google.com/maps/contrib/106983476375030976449/reviews",
+        "profilePhotoUrl": "https://lh3.googleusercontent.com/a/ACg8ocJtxQoCeQAFX3I8uMJBVXdrDsqEZ933YrAN2QINDgWVJ_gc0A=s128-c0x00000000-cc-rp-mo",
+        "displayName": "Melissa Mackenzie"
+      },
+      "comment": "Highly recommend JLC Carpentry. James was fantastic and professional to work with on our balcony rebuild. He was very responsive and reliable, clearly explained the options and work in detail and answered all our questions. The turn around time from when we contacted James to the work being quoted and completed was impressive and his professionalism alleviated what was becoming a stressful project. James did a fantastic job of the balcony and I would not hesitate to hire him again.",
+      "starRating": 5,
+      "date": "a month ago",
+      "publishTime": "2026-07-10T05:51:46.582300979Z"
+    },
+    {
       "id": "places/ChIJnfu2GvySNo0RDIrvCOEPt0g/reviews/Ci9DQUlRQUNvZENodHljRjlvT205MllsUTJiM1F0UjJORVMyVnlVR1JhWWpacldWRRAB",
       "url": "https://www.google.com/maps/contrib/108611627710923409644/reviews",
       "reviewer": {
@@ -12,6 +25,19 @@
       "starRating": 5,
       "date": "3 weeks ago",
       "publishTime": "2026-05-26T09:29:22.123250502Z"
+    },
+    {
+      "id": "places/ChIJnfu2GvySNo0RDIrvCOEPt0g/reviews/Ci9DQUlRQUNvZENodHljRjlvT21SdlgxTnpNRmx5Vm1aNlRYYzFZM0ZPVW14Mk5YYxAB",
+      "url": "https://www.google.com/maps/contrib/103479357175666544104/reviews",
+      "reviewer": {
+        "profileUrl": "https://www.google.com/maps/contrib/103479357175666544104/reviews",
+        "profilePhotoUrl": "https://lh3.googleusercontent.com/a/ACg8ocKLQ8gF8nosVkTvkHeWhJGKfRD4DmIorxdIU0mGXXef64oACg=s128-c0x00000000-cc-rp-mo",
+        "displayName": "Tristian Cunningham"
+      },
+      "comment": "James and Pauly recently completed renovations on a new property I purchased that definitely needed a facelift. They worked quickly and efficiently, completing new decking, balustrades, and a new pergola installation they also completed  the demolition of my kitchen. Not only did they assist in a timely manner but they also organised other trades to handle tasks I couldn’t. They have taken my renovation from stressful to smooth and I couldn’t be happier. I will be calling James again in a few months for my next project. Highly recommend. Thanks again boys, top notch effort 👊",
+      "starRating": 5,
+      "date": "3 months ago",
+      "publishTime": "2026-04-19T02:36:41.053722592Z"
     },
     {
       "id": "places/ChIJnfu2GvySNo0RDIrvCOEPt0g/reviews/Ci9DQUlRQUNvZENodHljRjlvT204eFYyNVljRTVIYlVRMFFYbGtORmxMVldRek9WRRAB",
