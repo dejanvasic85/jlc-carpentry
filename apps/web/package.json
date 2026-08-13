@@ -15,7 +15,7 @@
   "dependencies": {
     "@aws-sdk/client-ses": "3.1108.0",
     "@mux/mux-player-react": "3.13.2",
-    "@portabletext/react": "7.0.1",
+    "@portabletext/react": "8.0.0",
     "@sanity/image-url": "2.1.1",
     "@tailwindcss/forms": "0.5.11",
     "@tailwindcss/postcss": "4.3.3",
