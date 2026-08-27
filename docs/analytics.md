@@ -1,6 +1,6 @@
 # Google Analytics Setup Guide
 
-This guide explains how to set up Google Analytics 4 (GA4) through Google Tag Manager (GTM) for the JLC Carpentry website.
+This guide shows you how to set up Google Analytics 4 (GA4) through Google Tag Manager (GTM) for the JLC Carpentry website.
 
 ## Table of Contents
 
@@ -10,13 +10,17 @@ This guide explains how to set up Google Analytics 4 (GA4) through Google Tag Ma
 4. [Testing & Validation](#testing--validation)
 5. [Development Considerations](#development-considerations)
 6. [Custom Events](#custom-events)
-7. [Troubleshooting](#troubleshooting)
+7. [GDPR Compliance Considerations](#gdpr-compliance-considerations)
+8. [Recommended GA4 Goals & Conversions](#recommended-ga4-goals--conversions)
+9. [Troubleshooting](#troubleshooting)
 
 ## Prerequisites
 
-1. **Google Analytics 4 Account** - Create at [analytics.google.com](https://analytics.google.com)
-2. **Google Tag Manager Account** - Create at [tagmanager.google.com](https://tagmanager.google.com)
-3. **Access to Sanity Studio** - For configuring tracking IDs
+Before you start, make sure you have:
+
+1. **A Google Analytics 4 account** — create one at [analytics.google.com](https://analytics.google.com)
+2. **A Google Tag Manager account** — create one at [tagmanager.google.com](https://tagmanager.google.com)
+3. **Access to Sanity Studio** — you'll use it to configure tracking IDs
 
 ## Initial Setup
 
@@ -24,8 +28,8 @@ This guide explains how to set up Google Analytics 4 (GA4) through Google Tag Ma
 
 1. Go to [Google Analytics](https://analytics.google.com)
 2. Create a new GA4 property for your website
-3. **Enhanced Measurement**: When prompted, enable the checkbox for "Automatically measure interactions and content" - this provides valuable insights for carpentry business websites including:
-   - Scroll tracking (90% page depth)
+3. **Enhanced Measurement**: when prompted, enable "Automatically measure interactions and content". For a carpentry business, this tracks:
+   - Scroll depth (90% of the page)
    - Outbound link clicks (to suppliers, social media)
    - File downloads (PDFs, brochures)
    - Video engagement (project videos)
@@ -40,99 +44,106 @@ This guide explains how to set up Google Analytics 4 (GA4) through Google Tag Ma
 
 ## Configuration
 
-### Step 3: Configure GTM ID in Sanity
+### Step 3: Configure the GTM ID in Sanity
 
-The GTM ID is now managed through the Sanity CMS instead of environment variables for easier content management.
+Sanity CMS manages the GTM ID, not environment variables, so anyone with Studio access can update it.
 
-1. **Access Sanity Studio**:
+1. **Open Sanity Studio**:
    - Go to your Sanity Studio (usually at `/studio` or your configured studio URL)
    - Navigate to **Site Settings**
 
-2. **Configure Analytics Settings**:
+2. **Set the analytics settings**:
    - In the Site Settings document, find the **Analytics & Tracking** section
    - Enter your **Google Tag Manager ID** in the format `GTM-XXXXXXX`
-   - Optionally, you can also add your **GA4 Measurement ID** (format: `G-XXXXXXXXXX`)
+   - Optionally, add your **GA4 Measurement ID** (format: `G-XXXXXXXXXX`)
 
-3. **Fallback Support**:
-   - The system will use the GTM ID from Sanity first
-   - If not set in Sanity, it will fall back to the `NEXT_PUBLIC_GTM_ID` environment variable
-   - This allows for flexible deployment configurations
+3. **How the fallback works**:
+   - The site uses the GTM ID from Sanity first
+   - If Sanity has no GTM ID set, it falls back to the `NEXT_PUBLIC_GTM_ID` environment variable
+   - This lets you use different tracking IDs per deployment
 
-### Benefits of Sanity-based Configuration
+**Why configure this in Sanity instead of environment variables?**
 
-- **Content Manager Control**: Non-technical users can update tracking IDs
-- **Environment Flexibility**: Different tracking IDs for staging/production
-- **No Code Deployment**: Changes don't require rebuilding the application
-- **Audit Trail**: Changes are tracked in Sanity's revision history
+- Non-technical content managers can update tracking IDs
+- Staging and production can use different tracking IDs
+- Changes take effect without a code deployment
+- Sanity's revision history tracks every change
 
 ### Step 4: Configure GA4 in Google Tag Manager
 
-#### Create GA4 Configuration Tag
+#### Create the GA4 Configuration tag
 
 1. In GTM, go to **Tags** → **New**
-2. **Tag Configuration**: Choose "Google Analytics: GA4 Configuration"
-3. **Measurement ID**: Enter your GA4 Measurement ID (`G-XXXXXXXXXX`)
-4. **Triggering**: Choose "All Pages"
+2. **Tag Configuration**: choose "Google Analytics: GA4 Configuration"
+3. **Measurement ID**: enter your GA4 Measurement ID (`G-XXXXXXXXXX`)
+4. **Triggering**: choose "All Pages"
 5. **Name**: "GA4 Configuration"
 6. Save the tag
 
-#### Create GA4 Event Tag (Optional)
+#### Create a GA4 Event tag (optional)
 
 1. In GTM, go to **Tags** → **New**
-2. **Tag Configuration**: Choose "Google Analytics: GA4 Event"
-3. **Configuration Tag**: Select the GA4 Configuration tag created above
-4. **Event Name**: Use `{{Event}}` variable
-5. **Event Parameters**: Configure as needed
-6. **Triggering**: Choose "All Custom Events"
+2. **Tag Configuration**: choose "Google Analytics: GA4 Event"
+3. **Configuration Tag**: select the GA4 Configuration tag you created above
+4. **Event Name**: use the `{{Event}}` variable
+5. **Event Parameters**: configure as needed
+6. **Triggering**: choose "All Custom Events"
 7. **Name**: "GA4 Event"
 8. Save the tag
 
 ## Testing & Validation
 
-### Step 5: Test Your Setup
+### Step 5: Test your setup
 
-#### Preview Mode in GTM
+**Preview mode in GTM:**
 
 1. In GTM, click **Preview**
 2. Enter your website URL (production or staging)
 3. Navigate through your site to test tag firing
-4. Verify events are appearing in the GTM preview panel
+4. Confirm events appear in the GTM preview panel
 
-#### Real-time Reports in GA4
+**Real-time reports in GA4:**
 
 1. Go to your GA4 property
 2. Navigate to **Reports** → **Realtime**
-3. Visit your website and verify events appear within 30 seconds
+3. Visit your website in another tab
+4. Confirm page views and events appear within 30 seconds
 
-#### GTM Debug Console
+**GTM debug console:**
 
-1. With Preview mode active, check the GTM debug console
-2. Verify all configured tags are firing correctly
-3. Check for any error messages or failed tags
+1. With Preview mode active, open the GTM debug console
+2. Confirm every configured tag fires correctly
+3. Check for error messages or failed tags
+
+### Step 6: Publish the GTM container
+
+1. In GTM, click **Submit**
+2. Add a version name and description
+3. Click **Publish**
 
 ## Development Considerations
 
-### Localhost Development Behavior
+### Localhost behavior
 
-When running GTM on localhost (`http://localhost:3000`), be aware that:
+When you run GTM on localhost (`http://localhost:3000`), keep this in mind:
 
-#### ✅ What Works
+**What works:**
 
-- **GTM Script Loads** - The GTM container loads normally
-- **Tags Fire** - All configured tags will attempt to execute
-- **Events Trigger** - Custom events from your code are sent to the data layer
-- **Preview Mode** - GTM Preview mode works with localhost URLs
+- The GTM script loads normally
+- All configured tags attempt to fire
+- Custom events from your code reach the data layer
+- GTM Preview mode works with localhost URLs
 
-#### ⚠️ Potential Issues
+**What to watch for:**
 
-- **Data Pollution** - Development activity appears in your production analytics
-- **Hostname Data** - Analytics will show `localhost:3000` as the source
-- **CORS Restrictions** - Some third-party tags may not work on localhost
-- **Mixed Data** - Development and production data get combined
+- Development activity shows up in your production analytics
+- Analytics shows `localhost:3000` as the source
+- CORS may block some third-party tags on localhost
+- Development and production data get mixed together
 
-#### 🔍 Debugging Tools
+**Debugging tools:**
 
-**Browser Console Inspection:**
+Browser console:
 
 ```javascript
 // Check data layer contents
@@ -145,99 +156,104 @@ window.dataLayer.push = function (data) {
 };
 ```
 
-**Network Tab Monitoring:**
+Network tab:
 
 - Look for requests to `googletagmanager.com`
-- Verify GA4 events being sent to `google-analytics.com`
+- Confirm GA4 events go to `google-analytics.com`
 
-### Best Practices for Development
+### Best practices for development
 
-#### Option 1: Separate GTM Containers
+Pick one of these approaches to avoid mixing development and production data:
 
-Create different containers for each environment:
+1. **Separate GTM containers** — create one container per environment (e.g. `GTM-DEV1234` pointing to a test GA4 property, `GTM-PROD5678` pointing to the live one), and set the matching ID in each environment's Sanity site settings.
+2. **Environment-based loading** — only load GTM when it's safe to track:
 
-- **Development**: `GTM-DEV1234` (points to test GA4 property)
-- **Production**: `GTM-PROD5678` (points to live GA4 property)
+   ```typescript
+   // In layout.tsx - only load GTM in production
+   const shouldLoadGTM = process.env.NODE_ENV === 'production' || process.env.ENABLE_GTM === 'true';
+   const finalGtmId = shouldLoadGTM ? gtmId : undefined;
+   ```
 
-Configure in Sanity Studio:
+   Add to `.env.local` to enable it locally for testing:
 
-- Development site settings use development GTM ID
-- Production site settings use production GTM ID
+   ```
+   ENABLE_GTM=true
+   ```
 
-#### Option 2: Environment-Based Loading
+3. **GTM Preview mode only** — don't set a GTM ID in your development Sanity settings, and use GTM Preview mode to connect to localhost when you need to test. This avoids data pollution entirely.
 
-Conditionally load GTM based on environment:
+**Recommended workflow:**
 
-```typescript
-// In layout.tsx - only load GTM in production
-const shouldLoadGTM = process.env.NODE_ENV === 'production' || process.env.ENABLE_GTM === 'true';
-const finalGtmId = shouldLoadGTM ? gtmId : undefined;
-```
-
-Add to your `.env.local` for development testing:
-
-```
-ENABLE_GTM=true
-```
-
-#### Option 3: GTM Preview Mode Only
-
-For development, use GTM Preview mode instead of live tracking:
-
-1. Don't set GTM ID in development Sanity settings
-2. Use GTM Preview mode to connect to localhost when testing
-3. This prevents data pollution while allowing full testing
-
-### Recommended Development Workflow
-
-1. **Initial Setup**: Use GTM Preview mode with localhost
-2. **Feature Testing**: Create separate development GTM container
-3. **Pre-deployment**: Test with staging environment using production GTM
-4. **Production**: Monitor real-time reports after deployment
+1. **Initial setup**: use GTM Preview mode with localhost
+2. **Feature testing**: use a separate development GTM container
+3. **Pre-deployment**: test with the staging environment using the production GTM container
+4. **Production**: monitor real-time reports after each deployment
 
 ## Custom Events
 
-3. Navigate through your website
-4. Verify that tags are firing correctly
+The website tracks these events automatically:
 
-### Real-time Reports
+**Lead generation events:**
 
-1. Go to Google Analytics
-2. Navigate to **Reports** → **Realtime**
-3. Visit your website in another tab
-4. Verify that page views appear in real-time
+- `contact_dialog_open` — the contact form opens
+- `form_submit` — the contact form is submitted
+- `contact_attempt` — a form or phone contact attempt succeeds
 
-## Step 6: Publish GTM Container
+**Service engagement events:**
 
-1. In GTM, click **Submit**
-2. Add a version name and description
-3. Click **Publish**
+- `service_interaction` — a user views a service page
+- `page_view` — custom page view tracking for service pages
 
-## Custom Events Implemented
+**Portfolio engagement events:**
 
-The website automatically tracks the following events:
+- `project_view` — a user views a project gallery (ready for implementation)
 
-### Lead Generation Events
+### Available event helper functions
 
-- `contact_dialog_open` - When contact form opens
-- `form_submit` - When contact form is submitted
-- `contact_attempt` - Successful form submissions
+Use the `gtag` utility from `@/components/GoogleTagManager` to send events:
 
-### Service Engagement Events
+```typescript
+import { gtag } from '@/components/GoogleTagManager';
 
-- `service_interaction` - When users view service pages
-- `page_view` - Custom page view tracking for service pages
+// Track a service page view
+gtag.trackService('kitchen-renovations', 'view');
 
-### Portfolio Engagement Events
+// Track a contact attempt
+gtag.trackContact('form'); // or 'phone', 'email'
 
-- `project_view` - When users view project galleries (ready for implementation)
+// Track a project gallery view
+gtag.trackProjectView('Brisbane Kitchen Renovation');
 
-## GTM Data Layer Events
+// Track a conversion, optionally with a value
+gtag.conversion('quote_request', 500, 'AUD');
 
-The implementation pushes events to the GTM Data Layer that you can use to create additional tags:
+// Send any custom event
+gtag.event('custom_action', {
+  category: 'engagement',
+  value: 1,
+});
+```
+
+### Example: tracking a form submission
+
+```typescript
+// In a contact form component
+const handleSubmit = async (formData) => {
+  try {
+    await submitForm(formData);
+    gtag.trackContact('form');
+    gtag.conversion('contact_form_submit');
+  } catch (error) {
+    // Handle error
+  }
+};
+```
+
+### Data layer events
+
+These helper functions push events to the GTM data layer, which you can use to build additional tags:
 
 ```javascript
-// Example events being sent:
 dataLayer.push({
   event: 'contact_dialog_open',
   category: 'lead_generation',
@@ -254,152 +270,62 @@ dataLayer.push({
 
 ## GDPR Compliance Considerations
 
-For Australian businesses, consider implementing:
+For Australian businesses, consider adding:
 
-1. **Cookie Consent Banner** - Use GTM's consent mode
-2. **Privacy Policy** - Update to include analytics tracking
-3. **Data Retention** - Configure in GA4 settings
+1. **A cookie consent banner** — use GTM's consent mode
+2. **An updated privacy policy** — disclose analytics tracking
+3. **Data retention limits** — configure these in GA4 settings
 
 ## Recommended GA4 Goals & Conversions
 
 Set up these conversions in GA4:
 
-1. **Contact Form Submission** - Event name: `form_submit`
-2. **Phone Call Clicks** - Event name: `contact_attempt` with method: `phone`
-3. **Service Page Engagement** - Event name: `service_interaction`
-
-## Advanced Tracking Options
-
-You can extend tracking by using the provided `gtag` utility:
-
-```typescript
-import { gtag } from '@/components/GoogleTagManager';
-
-// Track custom events
-gtag.event('custom_event_name', {
-  custom_parameter: 'value',
-  category: 'custom_category',
-});
-
-// Track conversions with values
-gtag.conversion('quote_request', 500, 'AUD');
-```
+1. **Contact form submission** — event name: `form_submit`
+2. **Phone call clicks** — event name: `contact_attempt` with method: `phone`
+3. **Service page engagement** — event name: `service_interaction`
 
 ## Troubleshooting
 
-### GTM Not Loading
+### GTM isn't loading
 
-- Verify `NEXT_PUBLIC_GTM_ID` is correctly set
-- Check browser console for JavaScript errors
-- Ensure GTM container is published
+- Confirm `NEXT_PUBLIC_GTM_ID` is set correctly
+- Confirm the GTM ID in Sanity Studio matches the format `GTM-XXXXXXX`
+- Confirm the Sanity Studio document is published
+- Check the browser console for JavaScript errors
 
-### Events Not Firing
-
-- Use GTM Preview mode to debug
-- Check that dataLayer events are being pushed
-- Verify trigger conditions in GTM
-
-### GA4 Data Not Appearing
-
-- Allow 24-48 hours for data to appear in standard reports
-- Use Real-time reports for immediate verification
-- Check that GA4 configuration tag is firing on all pages
-
-## Support
-
-## Custom Events
-
-The application includes several pre-built custom events for tracking carpentry business activities:
-
-### Available Event Functions
-
-```typescript
-import { gtag } from '@/components/GoogleTagManager';
-
-// Track service page views
-gtag.trackService('kitchen-renovations', 'view');
-
-// Track contact form submissions
-gtag.trackContact('form'); // or 'phone', 'email'
-
-// Track project gallery interactions
-gtag.trackProjectView('Brisbane Kitchen Renovation');
-
-// Track general conversions
-gtag.conversion('quote_request', 500, 'AUD');
-
-// Send custom events
-gtag.event('custom_action', {
-  category: 'engagement',
-  value: 1,
-});
-```
-
-### Carpentry-Specific Events
-
-1. **Service Interactions** - Track which services users are most interested in
-2. **Contact Attempts** - Monitor lead generation effectiveness
-3. **Project Views** - Understand portfolio engagement
-4. **Form Submissions** - Track quote requests and inquiries
-
-### Implementation Example
-
-```typescript
-// In a contact form component
-const handleSubmit = async (formData) => {
-  try {
-    await submitForm(formData);
-    gtag.trackContact('form');
-    gtag.conversion('contact_form_submit');
-  } catch (error) {
-    // Handle error
-  }
-};
-```
-
-## Troubleshooting
-
-### Common Issues
-
-#### GTM Not Loading
-
-- Check GTM ID format in Sanity Studio (should be `GTM-XXXXXXX`)
-- Verify Sanity Studio data is published
-- Check browser console for JavaScript errors
-
-#### Events Not Firing
+### Events aren't firing
 
 - Use GTM Preview mode to debug
-- Check `window.dataLayer` in browser console
-- Verify event names match GTM trigger configuration
+- Check `window.dataLayer` in the browser console for the expected events
+- Confirm event names match the trigger configuration in GTM
 
-#### Data Not Appearing in GA4
+### Data isn't appearing in GA4
 
-- Check GTM tags are configured correctly
-- Verify GA4 Measurement ID is correct
-- Allow up to 24 hours for data to appear in standard reports
-- Use Real-time reports for immediate verification
+- Confirm the GA4 configuration tag fires on all pages
+- Confirm the GA4 Measurement ID is correct
+- Allow 24–48 hours for data to appear in standard reports
+- Use Real-time reports to verify sooner
 
-#### Development Data Pollution
+### Development data is polluting production analytics
 
-- Implement environment-based GTM loading
-- Use separate GTM containers for development
-- Filter out localhost traffic in GA4 views
+- Set up environment-based GTM loading (see [Development Considerations](#development-considerations))
+- Use a separate GTM container for development
+- Filter out localhost traffic in your GA4 views
 
-### Debug Commands
+### Debug commands
 
 ```javascript
 // Check if GTM is loaded
 console.log(window.google_tag_manager);
 
-// View data layer
+// View the data layer
 console.log(window.dataLayer);
 
-// Manual event testing
+// Fire a manual test event
 window.dataLayer.push({
   event: 'test_event',
   custom_parameter: 'test_value',
 });
 ```
 
-For issues specific to this implementation, check the browser console for any JavaScript errors related to GTM or analytics tracking.
+If none of this resolves your issue, check the browser console for JavaScript errors related to GTM or analytics tracking, and check the Vercel function logs for the API routes involved.
