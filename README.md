@@ -31,11 +31,10 @@ pnpm --filter web run dev
 ## Deploying
 
 **Website:**
-The project is deployed to vercel. It uses trunk based development where every main branch is pushed to production.
+Vercel deploys the project automatically. We use trunk-based development, so every push to `main` goes straight to production.
 
-**Sanity studio:**
-The sanity studio is deployed manually using the sanity cli.
-Make the required schema changes in the content project and then deploy it straight to production using the following command.
+**Sanity Studio:**
+You deploy Sanity Studio manually using the Sanity CLI. Make your schema changes in the content project, then deploy them straight to production:
 
 ```sh
 pnpm --filter content run deploy
@@ -43,12 +42,12 @@ pnpm --filter content run deploy
 
 ## Google reviews
 
-The google reviews are not managed by content and instead they need to be fetched using puppeteer.
+Content doesn't manage Google reviews. Instead, fetch them using Puppeteer.
 
-To update reviews run the following command:
+To update reviews, run:
 
 ```sh
 pnpm --filter reviews run update:reviews
 ```
 
-This should update the data.json file in the reviews workspace which is then used by the nextjs App during build time to update the google reviews content.
+This updates `data.json` in the reviews workspace. The Next.js app reads this file at build time to update the Google reviews content.
