@@ -13,13 +13,13 @@
     "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
-    "@aws-sdk/client-ses": "3.1129.0",
+    "@aws-sdk/client-ses": "3.1130.0",
     "@mux/mux-player-react": "3.13.3",
     "@portabletext/react": "8.0.1",
     "@sanity/image-url": "2.1.1",
     "@tailwindcss/forms": "0.5.11",
     "@tailwindcss/postcss": "4.3.3",
-    "autoprefixer": "10.5.5",
+    "autoprefixer": "10.5.6",
     "next": "16.3.4",
     "next-sanity": "13.3.4",
     "postcss": "8.5.28",
@@ -29,7 +29,7 @@
     "reviews": "workspace:*",
     "swiper": "14.2.0",
     "tailwindcss": "4.3.3",
-    "zod": "4.6.1"
+    "zod": "4.6.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "3.3.7",
