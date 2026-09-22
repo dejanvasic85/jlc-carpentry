@@ -210,8 +210,8 @@ importers:
   apps/web:
     dependencies:
       '@aws-sdk/client-ses':
-        specifier: 3.1136.0
-        version: 3.1136.0
+        specifier: 3.1137.0
+        version: 3.1137.0
       '@mux/mux-player-react':
         specifier: 3.13.4
         version: 3.13.4(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -357,8 +357,8 @@ packages:
     resolution: {integrity: sha512-1B8mZ79ySqlTEfSQ87KZ0XkmTOKQFMO3lUYUGUtwNTUncJINr6nhRWEjk128oBWwEQnpJ7NfpDPjdfg1ICe3xw==}
     engines: {node: '>=16'}
 
-  '@aws-sdk/client-ses@3.1136.0':
-    resolution: {integrity: sha512-n/3eoHp60bidKgJD2GbLgQjVg1ggffiwuungtlxStBRDn8hgTMHuc6d/0b1khclmC8EYdI/BRL72mqguM8qDjg==}
+  '@aws-sdk/client-ses@3.1137.0':
+    resolution: {integrity: sha512-Jc1rSvHYW78ElD1z4fXCw0YNF6eExMWvCIFi23OcC0qbsznSXH9utDx98Ula0mWs9UzC0Qk93AqReCl5qXy+Qw==}
     engines: {node: '>=20.0.0'}
 
   '@aws-sdk/core@3.978.0':
@@ -6595,7 +6595,7 @@ snapshots:
 
   '@aws-lite/ssm@0.2.5': {}
 
-  '@aws-sdk/client-ses@3.1136.0':
+  '@aws-sdk/client-ses@3.1137.0':
     dependencies:
       '@aws-sdk/core': 3.978.0
       '@aws-sdk/credential-provider-node': 3.972.83
