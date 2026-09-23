@@ -26,10 +26,10 @@
     "pnpm": ">=11.17.0"
   },
   "dependencies": {
-    "turbo": "2.11.2"
+    "turbo": "2.11.3"
   },
   "devDependencies": {
     "prettier": "3.9.8"
   },
-  "packageManager": "pnpm@12.5.1"
+  "packageManager": "pnpm@12.6.0"
 }
