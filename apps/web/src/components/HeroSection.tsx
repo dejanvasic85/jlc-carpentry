@@ -47,6 +47,8 @@ export default function HeroSection({
   className = '',
 }: HeroSectionProps) {
   const [isContactDialogOpen, setIsContactDialogOpen] = useState(false);
+  const [titleFirstWord, ...titleRestWords] = title.split(' ');
+  const titleRest = titleRestWords.join(' ');
   const router = useRouter();
 
   const handleOpenDialog = () => {
@@ -94,51 +96,17 @@ export default function HeroSection({
       <div className="absolute bottom-10 left-10 w-48 h-48 bg-jlc-blue-dark/10 rounded-full blur-xl opacity-70"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
-        {/* Mobile Heading - Shows first on mobile */}
-        <div className="lg:hidden text-center mb-8">
-          <h2 className="font-display text-5xl md:text-6xl mb-4 leading-tight">
-            <span className="capitalize block">{title.split(' ')[0]}</span>
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-[1fr_auto_auto_1fr] gap-8 lg:gap-x-16 lg:gap-y-0 items-center min-h-[600px]">
+          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-center lg:text-left leading-tight lg:mb-6 lg:col-start-1 lg:row-start-2">
+            <span className="capitalize block">{titleFirstWord}</span>
             <span className="bg-gradient-to-r from-jlc-blue-dark to-jlc-black bg-clip-text capitalize block">
-              {title.split(' ').slice(1).join(' ')}
+              {titleRest}
             </span>
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[600px]">
-          {/* Text Content Column - Desktop Only Heading */}
-          <div className="text-center lg:text-left order-3 lg:order-1">
-            {/* Desktop Heading */}
-            <div className="hidden lg:block">
-              <h2 className="font-display text-4xl md:text-6xl lg:text-7xl mb-6 leading-tight">
-                <span className="capitalize block">{title.split(' ')[0]}</span>
-                <span className="bg-gradient-to-r from-jlc-blue-dark to-jlc-black bg-clip-text capitalize block">
-                  {title.split(' ').slice(1).join(' ')}
-                </span>
-              </h2>
-            </div>
-
-            <p className="text-xl md:text-2xl lg:text-3xl mb-6 font-light">{subtitle}</p>
-            {description && (
-              <p className="text-base md:text-lg mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed text-jlc-black">
-                {description}
-              </p>
-            )}
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-12 lg:mb-0">
-              <Button variant="primary" size="lg" onClick={() => handleButtonAction(primaryButton)}>
-                <span className="capitalize">{primaryButton.text}</span>
-              </Button>
-              {secondaryButton && (
-                <Button variant="outline" size="lg" onClick={() => handleButtonAction(secondaryButton)}>
-                  <span className="capitalize">{secondaryButton.text}</span>
-                </Button>
-              )}
-            </div>
-          </div>
+          </h1>
 
           {/* Image Column - Only render if heroImage exists or fallback is available */}
           {(heroImage || true) && (
-            <div className="relative order-2 lg:order-2">
+            <div className="relative lg:col-start-2 lg:row-start-1 lg:row-span-4">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-black/20 h-[400px] md:h-[500px] lg:h-[600px]">
                 <div className="absolute inset-0 bg-gradient-to-tr from-jlc-blue-dark/20 to-transparent z-10"></div>
                 <Image
@@ -162,6 +130,26 @@ export default function HeroSection({
               <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
             </div>
           )}
+
+          <div className="text-center lg:text-left lg:col-start-1 lg:row-start-3">
+            <p className="text-xl md:text-2xl lg:text-3xl mb-6 font-light">{subtitle}</p>
+            {description && (
+              <p className="text-base md:text-lg mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed text-jlc-black">
+                {description}
+              </p>
+            )}
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-12 lg:mb-0">
+              <Button variant="primary" size="lg" onClick={() => handleButtonAction(primaryButton)}>
+                <span className="capitalize">{primaryButton.text}</span>
+              </Button>
+              {secondaryButton && (
+                <Button variant="outline" size="lg" onClick={() => handleButtonAction(secondaryButton)}>
+                  <span className="capitalize">{secondaryButton.text}</span>
+                </Button>
+              )}
+            </div>
+          </div>
         </div>
 
         {/* Stats Section - Full Width Below */}

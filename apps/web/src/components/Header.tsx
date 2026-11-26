@@ -153,9 +153,9 @@ export default function Header({ className = '', siteSettings }: HeaderProps) {
               className="rounded-lg border border-white/20 md:w-12 md:h-12"
             />
             <div>
-              <h1 className="text-sm md:text-2xl font-heading tracking-wide leading-tight">
+              <p className="text-sm md:text-2xl font-heading tracking-wide leading-tight">
                 JLC CARPENTRY & BUILDING SERVICES
-              </h1>
+              </p>
               <p className="text-jlc-blue-light text-xs md:text-sm font-medium">PTY LTD</p>
             </div>
           </Link>
